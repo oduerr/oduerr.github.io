@@ -2,8 +2,5 @@
 layout: default
 title: Oliver Dürr
 ---
-TODO
 
-$$
- \int_0^{\infty}
-$$
+The CV will be updated soon (hopefully)
