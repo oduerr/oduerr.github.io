@@ -7,15 +7,15 @@ author: "Oliver Dürr"
 ## Teaching at ZHAW
 
 ### Wahrscheinlichkeit und Statsistik (WaST)
-* WaST1 Descriptive Statistik (last Fall 2013)
-* WaST2 Wahrscheinlichkeitsrechung (last Spring 2013)
-* WaST3 Schliessende Statistik (last Fall 2015)
+* WaST1 Descriptive Statistik 2 ECTS (last time: Fall 2013)
+* WaST2 Wahrscheinlichkeitsrechung 4 ECTS (last time: Spring 2013)
+* WaST3 Schliessende Statistik 6 ECTS (last time: Fall 2015)
 
-### Stochastische Prozesse
-* Skript Spring 2016
+### Stochastische Prozesse (StoP, 4 ECTS)
+* Skript Spring 2016 
 
-### Statistical Datamining
-* Zweiter Teil 'Supervised Learning' [olat](https://olat.zhaw.ch/url/RepositoryEntry/188776449)
+### Statistical Datamining (StDm, 4 ECTS)
+* I tought the second part (7 weeks on) 'Supervised Learning' [olat](https://olat.zhaw.ch/url/RepositoryEntry/188776449)
 
 ### CAS 
 Teaching done for the certificate of advanced studies (CAS)
@@ -28,13 +28,12 @@ Teaching done for the certificate of advanced studies (CAS)
 * (Social-) Network Analysis in preparation
 
 
-
 ### Master
 * [MSE](http://www.msengineering.ch/) module 'Machine Learning' in preparation
 
-### Teaching before lecturing at the ZHAW
+### Bachelor and Project Thesis
 * TODO
 
-### Bachelor and Project Thesis
+## Teaching before lecturing at the ZHAW
 * TODO
 
