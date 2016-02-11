@@ -29,5 +29,10 @@ in the `_layouts/default.html` file. Then you can write cool things like
 $$
  \hat{H} |\,\psi (t) \rangle = - \frac{\hbar}{\mathrm{i}}\frac{\partial}{\partial t} |\,\psi (t) \rangle 
 $$
+</p>
+
+## The markdown dialekt
+
+The excat markdown dialekt used can be found [here](http://kramdown.gettalong.org/syntax.html)
 
 
