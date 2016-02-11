@@ -31,6 +31,9 @@ Teaching done for the certificate of advanced studies (CAS)
 ### Master
 * [MSE](http://www.msengineering.ch/) module 'Machine Learning' in preparation
 
+### Other 
+* A tutotial session for teachers in Data Analysis
+
 ### Bachelor and Project Thesis
 * TODO
 

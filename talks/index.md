@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Untitled"
+title: “Teaching”
 author: "Oliver Dürr"
 ---
 
@@ -19,7 +19,7 @@ Roll your own Convolution Neural Net in Python](https://dl.dropboxusercontent.co
 
 * (April 2014) Datalab Lunch Seminar: [Graph Drawing](https://dl.dropboxusercontent.com/u/9154523/talks/GraphDrawing.pdf)
 
-* (November 2013) Olten Meeting Bioinformatik und Bioverfahrenstechnik: [Statistics Bites: Challenges in the Analysis of OMICS-data](http://www.biotechnet.ch/_doc/Oltenmeeting_2013.pdf)  
+* (November 2013) Olten Meeting Bioinformatik und Bioverfahrenstechnik with Beate Sick: [Statistics Bites: Challenges in the Analysis of OMICS-data](http://www.biotechnet.ch/_doc/Oltenmeeting_2013.pdf)  
 
 * (December 2012) 8. BioLAGO Wissenschaft trifft Wirtschaftstag (Universität Konstanz): [Statistische Tests von RNA-Seq Daten](https://dl.dropboxusercontent.com/u/9154523/talks/Biolago_2012_Oliver_Duerr.pdf)
 
