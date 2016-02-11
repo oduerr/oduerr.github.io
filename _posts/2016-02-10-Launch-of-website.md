@@ -25,7 +25,7 @@ If you want to use formulas in your page you have to include
       </script>
 ```
 <p>
-in the `_layouts/default.html` file. Then you can do cool things like
+in the `_layouts/default.html` file. Then you can write cool things like
 $$
  \hat{H} |\,\psi (t) \rangle = - \frac{\hbar}{\mathrm{i}}\frac{\partial}{\partial t} |\,\psi (t) \rangle 
 $$
