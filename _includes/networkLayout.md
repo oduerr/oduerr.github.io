@@ -9,6 +9,7 @@ energy very fast. As a further asset, we can use the knowledge of the community
 structure to facilitate the interpretation of large networks, for example the
 network defined by protein-protein interactions.
 
+Below you find a video showing the algorithm at work, disentangling the network of streets in the UK.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/J_wkNESO65k" frameborder="0" allowfullscreen></iframe>
 
