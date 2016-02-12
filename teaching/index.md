@@ -32,11 +32,12 @@ Teaching done for the certificate of advanced studies (CAS)
 * [MSE](http://www.msengineering.ch/) module 'Machine Learning' in preparation
 
 ### Other 
-* A tutotial session for teachers in Data Analysis
+* A tutotial session for teachers in data analysis based on our booklet: "Datenanalyse; Anregungen zur Umsetzung der "Datenanalyse" im
+eidg. Rahmenlehrplan 2012 für die Berufsmaturität; Beate Sick, Oliver Dürr
 
 ### Bachelor and Project Thesis
-* TODO
+* I (co-)supervised the following Bachelor or Project Thesis: coming soon...
 
 ## Teaching before lecturing at the ZHAW
-* TODO
+coming soon...
 

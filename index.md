@@ -3,7 +3,7 @@ layout: default
 title: Projects
 ---
 <h2>{{ page.title }}</h2>
-A selection of (research) projects. The list is work in progress.
+A selection of recent research projects. Other projects can be found at [here.](https://www.zhaw.ch/de/ueber-uns/person/dueo/)
 
 
 {% include piVision.md %}
