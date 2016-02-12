@@ -1,5 +1,5 @@
 ## Pi-Vision (Deep Learning on a Raspberry Pi)
-The pi-Vision project was my first research project applying *deep learning* in the form of a convolutional neural network. The task was to use a raspberry pi minicomputer for face recognition. We used among other approaches a convolution neural network. The following video (please turn off the sound!) shows the trained network doing predictions.
+The pi-Vision project was my first research project applying *deep learning*. The task was to use a raspberry pi minicomputer for face recognition. We used among other approaches a convolution neural network, a recently developed technique revolutionising image recognition. The following video (please turn off the sound!) shows the trained network doing predictions.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/oI1eJa-UWNU" frameborder="0" allowfullscreen></iframe>
 
