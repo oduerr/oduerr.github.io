@@ -5,7 +5,7 @@ author: "Oliver Dürr"
 ---
 
 ## Publications 
-The following publications have been created with bibtex2html from a [bibtext-file](citations_bib.html) exported my [google scholar site](https://scholar.google.ch/citations?user=T8hH3TMnFPwC&hl=de). See also my <a href="https://www.researchgate.net/profile/Oliver_Duerr">researchgate site</a>. 
+The following publications have been created with bibtex2html from a [bibtext-file](citations_bib.html) exported from my [google scholar site](https://scholar.google.ch/citations?user=T8hH3TMnFPwC&hl=de). See also my <a href="https://www.researchgate.net/profile/Oliver_Duerr">researchgate site</a>. 
   
 
 <!-- This document was automatically generated with bibtex2html 1.96
