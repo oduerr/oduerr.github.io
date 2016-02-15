@@ -5,11 +5,14 @@ author: "Oliver Dürr"
 ---
 
 
-# Stochastische Prozesse, FS 2015
+# Stochastische Prozesse, FS 2016
 
 Oliver Dürr
 
-[Skript](Skript.pdf) | [Primer on Wast2](PrimerWaSt2.pdf) | [Praktikum, Handouts und slides](aufgaben.html)
+![customLogo.png](customLogo.png)
+
+
+[Skript](Skript_StoP_dueo.pdf) | [Primer on Wast2](PrimerWaSt2.pdf) | [Praktikum, Handouts und slides](aufgaben.html)
 
 
 

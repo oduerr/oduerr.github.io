@@ -12,7 +12,7 @@ author: "Oliver Dürr"
 * WaST3 Schliessende Statistik 6 ECTS (last time: Fall 2015)
 
 ### Stochastische Prozesse (StoP, 4 ECTS)
-* Spring 2016 
+* [Spring 2016](stop)
 
 ### Statistical Datamining (StDm, 4 ECTS)
 * Second part (7 weeks) on 'Supervised Learning' [olat](https://olat.zhaw.ch/url/RepositoryEntry/188776449)
