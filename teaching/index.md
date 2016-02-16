@@ -36,7 +36,18 @@ Teaching done for the certificate of advanced studies (CAS)
 eidg. Rahmenlehrplan 2012 für die Berufsmaturität; Beate Sick, Oliver Dürr
 
 ### Bachelor and Project Thesis
-* I (co-)supervised the following Bachelor or Project Thesis: coming soon...
+* I (co-)supervised the following Bachelor (BA) or Project Thesis (PA)
+
+HS 2015 PA | Sprechererkennung mit Convolutional Neural Networks | Yanick Lukic, Carlo Vogt |
+HS 2015 PA | Shiny Applikation zur Analyse von GPS- Laufdaten | Manuel Brogle |
+HS 2015 PA | Auswertung der Sprintwege von Fussballspielern | Thierry Oberle, Matthias Zaugg |
+FS 2015 BA | Klassifikation von Retinopathie-Bilder mittels Convolutional Networks| Stephan Hirt, Elvis Murina |
+FS 2015 BA | Deep Learning für automatische Stimmerkennung| Gabriel Eyyi|
+HS 2014 PA | Entwicklung eines Meta-Klassifikators zur Sentiment Analyse | Lukas Aschwanden, Lukas Aschwanden |
+HS 2014 PA | Höhenbestimmung ... mittels räumlicher Interpolation | Matthias Egli, Lukas Ferilli |
+FS 2014 BA | Statistische Analyse der Schweizer Politlandschaft im Nachrichtendienst Twitter| Kilian Kessler,Pascal Stäheli |
+HS 2013 PA | Statistische Analyse von Twitter Daten | Kilian Kessler,Pascal Stäheli |
+FS 2013 BA | Topic-Modeling einer deutschen Textsammlung | Lukas Baumgartner
 
 ## Teaching before lecturing at the ZHAW
 coming soon...

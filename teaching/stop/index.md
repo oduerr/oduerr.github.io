@@ -12,13 +12,16 @@ Oliver Dürr
 ![customLogo.png](customLogo.png)
 
 
-[Skript](Skript_StoP_dueo.pdf) | [Primer on Wast2](PrimerWaSt2.pdf) | [Praktikum, Handouts und slides](aufgaben.html)
+[Skript](Skript_StoP_dueo.pdf),  [Primer on Wast2](PrimerWaSt2.pdf) 
+
+
+[Praktikum, Handouts und slides](aufgaben.html)
 
 
 
 Vorläufiger Wochenplan (wird sich noch ändern)
 
-<table border="1">
+<table border="1" style="vertical-align: top">
 <tbody>
 <tr>
 <td>&nbsp;</td>
@@ -27,8 +30,8 @@ Vorläufiger Wochenplan (wird sich noch ändern)
 </tr>
 
 <tr>
-<td>Woche 1</td>
-<td>&nbsp;
+<td><a href="woche1">Woche 1</a></td>
+<td>
 <ul>
 <li>Einleitung</span></li>
 <li>Wiederholung&nbsp;Zufallszahlen</span></li>
@@ -45,7 +48,7 @@ Vorläufiger Wochenplan (wird sich noch ändern)
 <tr>
 
 
-<td>Woche 2</td>
+<td><a href="woche2">Woche 2</a></td>
 <td>
 <ul>
 <li>Zeit- und zustandsdiskrete Prozesse</li>
@@ -59,7 +62,7 @@ Vorläufiger Wochenplan (wird sich noch ändern)
 </td>
 </tr>
 <tr>
-<td>Woche 3</td>
+<td><a href="woche3">Woche 3</a></td>
 <td>
 <ul>
 <li>Zustandsverteilungen&nbsp;</li>
@@ -73,7 +76,8 @@ Vorläufiger Wochenplan (wird sich noch ändern)
 </td>
 </tr>
 <tr>
-<td>&nbsp;Woche 4</td>
+
+I<td><a href="woche4">Woche 4</a></td>
 <td>
 <ul>
 <li>Klassifikation von Zust&auml;nden</li>
@@ -88,7 +92,7 @@ Vorläufiger Wochenplan (wird sich noch ändern)
 </td>
 </tr>
 <tr>
-<td>Woche 5&nbsp;</td>
+<td><a href="woche5">Woche 5</a></td>
 <td><br />
 <ul>
 <li>Kostenmodelle f&uuml;r endlichen Zeithorizont (&uuml;bergangsabh&auml;ngige Kosten)</li>
@@ -103,7 +107,7 @@ Vorläufiger Wochenplan (wird sich noch ändern)
 </td>
 </tr>
 <tr>
-<td>&nbsp;Woche 6</td>
+<td><a href="woche6">Woche 6</a></td>
 <td><br />
 <ul>
 <li>Station&auml;re Verteilungen und Eigenvektoren</li>
@@ -118,7 +122,7 @@ Vorläufiger Wochenplan (wird sich noch ändern)
 </td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;Woche 7</td>
+<td><a href="woche7">Woche 7</a></td>
 <td>
 <ul>
 <li>MCMC</li>
@@ -132,7 +136,7 @@ Vorläufiger Wochenplan (wird sich noch ändern)
 </td>
 </tr>
 <tr>
-<td>&nbsp;8 Woche</td>
+<td><a href="woche8">Woche 8</a></td>
 <td>&nbsp;
 <ul>
 <li>Asymptitische Kostenmodelle</li>
@@ -146,12 +150,12 @@ Vorläufiger Wochenplan (wird sich noch ändern)
 </td>
 </tr>
 <tr>
-<td>&nbsp;9 Woche</td>
+<td><a href="woche9">Woche 9</a></td>
 <td>&nbsp;Klausur</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td>10 Woche</td>
+<td><a href="woche10">Woche 10</a></td>
 <td>
 <ul>
 <li>Punktprozesses</li>
@@ -165,7 +169,7 @@ Vorläufiger Wochenplan (wird sich noch ändern)
 </td>
 </tr>
 <tr>
-<td>11 Woche</td>
+<td><a href="woche11">Woche 11</a></td>
 <td>
 <ul>
 <li>
@@ -186,7 +190,7 @@ Vorläufiger Wochenplan (wird sich noch ändern)
 </td>
 </tr>
 <tr>
-<td>12 Woche</td>
+<td><a href="woche12">Woche 12</a></td>
 <td>
 <div class="page" title="Page 82">
 <div class="layoutArea">
@@ -207,7 +211,7 @@ Vorläufiger Wochenplan (wird sich noch ändern)
 </td>
 </tr>
 <tr>
-<td>13 Woche</td>
+<td><a href="woche13">Woche 13</a></td>
 <td>
 <div class="page" title="Page 82">
 <div class="layoutArea">
@@ -226,7 +230,7 @@ Vorläufiger Wochenplan (wird sich noch ändern)
 </td>
 </tr>
 <tr>
-<td>14 Woche</td>
+<td><a href="woche14">Woche 14</a></td>
 <td>
 <div class="page" title="Page 82">
 <div class="layoutArea">
