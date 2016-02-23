@@ -16,7 +16,7 @@ Oliver Dürr
 
 
 [Praktikum, Handouts und slides](aufgaben.html)
-
+[Organisatorisches](orga/)
 
 
 Vorläufiger Wochenplan (wird sich noch ändern)
