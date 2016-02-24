@@ -20,12 +20,11 @@ Oliver Dürr
 
 
 Vorläufiger Wochenplan (wird sich noch ändern)
-
 <table border="1" style="vertical-align: top">
 <tbody>
 <tr>
 <td>&nbsp;</td>
-<td>&nbsp;&nbsp;Thema der Vorlesung</td>
+<td>&nbsp;Thema der Vorlesung</td>
 <td>&nbsp;<strong>Selbststudium</strong></td>
 </tr>
 
@@ -122,11 +121,13 @@ I<td><a href="woche4">Woche 4</a></td>
 </td>
 </tr>
 <tr>
+
+
 <td><a href="woche7">Woche 7</a></td>
 <td>
 <ul>
-<li>MCMC</li>
-<li>Asymptitische Kostenmodelle</li>
+<li>Asymptotische Kostenmodelle</li>
+<li>First Passage Time</li>
 </ul>
 </td>
 <td>
@@ -135,27 +136,18 @@ I<td><a href="woche4">Woche 4</a></td>
 </ul>
 </td>
 </tr>
+
+
+
 <tr>
 <td><a href="woche8">Woche 8</a></td>
-<td>&nbsp;
-<ul>
-<li>Asymptitische Kostenmodelle</li>
-<li>First Passage Time</li>
-</ul>
-</td>
-<td>
-<ul>
-<li><span style="line-height: 1.42857;">&nbsp;</span><span style="line-height: 1.42857;">Skript 2.12, 2.13</span></li>
-</ul>
-</td>
-</tr>
-<tr>
-<td><a href="woche9">Woche 9</a></td>
 <td>&nbsp;Klausur</td>
 <td>&nbsp;</td>
 </tr>
+
+
 <tr>
-<td><a href="woche10">Woche 10</a></td>
+<td><a href="woche9">Woche 9</a></td>
 <td>
 <ul>
 <li>Punktprozesses</li>
@@ -169,7 +161,9 @@ I<td><a href="woche4">Woche 4</a></td>
 </td>
 </tr>
 <tr>
-<td><a href="woche11">Woche 11</a></td>
+
+
+<td><a href="woche10">Woche 10</a></td>
 <td>
 <ul>
 <li>
@@ -190,7 +184,7 @@ I<td><a href="woche4">Woche 4</a></td>
 </td>
 </tr>
 <tr>
-<td><a href="woche12">Woche 12</a></td>
+<td><a href="woche11">Woche 11</a></td>
 <td>
 <div class="page" title="Page 82">
 <div class="layoutArea">
@@ -211,7 +205,7 @@ I<td><a href="woche4">Woche 4</a></td>
 </td>
 </tr>
 <tr>
-<td><a href="woche13">Woche 13</a></td>
+<td><a href="woche12">Woche 12</a></td>
 <td>
 <div class="page" title="Page 82">
 <div class="layoutArea">
@@ -230,7 +224,7 @@ I<td><a href="woche4">Woche 4</a></td>
 </td>
 </tr>
 <tr>
-<td><a href="woche14">Woche 14</a></td>
+<td><a href="woche13">Woche 13</a></td>
 <td>
 <div class="page" title="Page 82">
 <div class="layoutArea">
@@ -248,5 +242,22 @@ I<td><a href="woche4">Woche 4</a></td>
 </ul>
 </td>
 </tr>
+
+<tr>
+<td><a href="woche14">Woche 14</a></td>
+<td>
+<ul>
+<li>MCMC</li>
+</ul>
+</td>
+<td>
+<ul>
+<li>Skript TODO</li>
+</ul>
+</td>
+</tr>
+<tr>
+
+
 </tbody>
 </table>
