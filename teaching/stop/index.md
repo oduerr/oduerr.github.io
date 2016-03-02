@@ -18,14 +18,16 @@ Oliver Dürr
 [Praktikum, Handouts und slides](aufgaben.html)
 [Organisatorisches](orga/)
 
+### Hinweise
+* Zwischenprüfung in der 7. Woche (6. April)
 
-Vorläufiger Wochenplan (wird sich noch ändern)
+
+### Vorläufiger Wochenplan (wird sich noch ändern)
 <table border="1" style="vertical-align: top">
-<tbody>
 <tr>
-<td>&nbsp;</td>
-<td>&nbsp;Thema der Vorlesung</td>
-<td>&nbsp;<strong>Selbststudium</strong></td>
+<td></td>
+<td>Thema der Vorlesung</td>
+<td><strong>Selbststudium</strong></td>
 </tr>
 
 <tr>
@@ -111,7 +113,8 @@ I<td><a href="woche4">Woche 4</a></td>
 <ul>
 <li>Station&auml;re Verteilungen und Eigenvektoren</li>
 <li>Zeit und Scharmittel</li>
-<li>MCMC</li>
+<li>Asymptotische Kostenmodelle</li>
+<li>First Passage Time</li>
 </ul>
 </td>
 <td>
@@ -123,11 +126,17 @@ I<td><a href="woche4">Woche 4</a></td>
 <tr>
 
 
+<tr>
 <td><a href="woche7">Woche 7</a></td>
+<td>&nbsp;Zwischenprüfung</td>
+<td>&nbsp;</td>
+</tr>
+
+
+<td><a href="woche8">Woche 8</a></td>
 <td>
 <ul>
-<li>Asymptotische Kostenmodelle</li>
-<li>First Passage Time</li>
+<li>Punktprozesses</li>
 </ul>
 </td>
 <td>
@@ -139,11 +148,6 @@ I<td><a href="woche4">Woche 4</a></td>
 
 
 
-<tr>
-<td><a href="woche8">Woche 8</a></td>
-<td>&nbsp;Klausur</td>
-<td>&nbsp;</td>
-</tr>
 
 
 <tr>
@@ -259,5 +263,4 @@ I<td><a href="woche4">Woche 4</a></td>
 <tr>
 
 
-</tbody>
 </table>
