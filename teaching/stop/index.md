@@ -11,6 +11,8 @@ Oliver Dürr
 
 ![customLogo.png](customLogo.png)
 
+Raum TH 343, 09:50-10:35, 10:40-11:25
+
 
 [Skript](Skript_StoP_dueo.pdf),  [Primer on Wast2](PrimerWaSt2.pdf) 
 
