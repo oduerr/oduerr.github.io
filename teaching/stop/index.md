@@ -11,7 +11,12 @@ Oliver Dürr
 
 ![customLogo.png](customLogo.png)
 
-Raum TH 343, 09:50-10:35, 10:40-11:25
+Vorlesung Raum TH 343, 09:50-10:35, 10:40-11:25
+
+Praktikum (I)   TH 368  14:00 - 15:30
+
+Praktikum (II)  TH 368  15:45 - 17:15
+
 
 
 [Skript](Skript_StoP_dueo.pdf),  [Primer on Wast2](PrimerWaSt2.pdf) 
@@ -69,12 +74,11 @@ Raum TH 343, 09:50-10:35, 10:40-11:25
 <td>
 <ul>
 <li>Zustandsverteilungen&nbsp;</li>
-<li>Klassifikation von Zust&auml;nden</li>
 </ul>
 </td>
 <td>&nbsp;
 <ul>
-<li>Skript 2.3,2.4</li>
+<li>Skript 2.3</li>
 </ul>
 </td>
 </tr>
@@ -83,14 +87,13 @@ Raum TH 343, 09:50-10:35, 10:40-11:25
 I<td><a href="woche4">Woche 4</a></td>
 <td>
 <ul>
-<li>Klassifikation von Zust&auml;nden</li>
 <li>Aufenhaltsdauern f&uuml;r endlichen Zeithorizont</li>
 <li>Kostenmodelle f&uuml;r endlichen Zeithorizont</li>
 </ul>
 </td>
 <td>
 <ul>
-<li><span style="line-height: 1.42857;">&nbsp;</span><span style="line-height: 1.42857;">Skript 2.4,(2.6),2.7</span></li>
+<li><span style="line-height: 1.42857;">&nbsp;</span><span style="line-height: 1.42857;">Skript 2.5</span></li>
 </ul>
 </td>
 </tr>
@@ -98,14 +101,14 @@ I<td><a href="woche4">Woche 4</a></td>
 <td><a href="woche5">Woche 5</a></td>
 <td><br />
 <ul>
-<li>Kostenmodelle f&uuml;r endlichen Zeithorizont (&uuml;bergangsabh&auml;ngige Kosten)</li>
+<li>Klassifikation von Zust&auml;nden</li>
 <li>Asymptotik</li>
 <li>Station&auml;re Verteilungen und Eigenvektoren</li>
 </ul>
 </td>
 <td>
 <ul>
-<li><span style="line-height: 1.42857;">&nbsp;Skript 2.7, 2.8, 2.9 </span></li>
+<li><span style="line-height: 1.42857;">&nbsp;Skript 2.4, 2.6, 2.7 </span></li>
 </ul>
 </td>
 </tr>
