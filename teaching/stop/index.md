@@ -119,12 +119,11 @@ I<td><a href="woche4">Woche 4</a></td>
 <li>Station&auml;re Verteilungen und Eigenvektoren</li>
 <li>Zeit und Scharmittel</li>
 <li>Asymptotische Kostenmodelle</li>
-<li>First Passage Time</li>
 </ul>
 </td>
 <td>
 <ul>
-<li><span style="line-height: 1.42857;">&nbsp;Skript 2.9,2.10,2.11 </span></li>
+<li><span style="line-height: 1.42857;">&nbsp;Skript 2.8,2.9,2.10 </span></li>
 </ul>
 </td>
 </tr>
@@ -141,6 +140,7 @@ I<td><a href="woche4">Woche 4</a></td>
 <td><a href="woche8">Woche 8</a></td>
 <td>
 <ul>
+<li>First Passage Time</li>
 <li>Punktprozesses</li>
 </ul>
 </td>
