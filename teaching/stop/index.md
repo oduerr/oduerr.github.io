@@ -141,8 +141,8 @@ I<td><a href="woche4">Woche 4</a></td>
 <td><a href="woche8">Woche 8</a></td>
 <td>
 <ul>
+<li>Asymptotische Kostenmodelle und Diskontierung</li>
 <li>First Passage Time</li>
-<li>Punktprozesses</li>
 </ul>
 </td>
 <td>
