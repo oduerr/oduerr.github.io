@@ -6,7 +6,7 @@ author: "Oliver Dürr"
 
 ### A collection of recent talks
 
-* (May 2016) Datalab Lunch Seminar: [Variational Autoencoders](https://home.zhaw.ch/~dueo/bbs/files/vae.pdf) [github](https://github.com/oduerr/dl_tutorial/tree/master/tensorflow/vae)
+* (May 2016) Datalab Lunch Seminar: Variational Autoencoders [slides](https://home.zhaw.ch/~dueo/bbs/files/vae.pdf) [github](https://github.com/oduerr/dl_tutorial/tree/master/tensorflow/vae)
 
 * (January 2016) IDP colloquium with Beate Sick: [Recent projects in Deep Learning](https://dl.dropboxusercontent.com/u/9154523/talks/Deep_Learning_Colloq_26_1_2016.pdf)
 
