@@ -264,6 +264,7 @@ I<td><a href="woche4">Woche 4</a></td>
 <ul>
 <li>Nachtrag im skript <a href='woche14/mcmc.pdf'>MCMC</a></li>
 <li><a href="woche14/MCMC Cryptography_students.zip">ZIP-File</a> für die Verschlüsselungsaufgabe</li>
+<li><a href="woche14/Verschluesselt.txt">Text</a> zum entschlüsseln</li>
 </ul>
 </td>
 </tr>
