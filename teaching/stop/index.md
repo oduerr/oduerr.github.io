@@ -28,6 +28,7 @@ Praktikum (II)  TH 368  15:45 - 17:15
 ### Hinweise
 * Zwischenprüfung in der 7. Woche (6. April)
 * [Alte Prüfung (ohne LSG)](Midterm_2014_OHNE_LSG.pdf) [Alte Prüfung (mit LSG)](Midterm_2014.pdf)
+* Alte Schlussprüfung: (ohne LSG)](Final_2014.pdf) [Alte Prüfung (mit LSG)](Final_2014_LSG.pdf)
 
 
 ### Vorläufiger Wochenplan (wird sich noch ändern)
