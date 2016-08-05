@@ -32,7 +32,7 @@ Teaching done for the certificate of advanced studies (CAS)
 * [MSE](http://www.msengineering.ch/) module 'Machine Learning' in preparation
 
 ### Other 
-* A tutotial session for teachers in data analysis based on our booklet: ["Datenanalyse; Anregungen zur Umsetzung der "Datenanalyse" im eidg. Rahmenlehrplan 2012 für die Berufsmaturität](https://dl.dropboxusercontent.com/u/9154523/paper/bms-broschuere-datenanalyse-sick-d%C3%BCrr.pdf); Beate Sick, Oliver Dürr
+* A tutotial session for teachers in data analysis based on our booklet: [Datenanalyse; Anregungen zur Umsetzung der "Datenanalyse" im eidg. Rahmenlehrplan 2012 für die Berufsmaturität](https://dl.dropboxusercontent.com/u/9154523/paper/bms-broschuere-datenanalyse-sick-d%C3%BCrr.pdf); Beate Sick, Oliver Dürr
 
 ### Bachelor and Project Thesis
 * I (co-)supervised the following Bachelor (BA) or Project Thesis (PA)
