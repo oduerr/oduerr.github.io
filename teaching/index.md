@@ -15,7 +15,7 @@ author: "Oliver Dürr"
 * [Spring 2016](stop)
 
 ### Statistical Datamining (StDm, 4 ECTS)
-* Second part (7 weeks) on 'Supervised Learning' [olat](https://olat.zhaw.ch/url/RepositoryEntry/188776449)
+* [Fall 2016](stdm)
 
 ### CAS 
 Teaching done for the certificate of advanced studies (CAS)
