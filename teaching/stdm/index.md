@@ -18,9 +18,11 @@ Praktikum Dienstag TH 368  12:00-13:35
 Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](https://www.r-bloggers.com/in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos/
 ) (ISLR) an. Einige Aspekte sind auch im Skript von Andreas Ruckstuhl (RKST) [public/staff/rkst/out/StDM/Unterlagen/skriptStDM16.pdf](smb://shared.zhaw.ch/public/staff/rkst/out/StDM/Unterlagen/skriptStDM16.pdf) zu finden.
 
-[Organisatorisches](orga/)
+* [Organisatorisches](orga/)
 
 * [Praktikum, Handouts und slides](aufgaben.html)
+
+* [Daten](data/)
 
 
 ### Hinweise
