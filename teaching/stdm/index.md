@@ -31,6 +31,7 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 
 ### Vorläufiger Wochenplan (wird sich noch ändern)
 <table border="1" style="vertical-align: top">
+
 <tr>
 <td></td>
 <td>Thema der Vorlesung</td>
@@ -41,10 +42,11 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 <td><a href="woche1">Woche 1</a></td>
 <td>
 	<ul>
-		<li><spam>Einleitung</span></li>
-		<li><spam>Principal Component Analysis</span></li>
+		<li><span>Einleitung</span></li>
+		<li><span>Principal Component Analysis</span></li>
 	</ul>
 </td>
+
 <td>
 <ul>
 <li>ISLR Kapitel 10.2</span></li>
@@ -54,6 +56,6 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 </li>
 </ul>
 </td>
-</tr>
 
+</tr>
 </table>
