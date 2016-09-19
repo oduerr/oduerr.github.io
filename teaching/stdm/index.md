@@ -40,61 +40,20 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 <tr>
 <td><a href="woche1">Woche 1</a></td>
 <td>
-<ul>
-<li><spam>Einleitung</span></li>
-<li><spam>Principal Component Analysis</span></li>
-</ul>
+	<ul>
+		<li><spam>Einleitung</span></li>
+		<li><spam>Principal Component Analysis</span></li>
+	</ul>
 </td>
 <td>
 <ul>
 <li>ISLR Kapitel 10.2</span></li>
+<li>
+	Videos from <a href="https://www.r-bloggers.com/in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos/">
+	Chapter 1 and 10.2</a>
+</li>
 </ul>
 </td>
 </tr>
-<tr>
-
-
-<td><a href="woche2">Woche 2</a></td>
-<td>
-<ul>
-<li></li>
-<li></li>
-</ul>
-</td>
-<td>
-<ul>
-<li></li>
-</ul>
-</td>
-</tr>
-<tr>
-<td><a href="woche3">Woche 3</a></td>
-<td>
-<ul>
-<li></li>
-</ul>
-</td>
-<td>&nbsp;
-<ul>
-<li></li>
-</ul>
-</td>
-</tr>
-<tr>
-
-<td><a href="woche4">Woche 4</a></td>
-<td>
-<ul>
-<li></li>
-<li></li>
-</ul>
-</td>
-<td>
-<ul>
-</ul>
-</td>
-</tr>
-<tr>
-
 
 </table>
