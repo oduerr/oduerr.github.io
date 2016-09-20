@@ -11,7 +11,7 @@ Oliver Dürr
 
 Vorlesung Dienstag TH 368, 08:00-09:35
 
-Praktikum Dienstag TH 368  12:00-13:35
+Praktikum Dienstag TH 368  12:20-13:50 (Keine Pause)
 
 
 
