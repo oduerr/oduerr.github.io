@@ -17,23 +17,38 @@ The following publications have been created with bibtex2html from a [bibtext-fi
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="ich2016">1</a>]
+[<a name="durr2016single">1</a>]
 </td>
 <td class="bibtexitem">
 D&uuml;rr, O., and Sick, B.
  Single-cell phenotype classification using deep convolutional neural
   networks.
- <em>Journal of Biomolecular Screening</em> (2016).
-[&nbsp;<a href="citations_bib.html#ich2016">bib</a>&nbsp;| 
-<a href="http://dx.doi.org/10.1177/1087057116631284">DOI</a>&nbsp;| 
-<a href="http://jbx.sagepub.com/content/early/2016/02/11/1087057116631284.abstract">http</a>&nbsp;]
+ <em>Journal of biomolecular screening 21</em>, 9 (2016), 998-1003.
+[&nbsp;<a href="citations_bib.html#durr2016single">bib</a>&nbsp;]
+
 </td>
 </tr>
 
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="durr2015deep">2</a>]
+[<a name="lukic2016speaker">2</a>]
+</td>
+<td class="bibtexitem">
+Lukic, Y., Vogt, C., D&uuml;rr, O., and Stadelmann, T.
+ Speaker identification and clustering using convolution neural
+  networks.
+ In <em>IEEE International workshop on Machine Learning for Signal
+  Processing</em> (2016).
+[&nbsp;<a href="citations_bib.html#lukic2016speaker">bib</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="durr2015deep">3</a>]
 </td>
 <td class="bibtexitem">
 D&uuml;rr, O., Pauchard, Y., Browarnik, D., Axthelm, R., and Loeser, M.
@@ -47,7 +62,7 @@ D&uuml;rr, O., Pauchard, Y., Browarnik, D., Axthelm, R., and Loeser, M.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="franzini2015gene">3</a>]
+[<a name="franzini2015gene">4</a>]
 </td>
 <td class="bibtexitem">
 Franzini, A., Baty, F., Macovei, I.&nbsp;I., D&uuml;rr, O., Droege, C.,
@@ -58,21 +73,6 @@ Franzini, A., Baty, F., Macovei, I.&nbsp;I., D&uuml;rr, O., Droege, C.,
   patients (sakk 19/05 trial).
  <em>Clinical Cancer Research 21</em>, 23 (2015), 5253-5263.
 [&nbsp;<a href="citations_bib.html#franzini2015gene">bib</a>&nbsp;]
-
-</td>
-</tr>
-
-
-<tr valign="top">
-<td align="right" class="bibtexnumber">
-[<a name="cieliebak2014meta">4</a>]
-</td>
-<td class="bibtexitem">
-Cieliebak, M., D&uuml;rr, O., and Uzdilli, F.
- Meta-classifiers easily improve commercial sentiment detection tools.
- In <em>Language Resources and Evaluation Conference (LREC)</em>
-  (2014), pp.&nbsp;3100-3104.
-[&nbsp;<a href="citations_bib.html#cieliebak2014meta">bib</a>&nbsp;]
 
 </td>
 </tr>
@@ -96,14 +96,29 @@ Franzini, A., D&uuml;rr, O., Baty, F., and Brutsche, M.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="durr2014joint_forces">6</a>]
+[<a name="cieliebak2014meta">6</a>]
+</td>
+<td class="bibtexitem">
+Cieliebak, M., D&uuml;rr, O., and Uzdilli, F.
+ Meta-classifiers easily improve commercial sentiment detection tools.
+ In <em>Language Resources and Evaluation Conference (LREC)</em>
+  (2014), pp.&nbsp;3100-3104.
+[&nbsp;<a href="citations_bib.html#cieliebak2014meta">bib</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="durr2014joint_forces">7</a>]
 </td>
 <td class="bibtexitem">
 D&uuml;rr, O., Uzdilli, F., and Cieliebak, M.
  Joint_forces: Unite competing sentiment classifiers with random
   forest.
- <em>SemEval 2014-Proceedings of the 8th International Workshop on
-  Semantic Evaluation</em> (2014), 366-369.
+ In <em>SemEval 2014-Proceedings of the 8th International Workshop on
+  Semantic Evaluation</em> (2014), pp.&nbsp;366-369.
 [&nbsp;<a href="citations_bib.html#durr2014joint_forces">bib</a>&nbsp;]
 
 </td>
@@ -112,7 +127,7 @@ D&uuml;rr, O., Uzdilli, F., and Cieliebak, M.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="cieliebak2013potential">7</a>]
+[<a name="cieliebak2013potential">8</a>]
 </td>
 <td class="bibtexitem">
 Cieliebak, M., D&uuml;rr, O., and Uzdilli, F.
@@ -126,28 +141,13 @@ Cieliebak, M., D&uuml;rr, O., and Uzdilli, F.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="durr2012using">8</a>]
+[<a name="durr2012using">9</a>]
 </td>
 <td class="bibtexitem">
 D&uuml;rr, O., and Brandenburg, A.
  Using community structure for complex network layout.
  <em>arXiv preprint arXiv:1207.6282</em> (2012).
 [&nbsp;<a href="citations_bib.html#durr2012using">bib</a>&nbsp;]
-
-</td>
-</tr>
-
-
-<tr valign="top">
-<td align="right" class="bibtexnumber">
-[<a name="durr2001model">9</a>]
-</td>
-<td class="bibtexitem">
-Durr, O., Pendzig, P., Dieterich, W., and Nitzan, A.
- Model studies of diffusion in glassy and polymer ion conductors.
- In <em>Proceedings of the 1st International Discussion Meeting on
-  Superionic Conductor Physics</em> (2007), J.&nbsp;Kawamura, Ed.
-[&nbsp;<a href="citations_bib.html#durr2001model">bib</a>&nbsp;]
 
 </td>
 </tr>
@@ -175,8 +175,8 @@ D&uuml;rr, O., Duval, F., Nichols, A., Lang, P., Brodte, A., Heyse, S., and
 </td>
 <td class="bibtexitem">
 D&uuml;rr, O., and Dieterich, W.
- Glassy and polymeric ionic conductors:. statistical modeling and
-  monte carlo simulations.
+ Glassy and polymeric ionic conductors: Statistical modeling and monte
+  carlo simulations.
  In <em>Superionic Conductor Physics</em> (2007), vol.&nbsp;1, pp.&nbsp;77-80.
 [&nbsp;<a href="citations_bib.html#durr2007glassy">bib</a>&nbsp;]
 
@@ -203,7 +203,21 @@ Heyse, S., Brodte, A., Bruttger, O., Duerr, O., Freeman, T., Jung, T.,
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="durr2004coupled">13</a>]
+[<a name="rinn2005journal">13</a>]
+</td>
+<td class="bibtexitem">
+Rinn, B., Heyse, S., Brodte, A., Bruttger, O., Duerr, O., Freeman, T.,
+  Jung, T., Lindemann, M., and Ottl, J.
+ Journal of the association for laboratory.
+[&nbsp;<a href="citations_bib.html#rinn2005journal">bib</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="durr2004coupled">14</a>]
 </td>
 <td class="bibtexitem">
 D&uuml;rr, O., Dieterich, W., and Nitzan, A.
@@ -218,13 +232,13 @@ D&uuml;rr, O., Dieterich, W., and Nitzan, A.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="durr2003theoretical">14</a>]
+[<a name="durr2003theoretical">15</a>]
 </td>
 <td class="bibtexitem">
 D&uuml;rr, O.
  <em>Theoretical Studies of Relaxation and Ionic Transport in
   Polymers</em>.
- PhD thesis, Dissertation. de, 2003.
+ PhD thesis, 2003.
 [&nbsp;<a href="citations_bib.html#durr2003theoretical">bib</a>&nbsp;]
 
 </td>
@@ -233,7 +247,7 @@ D&uuml;rr, O.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="durr2002dynamic">15</a>]
+[<a name="durr2002dynamic">16</a>]
 </td>
 <td class="bibtexitem">
 D&uuml;rr, O., Volz, T., Dieterich, W., and Nitzan, A.
@@ -248,7 +262,7 @@ D&uuml;rr, O., Volz, T., Dieterich, W., and Nitzan, A.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="durr2002effective">16</a>]
+[<a name="durr2002effective">17</a>]
 </td>
 <td class="bibtexitem">
 D&uuml;rr, O., Dieterich, W., Maass, P., and Nitzan, A.
@@ -263,28 +277,13 @@ D&uuml;rr, O., Dieterich, W., Maass, P., and Nitzan, A.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="durr2002diffusion">17</a>]
+[<a name="durr2002diffusion">18</a>]
 </td>
 <td class="bibtexitem">
 D&uuml;rr, O., Dieterich, W., and Nitzan, A.
  Diffusion in polymer electrolytes and the dynamic percolation model.
  <em>Solid state ionics 149</em>, 1 (2002), 125-130.
 [&nbsp;<a href="citations_bib.html#durr2002diffusion">bib</a>&nbsp;]
-
-</td>
-</tr>
-
-
-<tr valign="top">
-<td align="right" class="bibtexnumber">
-[<a name="durr2001melt">18</a>]
-</td>
-<td class="bibtexitem">
-Durr, O., Frisch, H., and Dieterich, W.
- Melt viscosities of lattice polymers using a kramers potential
-  treatment.
- <em>JOURNAL OF CHEMICAL PHYSICS 115</em>, 19 (2001), 9042-9045.
-[&nbsp;<a href="citations_bib.html#durr2001melt">bib</a>&nbsp;]
 
 </td>
 </tr>
@@ -306,7 +305,22 @@ D&uuml;rr, O., Nitzan, A., and Dieterich, W.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="dieterich1999percolation">20</a>]
+[<a name="oliver2001melt">20</a>]
+</td>
+<td class="bibtexitem">
+Oliver, D., Frisch, H., and Dieterich, W.
+ Melt viscosities of lattice polymers using a kramers potential
+  treatment.
+ <em>J. Chem. Phys. 115</em> (2001), 9042-9045.
+[&nbsp;<a href="citations_bib.html#oliver2001melt">bib</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="dieterich1999percolation">21</a>]
 </td>
 <td class="bibtexitem">
 Dieterich, W., D&uuml;rr, O., Pendzig, P., Bunde, A., and Nitzan, A.
@@ -321,7 +335,7 @@ Dieterich, W., D&uuml;rr, O., Pendzig, P., Bunde, A., and Nitzan, A.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="dieterich1999stochastic">21</a>]
+[<a name="dieterich1999stochastic">22</a>]
 </td>
 <td class="bibtexitem">
 Dieterich, W., D&uuml;rr, O., Pendzig, P., and Nitzan, A.
@@ -336,16 +350,18 @@ Dieterich, W., D&uuml;rr, O., Pendzig, P., and Nitzan, A.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="durr1998monte">22</a>]
+[<a name="durr1998monte">23</a>]
 </td>
 <td class="bibtexitem">
 D&uuml;rr, O.
  Monte-carlo-simulationen zu polymeren ionenleitern.
- Master's thesis, Universit&auml;t Konstanze, 1998.
 [&nbsp;<a href="citations_bib.html#durr1998monte">bib</a>&nbsp;]
 
 </td>
 </tr>
-</table><hr><p><em>This file was generated by
+</table>
+
+<hr><p><em>This file was generated by
 <a href="http://www.lri.fr/~filliatr/bibtex2html/">bibtex2html</a> 1.96.</em></p>
+
 

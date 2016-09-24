@@ -37,6 +37,9 @@ Teaching done for the certificate of advanced studies (CAS)
 ### Bachelor and Project Thesis
 * I (co-)supervised the following Bachelor (BA) or Project Thesis (PA)
 
+FS 2016 BA | Sprechererkennung mit Convolutional Neural Networks | Yanick Lukic, Carlo Vogt |
+FS 2016 BA | Real-Time Face Detection on Android Devices | Mike Schälchli, Michael Sladoje  |
+FS 2016 BA | Automatische Klassifikation der Aktionen eines Fussballspielers aufgrund von Sensordaten | Thierry Oberle, Matthias Zaugg  |
 HS 2015 PA | Sprechererkennung mit Convolutional Neural Networks | Yanick Lukic, Carlo Vogt |
 HS 2015 PA | Shiny Applikation zur Analyse von GPS- Laufdaten | Manuel Brogle |
 HS 2015 PA | Auswertung der Sprintwege von Fussballspielern | Thierry Oberle, Matthias Zaugg |
