@@ -46,7 +46,6 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 		<li><span>Principal Component Analysis</span></li>
 	</ul>
 </td>
-
 <td>
 <ul>
 <li>ISLR Kapitel 10.2</span></li>
@@ -56,6 +55,26 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 </li>
 </ul>
 </td>
-
 </tr>
+
+
+<tr>
+<td><a href="woche2">Woche 2</a></td>
+<td>
+	<ul>
+		<li><span>Principal Component Analysis</span></li>
+		<li><span>Distanzen, Classical Scaling</span></li>
+	</ul>
+</td>
+<td>
+<ul>
+<li>Skript A. Ruckstuhl</span></li>
+
+</ul>
+</td>
+</tr>
+
+
+
+
 </table>
