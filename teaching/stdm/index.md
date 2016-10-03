@@ -29,7 +29,7 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 * Zwischenprüfung findet am 8. November (Woche 8) statt
 
 
-### Vorläufiger Wochenplan (wird sich noch ändern)
+### Wochenplan 
 <table border="1" style="vertical-align: top">
 
 <tr>
@@ -70,6 +70,22 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 <ul>
 <li>Skript A. Ruckstuhl</span></li>
 
+</ul>
+</td>
+</tr>
+
+<tr>
+<td><a href="woche3">Woche 3</a></td>
+<td>
+	<ul>
+		<li><span>Methoden zur Dimensionsreduzierung (metric mds, Sammon, isoMDS, tSNE)</span></li>
+		<li><span>Distanzen für kategorische Daten</span></li>
+	</ul>
+</td>
+<td>
+<ul>
+<li>Skript A. Ruckstuhl</span></li>
+<li><a href="http://colah.github.io/posts/2014-10-Visualizing-MNIST/">Colah's blog</a></span></li>
 </ul>
 </td>
 </tr>
