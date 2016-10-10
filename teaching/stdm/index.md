@@ -91,6 +91,22 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 </tr>
 
 
+<tr>
+<td><a href="woche4">Woche 4</a></td>
+<td>
+	<ul>
+		<li><span>Distanzen für kategorische Daten</span></li>
+		<li><span>Clustering</span></li>
+	</ul>
+</td>
+<td>
+<ul>
+<li>ISLR chapter 10.3</li>
+<li>Skript A. Ruckstuhl</span></li>
+</ul>
+</td>
+</tr>
+
 
 
 </table>
