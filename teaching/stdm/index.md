@@ -125,4 +125,24 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 </tr>
 
 
+<tr>
+<td><a href="woche6">Woche 6</a></td>
+<td>
+	<ul>
+		<li><span>Training und Testerror</span></li>
+		<li><span>Logistische Regression</span></li>
+	</ul>
+</td>
+<td>
+<ul>
+<li>ISLR chapter 4.1, 4.2 und 4.3</li>
+<li>Skript A. Ruckstuhl</span></li>
+</ul>
+</td>
+</tr>
+
+
+
+
+
 </table>
