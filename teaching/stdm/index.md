@@ -142,6 +142,21 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 </tr>
 
 
+<tr>
+<td><a href="woche7">Woche 7</a></td>
+<td>
+	<ul>
+		<li><span>Bayes Classifier und LDS</span></li>
+		<li><span>Kreuzvalidierung</span></li>
+	</ul>
+</td>
+<td>
+<ul>
+<li>ISLR chapter 4.4</li>
+<li>Skript A. Ruckstuhl</span></li>
+</ul>
+</td>
+</tr>
 
 
 
