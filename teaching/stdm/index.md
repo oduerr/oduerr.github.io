@@ -158,6 +158,17 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 </td>
 </tr>
 
+<tr>
+<td><a href="woche7">Woche 8</a></td>
+<td>
+	<ul>
+		<li><span>Zwischenprüfung</li>
+	</ul>
+</td>
+<td>
+
+</td>
+</tr>
 
 
 </table>
