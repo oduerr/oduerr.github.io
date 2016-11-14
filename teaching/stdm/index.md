@@ -159,7 +159,7 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 </tr>
 
 <tr>
-<td><a href="woche7">Woche 8</a></td>
+<td><a href="woche8">Woche 8</a></td>
 <td>
 	<ul>
 		<li><span>Zwischenprüfung</li>
@@ -169,6 +169,26 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 
 </td>
 </tr>
+
+
+
+<tr>
+<td><a href="woche9">Woche 9</a></td>
+<td>
+	<ul>
+		<li><span>Kreuzvalidierung</span></li>
+		<li><span>Kreuzvalidierung</span></li>
+	</ul>
+</td>
+<td>
+<ul>
+<li>ISLR chapter 5.1</li>
+<li>Liftcharts Skript A. Ruckstuhl</span></li>
+</ul>
+</td>
+</tr>
+
+
 
 
 </table>
