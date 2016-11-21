@@ -177,13 +177,28 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 <td>
 	<ul>
 		<li><span>Kreuzvalidierung</span></li>
-		<li><span>Kreuzvalidierung</span></li>
 	</ul>
 </td>
 <td>
 <ul>
 <li>ISLR chapter 5.1</li>
 <li>Liftcharts Skript A. Ruckstuhl</span></li>
+</ul>
+</td>
+</tr>
+
+
+<tr>
+<td><a href="woche10">Woche 10</a></td>
+<td>
+	<ul>
+		<li><span>Support Vector Machines</span></li>
+	</ul>
+</td>
+<td>
+<ul>
+<li>ISLR chapter 9</li>
+
 </ul>
 </td>
 </tr>
