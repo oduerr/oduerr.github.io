@@ -204,6 +204,23 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 </tr>
 
 
+<tr>
+<td><a href="woche11">Woche 11</a></td>
+<td>
+	<ul>
+		<li>Entscheidungsbäume für Klassifikation (keine Regression)</li>
+		<li>Bagging</li>
+	</ul>
+</td>
+<td>
+<ul>
+<li>ISLR chapter 8.1.2, 8.1.3, 8.1.4, 8.2.1</li>
+
+</ul>
+</td>
+</tr>
+
+
 
 
 </table>
