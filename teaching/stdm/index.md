@@ -215,6 +215,22 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 <td>
 <ul>
 <li>ISLR chapter 8.1.2, 8.1.3, 8.1.4, 8.2.1</li>
+</ul>
+</td>
+</tr>
+
+
+<tr>
+<td><a href="woche12">Woche 12</a></td>
+<td>
+	<ul>
+		<li>Random Forest für Klassifikation (keine Regression)</li>
+		<li>Boosting (Adaboost für Klassifikation)</li>
+	</ul>
+</td>
+<td>
+<ul>
+<li>ISLR chapter 8.1.2, 8.1.3, 8.1.4, 8.2.1</li>
 
 </ul>
 </td>
