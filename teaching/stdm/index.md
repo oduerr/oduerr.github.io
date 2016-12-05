@@ -230,7 +230,7 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 </td>
 <td>
 <ul>
-<li>ISLR chapter 8.1.2, 8.1.3, 8.1.4, 8.2.1</li>
+<li>ISLR chapter 8.2</li>
 
 </ul>
 </td>
