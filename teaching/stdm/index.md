@@ -234,7 +234,7 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 
 
 <tr>
-<td><a href="woche12">Woche 12</a></td>
+<td><a href="woche13">Woche 13</a></td>
 <td>
 	<ul>
 		<li>Boosting, Combining Classifiers</li>
