@@ -232,6 +232,20 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 <ul>
 <li>ISLR chapter 8.2</li>
 
+
+<tr>
+<td><a href="woche12">Woche 12</a></td>
+<td>
+	<ul>
+		<li>Boosting, Combining Classifiers</li>
+		<li>Neuronale Netze</li>
+	</ul>
+</td>
+<td>
+<ul>
+<li>ISLR chapter 8.2</li>
+
+
 </ul>
 </td>
 </tr>
