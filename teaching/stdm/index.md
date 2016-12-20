@@ -250,6 +250,18 @@ Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](
 <li>ISLR chapter 8.2</li>
 
 
+<tr>
+<td><a href="woche14">Woche 14</a></td>
+<td>
+	<ul>
+		<li>Neuronale Netze (einen oder mehr hidden layer)</li>
+		<li>Deep Learning (nicht prüfungsrelevant)</li>
+	</ul>
+</td>
+<td>
+<ul>
+
+
 </ul>
 </td>
 </tr>
