@@ -13,6 +13,10 @@ Vorlesung Dienstag TH 368, 08:00-09:35
 
 Praktikum Dienstag TH 368  12:20-13:50 (Keine Pause)
 
+## Mitteilungen zur Schlussprüfung
+* Fur die schriftliche Schlussprüfung dürfen eine beliebige Anzahl von selbstgeschriebenen Blätter sowie maximal 12 ausgedruckte Seiten mitgebracht werden. Ausserdem daft ein R-Skript in R-Studio geöffnet sein. 
+* Falls Bedarf ist findet am 12 Januar, um 9:00 eine Fragestunde am IDP statt. Falls Sie kommen möchten, melden Sie sich bitte bis am Montag den 9 Januar bei mir per E-Mail an.     
+
 
 
 Die Vorlesung lehnt sich eng an das Buch [Introduction to Statistical Learning](https://www.r-bloggers.com/in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos/
