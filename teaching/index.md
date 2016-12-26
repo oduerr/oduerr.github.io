@@ -9,7 +9,7 @@ author: "Oliver Dürr"
 ### Wahrscheinlichkeit und Statsistik (WaST)
 * WaST1 Descriptive Statistik 2 ECTS (last time: Fall 2013)
 * WaST2 Wahrscheinlichkeitsrechung 4 ECTS (last time: Spring 2013)
-* WaST3 Schliessende Statistik 6 ECTS (last time: Fall 2015)
+* WaST3 Schliessende Statistik 6 ECTS (last time: Fall 2016)
 
 ### Stochastische Prozesse (StoP, 4 ECTS)
 * [Spring 2016](stop)
@@ -17,15 +17,17 @@ author: "Oliver Dürr"
 ### Statistical Datamining (StDm, 4 ECTS)
 * [Fall 2016](stdm)
 
-### CAS 
-Teaching done for the certificate of advanced studies (CAS)
+### MAS / CAS 
+Teaching done for the master of advanced studies (MAS Data Science) and certificate of advanced studies (CAS Data Science Applications)
 
-* Deep Learning in the [CAS Data Science Applications](http://www.weiterbildung.zhaw.ch/de/school-of-engineering/programm/cas-data-science-applications.html) Fall 2015 [slides](https://dl.dropboxusercontent.com/u/9154523/talks/Deep_Learning_CAS.pdf) [github](https://github.com/oduerr/dl_cas)
+* Deep Learning in the [CAS](http://www.weiterbildung.zhaw.ch/de/school-of-engineering/programm/cas-data-science-applications.html) Fall 2016 [slides](https://dl.dropboxusercontent.com/u/9154523/talks/Deep_Learning_CAS.pdf) [github](https://github.com/oduerr/dl_cas)
 * Big Data Visualization in the [CAS Data Science Applications](http://www.weiterbildung.zhaw.ch/de/school-of-engineering/programm/cas-data-science-applications.html) Fall 2015
   + day 1 (ggplot) [slides](https://dl.dropboxusercontent.com/u/9154523/talks/big_data_vis_day1.pdf)
   + day 2 (visualization of high-dimensional data) [slides](https://dl.dropboxusercontent.com/u/9154523/talks/big_data_vis_day2.pdf)
   + day 3 (introduction to network analysis) [slides](https://dl.dropboxusercontent.com/u/9154523/talks/big_data_vis_day3.pdf)
-* (Social-) Network Analysis in preparation
+* Deep Learning 8 lectures in preparation [github repository](https://github.com/oduerr/dl_tutorial) (work in progress)
+* (Social-) Network Analysis in preparation for 2017
+
 
 
 ### Master
@@ -37,6 +39,9 @@ Teaching done for the certificate of advanced studies (CAS)
 ### Bachelor and Project Thesis
 * I (co-)supervised the following Bachelor (BA) or Project Thesis (PA)
 
+HS 2016 PA | PinballWizard II: Using Deep Reinforcement Learning to train a Pinball Wizard | Cédric Bürke, Sascha Stutz |
+HS 2016 PA | Feed-forward artstyle Transfer with TensorFlow [github](https://github.com/tgyg-jegli/tf_texture_net)| Jörg Egli, Timon Gygax |
+HS 2016 PA | Big Data Graph und Netzwerkanalyse | Markus Kessler  |
 FS 2016 BA | Sprechererkennung mit Convolutional Neural Networks | Yanick Lukic, Carlo Vogt |
 FS 2016 BA | Real-Time Face Detection on Android Devices | Mike Schälchli, Michael Sladoje  |
 FS 2016 BA | Automatische Klassifikation der Aktionen eines Fussballspielers aufgrund von Sensordaten | Thierry Oberle, Matthias Zaugg  |
