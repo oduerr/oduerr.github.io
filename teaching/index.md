@@ -40,7 +40,7 @@ Teaching done for the master of advanced studies (MAS Data Science) and certific
 * I (co-)supervised the following Bachelor (BA) or Project Thesis (PA)
 
 HS 2016 PA | PinballWizard II: Using Deep Reinforcement Learning to train a Pinball Wizard | Cédric Bürke, Sascha Stutz |
-HS 2016 PA | Feed-forward artstyle Transfer with TensorFlow [github](https://github.com/tgyg-jegli/tf_texture_net)| Jörg Egli, Timon Gygax |
+HS 2016 PA | Feed-forward artstyle transfer with TensorFlow [github](https://github.com/tgyg-jegli/tf_texture_net)| Jörg Egli, Timon Gygax |
 HS 2016 PA | Big Data Graph und Netzwerkanalyse | Markus Kessler  |
 FS 2016 BA | Sprechererkennung mit Convolutional Neural Networks | Yanick Lukic, Carlo Vogt |
 FS 2016 BA | Real-Time Face Detection on Android Devices | Mike Schälchli, Michael Sladoje  |
