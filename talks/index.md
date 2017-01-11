@@ -6,7 +6,7 @@ author: "Oliver Dürr"
 
 ### A collection of recent talks
 
-* (May 2016) Datalab Lunch Seminar: Recurrent Neural Networks (RNNs) [slides](https://home.zhaw.ch/~dueo/bbs/files/BBS_RNN.pdf) [github](https://github.com/oduerr/dl_tutorial/tree/master/tensorflow/RNN)
+* (January 2017) Datalab Lunch Seminar: Recurrent Neural Networks (RNNs) [slides](https://home.zhaw.ch/~dueo/bbs/files/BBS_RNN.pdf) [github](https://github.com/oduerr/dl_tutorial/tree/master/tensorflow/RNN)
 
 * (May 2016) Datalab Lunch Seminar: Variational Autoencoders [slides](https://home.zhaw.ch/~dueo/bbs/files/vae.pdf) [github](https://github.com/oduerr/dl_tutorial/tree/master/tensorflow/vae)
 
