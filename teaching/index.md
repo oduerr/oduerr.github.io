@@ -25,7 +25,7 @@ Teaching done for the master of advanced studies (MAS Data Science) and certific
   + day 1 (ggplot) [slides](https://dl.dropboxusercontent.com/u/9154523/talks/big_data_vis_day1.pdf)
   + day 2 (visualization of high-dimensional data) [slides](https://dl.dropboxusercontent.com/u/9154523/talks/big_data_vis_day2.pdf)
   + day 3 (introduction to network analysis) [slides](https://dl.dropboxusercontent.com/u/9154523/talks/big_data_vis_day3.pdf)
-* Deep Learning 8 lectures in preparation [github repository](https://github.com/oduerr/dl_tutorial) (work in progress)
+* Deep Learning 8 4h lectures for CAS Machine Perception in preparation with Beate Sick [tensorchiefs.github.io/dl_course/](https://tensorchiefs.github.io/dl_course/) (work in progress)
 * (Social-) Network Analysis in preparation for 2017
 
 
@@ -34,6 +34,7 @@ Teaching done for the master of advanced studies (MAS Data Science) and certific
 * [MSE](http://www.msengineering.ch/) module 'Machine Learning' in preparation
 
 ### Other 
+* Tutorials on deep learning especially using TensorFlow [github repository](https://github.com/oduerr/dl_tutorial)
 * A tutotial session for teachers in data analysis based on our booklet: [Datenanalyse; Anregungen zur Umsetzung der "Datenanalyse" im eidg. Rahmenlehrplan 2012 für die Berufsmaturität](https://dl.dropboxusercontent.com/u/9154523/paper/bms-broschuere-datenanalyse-sick-d%C3%BCrr.pdf); Beate Sick, Oliver Dürr
 
 ### Bachelor and Project Thesis
