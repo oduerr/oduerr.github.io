@@ -6,6 +6,8 @@ author: "Oliver Dürr"
 
 ### A collection of recent talks
 
+* (October 2017) Invited talk ["Deep learning for single cell phenotype classification in High-Content Screening"](https://www.dropbox.com/s/iejluareo1r4i80/Talk_SIBS_2017.pdf?dl=1) at [SIBS 2017](http://www.sibs2017.ethz.ch/). 
+
 * (January 2017) Datalab Lunch Seminar: Recurrent Neural Networks (RNNs) [slides](https://home.zhaw.ch/~dueo/bbs/files/BBS_RNN.pdf) [github](https://github.com/oduerr/dl_tutorial/tree/master/tensorflow/RNN)
 
 * (May 2016) Datalab Lunch Seminar: Variational Autoencoders [slides](https://home.zhaw.ch/~dueo/bbs/files/vae.pdf) [github](https://github.com/oduerr/dl_tutorial/tree/master/tensorflow/vae)
