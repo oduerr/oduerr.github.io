@@ -23,10 +23,10 @@ Teaching done for the master of advanced studies (MAS Data Science) and certific
 * Deep Learning 8 4h lectures for CAS Machine Perception together with Beate Sick [tensorchiefs.github.io/dl_course/](https://tensorchiefs.github.io/dl_course/), Spring 2017
 * (Social-) Network Analysis 5 4h lectures for the [CAS Statistical Modelling](https://weiterbildung.zhaw.ch/de/school-of-engineering/programm/cas-statistical-modelling.html), Spring 2017
 * Big Data Visualization in the [CAS Data Science Applications](http://www.weiterbildung.zhaw.ch/de/school-of-engineering/programm/cas-data-science-applications.html) Fall 2015
-  + day 1 (ggplot) [slides](https://dl.dropboxusercontent.com/u/9154523/talks/big_data_vis_day1.pdf)
-  + day 2 (visualization of high-dimensional data) [slides](https://dl.dropboxusercontent.com/u/9154523/talks/big_data_vis_day2.pdf)
-  + day 3 (introduction to network analysis) [slides](https://dl.dropboxusercontent.com/u/9154523/talks/big_data_vis_day3.pdf)
-* Deep Learning in the [CAS](http://www.weiterbildung.zhaw.ch/de/school-of-engineering/programm/cas-data-science-applications.html) Fall 2016 [slides](https://dl.dropboxusercontent.com/u/9154523/talks/Deep_Learning_CAS.pdf) [github](https://github.com/oduerr/dl_cas)
+  + day 1 (ggplot) [slides](https://www.dropbox.com/s/ekhy8zx0vs0wz84/big_data_vis_day1.pdf?dl=1)
+  + day 2 (visualization of high-dimensional data) [slides](https://www.dropbox.com/s/yf7lwr2p7jhufqh/big_data_vis_day2.pdf?dl=1)
+  + day 3 (introduction to network analysis) [slides](https://www.dropbox.com/s/alzqatgd3jaocuj/big_data_vis_day3.pdf?dl=1)
+* Deep Learning in the [CAS](http://www.weiterbildung.zhaw.ch/de/school-of-engineering/programm/cas-data-science-applications.html) Fall 2016 [slides](https://www.dropbox.com/s/ebh3jlbmicfext2/Deep_Learning_CAS.pdf?dl=1) [github](https://github.com/oduerr/dl_cas)
 
 
 ### Master
@@ -39,7 +39,7 @@ Teaching done for the master of advanced studies (MAS Data Science) and certific
 ### Bachelor and Project Thesis
 * I (co-)supervised the following Bachelor (BA) or Project Thesis (PA)
 
-
+ 
 FS 2017 BA | Deep Learning zur automatischen Klassifikation von Kleinraubtieren  | Dave Kramer, Simon Schwarz| 
 FS 2017 BA | Machine Learning for Speaker Clustering  | Patrick Gerber, Sebastian Glinski-Haefeli | 
 FS 2017 BA | Speaker Clustering mit Metric Embeddings | Timon Gygax, Jörg Egli |
