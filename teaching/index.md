@@ -4,7 +4,10 @@ title: "Untitled"
 author: "Oliver Dürr"
 ---
 
-## Teaching at ZHAW
+## Teaching at HTWG Konstanz
+* 
+
+## Teaching at ZHAW 
 
 ### Wahrscheinlichkeit und Statsistik (WaST)
 * WaST1 Descriptive Statistik 2 ECTS (last time: Fall 2013)
