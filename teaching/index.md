@@ -36,10 +36,11 @@ Teaching done for the master of advanced studies (MAS Data Science) and certific
 * Tutorials on deep learning especially using TensorFlow [github repository](https://github.com/oduerr/dl_tutorial)
 * A tutotial session for teachers in data analysis based on our booklet: [Datenanalyse; Anregungen zur Umsetzung der "Datenanalyse" im eidg. Rahmenlehrplan 2012 für die Berufsmaturität](https://dl.dropboxusercontent.com/u/9154523/paper/bms-broschuere-datenanalyse-sick-d%C3%BCrr.pdf); Beate Sick, Oliver Dürr
 
-### Bachelor and Project Thesis
-* I (co-)supervised the following Bachelor (BA) or Project Thesis (PA)
+### Bachelor, Project Thesis and Master Thesis
+* I (co-)supervised the following Bachelor (BA), Project Thesis (PA), or Master Thesis
 
- 
+HS 2017 PA | Arthritis Net -- Automated bone erosion scoring for rheumatoid arthritis with deep convolutional neural networks | Janick Rohrbach
+HS 2017 MA | Learning to Cluster – Investigations in Deep Learning for End-to-End Clustering | Benjamin Meier | 
 FS 2017 BA | Deep Learning zur automatischen Klassifikation von Kleinraubtieren  | Dave Kramer, Simon Schwarz| 
 FS 2017 BA | Machine Learning for Speaker Clustering  | Patrick Gerber, Sebastian Glinski-Haefeli | 
 FS 2017 BA | Speaker Clustering mit Metric Embeddings | Timon Gygax, Jörg Egli |
