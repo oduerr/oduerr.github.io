@@ -9,7 +9,7 @@ Diese Informationen sind für Bachelor- und Masterarbeiten gedacht, die ich an d
 
 
 ## Forschungsthema: Deep Learning / Machine Learning
-Ich betreue vorzugsweise Arbeiten aus dem Bereich Deep Learning / Machine Learning. Einen Überblick über die bisher betreuten Arbeiten können Sie sich unter http://oduerr.github.io/teaching/ verschaffen. 
+Ich betreue vorzugsweise Arbeiten aus dem Bereich Deep Learning / Machine Learning. Einen Überblick über die bisher betreuten Arbeiten können Sie sich unter [http://oduerr.github.io/teaching/](http://oduerr.github.io/teaching/) verschaffen. 
 
 Wichtig: Der Soft­ware­-En­gi­nee­ring-Aspekt spielt bei mir keine Rolle. Ob Sie in der verwendeten Arbeit Design Pattern verwenden oder eine Reihe von Skripten ist mir egal, solange Sie auf Reproduzierbarkeit der Ergebnisse achten. 
 
@@ -52,9 +52,8 @@ Schreiben Sie ein kurze (1-2 Seiten) **Rohfassung** einer Disposition und wir ve
 Nach dem ersten Gespräch, formulieren Sie dann eine Disposition aufgrund deren ich dann die Arbeit als Betreuer annehme. In dieser Disposition, erweitern Sie die Rohfassung. Das heisst Sie führen Teilfragestellungen ein und erweitern den Methodenteil. Skizzieren Sie auch einen *groben* Projektplan.
 
 Weitere gute Quellen sind
-https://www.johner-institut.de/blog/karriere/wissenschaftliches-arbeiten/
-https://homepage.univie.ac.at/roland.baessler/disposition.htm
-
+[https://www.johner-institut.de/blog/karriere/wissenschaftliches-arbeiten/](https://www.johner-institut.de/blog/karriere/wissenschaftliches-arbeiten/)
+[https://homepage.univie.ac.at/roland.baessler/disposition.htm](https://homepage.univie.ac.at/roland.baessler/disposition.htm)
 
 
 
