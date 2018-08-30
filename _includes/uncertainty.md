@@ -8,7 +8,7 @@ The network overconfidently assigns a high probability to the wrong class. I get
 
 We use this approach in several places:
 
-* For the use in high content screening see: [Oliver Dürr, Elvis Murina, Daniel Siegismund, Vasily Tolkachev, Stephan Steigele, and Beate Sick. "Know When You Don't Know: A Robust Deep Learning Approach in the Presence of Unknown Phenotypes" ASSAY and Drug Development Technologies.](https://www.researchgate.net/publication/230568931_Using_Community_Structure_for_Complex_Network_Layout)
+* For the use in high content screening see: [Oliver Dürr, Elvis Murina, Daniel Siegismund, Vasily Tolkachev, Stephan Steigele, and Beate Sick. "Know When You Don't Know: A Robust Deep Learning Approach in the Presence of Unknown Phenotypes" ASSAY and Drug Development Technologies.](https://www.liebertpub.com/doi/10.1089/adt.2018.859)
 
 And in other ongoing projects, stay tuned.
 
