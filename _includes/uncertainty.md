@@ -4,7 +4,9 @@ Recently deep neural networks have become standard in many areas of analysing pe
 
 ![imgs/Rapid_Fire_Presentation_v2.jpg](imgs/Rapid_Fire_Presentation_v2.jpg)      
 
-The network overconfidently assigns a high probability to the wrong class. I get scared when I think of self driving cars being overconfident. While standard networks cannot state their uncertainty of a prediction, novel methods allow to include uncertainty information. One way to do so is to use dropout also during test time. [Yarin Gal has shown that this allows to quantify uncertainty in his Phd thesis](https://arxiv.org/abs/1506.02142).
+The network overconfidently assigns a high probability to the wrong class. I get scared when I think of self driving cars being overconfident. While standard networks cannot state their uncertainty of a prediction, novel methods allow to include uncertainty information. One way to do so is to use dropout also during test time. [Yarin Gal has shown that this allows to quantify uncertainty in his Phd thesis](https://arxiv.org/abs/1506.02142). 
+
+TODO hier noch paper usw verlinken, sobald ich es in dem HTWG Webspace habe.
 
 We use this approach in several places:
 
