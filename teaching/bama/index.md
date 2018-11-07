@@ -23,7 +23,9 @@ Es muss Vorwissen in den relevante Bereichen vorhanden sein. Dazu gehören:
 
 * Umgang mit Daten: Sie kennen die elementaren Grundlagen um Daten zu analysieren, Mittelwerte, Diagnose Plots usw.
 
-* Vorwissen in Deep Learning und Machine Learning: Falls Sie die Vorlesung Deep Learning oder Machine Learning nicht besucht haben, sollten Sie Erfahrung vorweisen können, wie zum Beispiel durch die Teilnahme an einem Kaggle Wettbewerb.
+* Für Master: Vorwissen in Deep Learning und Machine Learning: Falls Sie die Vorlesung Deep Learning oder Machine Learning nicht besucht haben, sollten Sie Erfahrung vorweisen können, wie zum Beispiel durch die Teilnahme an einem Kaggle Wettbewerb.
+
+* Für Bachelor: Sie sollten gute Statitikkentnisse haben. Idealerweise habe Sie schon einmal etwas von Maschine Learning oder Data Mining gehört.  
 
 * Falls Sie die Arbeit in einer Firma machen, muss in der Firma zwingend das benötigte Know How vorhanden sein, um Sie auch technisch zu betreuen. Formal muss die Betreuungsperson in der Firma mindestens den gleichen Abschluss haben. Ich gehe aber davon aus das diese Person mindenstens in jedem Fall einen Master, idealerweise eine Promotion, haben sollte.
 
