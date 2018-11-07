@@ -8,7 +8,7 @@ author: “Oliver Dürr”
 Diese Informationen sind für Bachelor- und Masterarbeiten gedacht, die ich an der HTWG betreue. 
 
 **Wichtig:**
-Falls Sie Arbeit in einer Firma machen, muss die Betreuung vollständig im Betrieb erfolgen. Es muss dort eine kompentente Ansprechsperson vorhanden sein. In diesem Fall bin ich nur beratend (1-2 Termine) und bewertend tätig. Es muss also, in der Firma zwingend das benötigte Know How vorhanden sein, um Sie auch technisch zu betreuen. 
+Falls Sie Arbeit in einer Firma machen, muss die Betreuung vollständig im Betrieb erfolgen. Es muss dort eine kompetente Ansprechperson vorhanden sein. In diesem Fall bin ich nur beratend (1-2 Termine) und bewertend tätig. Es muss also, in der Firma zwingend das benötigte Know-how vorhanden sein, um Sie auch technisch zu betreuen. 
 
 ## Forschungsthema: Deep Learning / Machine Learning
 Ich betreue vorzugsweise Arbeiten aus dem Bereich Deep Learning / Machine Learning. Einen Überblick über die bisher betreuten Arbeiten können Sie sich unter [http://oduerr.github.io/teaching/](http://oduerr.github.io/teaching/) verschaffen. 
@@ -27,7 +27,7 @@ Es muss Vorwissen in den relevante Bereichen vorhanden sein. Dazu gehören:
 
 * Für Bachelor: Sie sollten gute Statitikkentnisse haben. Idealerweise habe Sie schon einmal etwas von Maschine Learning oder Data Mining gehört.  
 
-* Falls Sie die Arbeit in einer Firma machen, muss in der Firma zwingend das benötigte Know How vorhanden sein, um Sie auch technisch zu betreuen. Formal muss die Betreuungsperson in der Firma mindestens den gleichen Abschluss haben. Ich gehe aber davon aus das diese Person mindenstens in jedem Fall einen Master, idealerweise eine Promotion, haben sollte.
+* Falls Sie die Arbeit in einer Firma machen, muss in der Firma zwingend das benötigte Know-how vorhanden sein, um Sie auch technisch zu betreuen. Formal muss die Betreuungsperson in der Firma mindestens den gleichen Abschluss haben. Ich gehe aber davon aus das diese Person mindenstens in jedem Fall einen Master, idealerweise eine Promotion, haben sollte.
 
 ## Vorgehen
 
