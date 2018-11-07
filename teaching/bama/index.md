@@ -25,7 +25,7 @@ Es muss Vorwissen in den relevante Bereichen vorhanden sein. Dazu gehören:
 
 * Vorwissen in Deep Learning und Machine Learning: Falls Sie die Vorlesung Deep Learning oder Machine Learning nicht besucht haben, sollten Sie Erfahrung vorweisen können, wie zum Beispiel durch die Teilnahme an einem Kaggle Wettbewerb.
 
-* Falls Sie die Arbeit in einer Firma machen, muss in der Firma zwingend das benötigte Know How vorhanden sein, um Sie auch technisch zu betreuen. Formal muss die Betreuungsperson in der Firma mindestens den gleichen Abschluss haben, ich gehe aber davon aus das diese Person mindens in jedem Fall einen Master, idealerweise eine Promotion, haben sollte.
+* Falls Sie die Arbeit in einer Firma machen, muss in der Firma zwingend das benötigte Know How vorhanden sein, um Sie auch technisch zu betreuen. Formal muss die Betreuungsperson in der Firma mindestens den gleichen Abschluss haben. Ich gehe aber davon aus das diese Person mindenstens in jedem Fall einen Master, idealerweise eine Promotion, haben sollte.
 
 ## Vorgehen
 
