@@ -8,7 +8,7 @@ author: “Oliver Dürr”
 Diese Informationen sind für Bachelor- und Masterarbeiten gedacht, die ich an der HTWG betreue. 
 
 **Wichtig:**
-Falls Sie Arbeit in einer Firma machen, muss die Betreuung vollständig im Betrieb erfolgen. Es muss dort eine kompetente Ansprechperson vorhanden sein. In diesem Fall bin ich nur beratend (1-2 Termine) und bewertend tätig. Es muss also, in der Firma zwingend das benötigte Know-how vorhanden sein, um Sie auch technisch zu betreuen. 
+Falls Sie Arbeit in einer Firma machen, muss die Betreuung vollständig im Betrieb erfolgen. Es muss dort eine kompetente Ansprechperson vorhanden sein. In diesem Fall bin ich nur beratend (1-2 Termine) und bewertend tätig. Es muss also in der Firma zwingend das benötigte Know-how vorhanden sein. D.h. Sie brauchen dort einen Betreuer, der auf dem Gebiet schon gearbeitet hat und der Sie auch fachlich betreuen kann. 
 
 ## Forschungsthema: Deep Learning / Machine Learning
 Ich betreue vorzugsweise Arbeiten aus dem Bereich Deep Learning / Machine Learning. Einen Überblick über die bisher betreuten Arbeiten können Sie sich unter [http://oduerr.github.io/teaching/](http://oduerr.github.io/teaching/) verschaffen. 
