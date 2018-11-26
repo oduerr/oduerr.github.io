@@ -6,7 +6,7 @@ author: "Oliver Dürr"
 
 ### A collection of recent talks
 
-* (October 2017) Invited talk ["Deep learning for single cell phenotype classification in High-Content Screening"](https://www.dropbox.com/s/iejluareo1r4i80/Talk_SIBS_2017.pdf?dl=1) at [SIBS 2017](http://www.sibs2017.ethz.ch/). 
+* (October 2017) Invited talk ["Deep learning for single cell phenotype classification in High-Content Screening"](http://www-home.htwg-konstanz.de/~oduerr/talks/Talk_SIBS_2017.pdf) at [SIBS 2017](http://www.sibs2017.ethz.ch/). 
 
 * (June 2017) Beyond ImageNet - Deep Learning in Industrial Practice (together with Thilo Stadelman) 4th Swiss Conference on Data Science, SDS 2017, Bern, Switzerland, June 16, 2017 [video](https://www.youtube.com/watch?v=mRis4rBxXg0&feature=youtu.be)
 
