@@ -7,9 +7,8 @@ Our Book on probabilistic deep learning is finally out as an early access versio
 
 The first chapters explain "standard" deep learning using the maximum likelihood principle. Later chapters will also include a Bayesian approach to deal with uncertainty. Go and check it out! :-) 
 
-https://www.manning.com/books/probabilistic-deep-learning-with-python
- You can find the Jupyter notebooks here:
-https://tensorchiefs.github.io/dl_book/
+[https://www.manning.com/books/probabilistic-deep-learning-with-python](https://www.manning.com/books/probabilistic-deep-learning-with-python)
+ You can find the Jupyter notebooks [here](https://tensorchiefs.github.io/dl_book/)
 
 ![imgs/probabilistic.jpg](imgs/probabilistic.jpg)
 
