@@ -11,7 +11,7 @@ https://www.manning.com/books/probabilistic-deep-learning-with-python
  You can find the Jupyter notebooks here:
 https://tensorchiefs.github.io/dl_book/
 
-![imgs/Rapid_Fire_Presentation_v2.jpg](imgs/Rapid_Fire_Presentation_v2.jpg)
+![imgs/probabilistic.jpg](imgs/probabilistic.jpg)
 
 
 A selection of recent research projects. 
