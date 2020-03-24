@@ -26,23 +26,23 @@ Normalerweise ist R/RStudio auf den Rechnern in den Laborräumen installiert, di
  
 Hier ist eine Anleitung zum Installieren der Software und für erste Schritte damit. 
 
-http://www.r-tutorial.nl/
+[http://www.r-tutorial.nl/](http://www.r-tutorial.nl/)
 
-R wird auch in der Datenanalyse der Corona Pandemie verwendet, sie können unter: https://www.r-bloggers.com/ Beispiele finden.
+R wird auch in der Datenanalyse der Corona Pandemie verwendet, sie können unter: [https://www.r-bloggers.com/](https://www.r-bloggers.com/) Beispiele finden.
  
 ## Datenanalyse der Corona Epidemie
 Mathematik und Datenanalyse ist auch wichtig für das Verständniss der Corona Epidemie. Im weiteren einige Vorschläge, um sich weiterzubilden
 
 ### Flatten the Curve
 
-#### Anschauliche Animation  https://www.washingtonpost.com/graphics/2020/world/corona-simulator/ 
+#### Anschauliche Animation  [https://www.washingtonpost.com/graphics/2020/world/corona-simulator/](https://www.washingtonpost.com/graphics/2020/world/corona-simulator/) 
 
 #### Exponentielles Wachstum 
 * Die Fallzahlen steigen (momentan noch) exponentiell. Der [Vortrag](https://www.youtube.com/watch?v=7KTagbXMs_Q&t=24s) erklärt die Formel des exponentiellen Wachstums.
 
 * Fallzahlen werden am besten logarithmisch dargestellt. Der [Vortrag](https://www.youtube.com/watch?v=n1CXxs2LS9o) erklärt diese Art der Darstellung.
 
-* Ein kleines R-Script um die Fallzahl zu analysieren https://rpubs.com/Oliver4242/ (es gibt einige weitere im Netz)  
+* Ein kleines R-Script um die Fallzahl zu analysieren [https://rpubs.com/Oliver4242/](https://rpubs.com/Oliver4242/) (es gibt einige weitere im Netz)  
 
 #### Modelierung der Epidemie 
 
@@ -54,7 +54,7 @@ Mathematik und Datenanalyse ist auch wichtig für das Verständniss der Corona E
 * Wikipedia [Artikel](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology)
 
 ###### Ausführliche Arbeit für UK und USA
-* Ferguson, Neil et. al. (2020). Impact of non-pharmaceutical interventions (NPIs) to reduce COVID19 mortality and healthcare demand,  Imperial College London. https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-COVID19-NPI-modelling-16-03-2020.pdf
+* Ferguson, Neil et. al. (2020). Impact of non-pharmaceutical interventions (NPIs) to reduce COVID19 mortality and healthcare demand,  Imperial College London. [Artikel](https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-COVID19-NPI-modelling-16-03-2020.pdf)
 
 
 
