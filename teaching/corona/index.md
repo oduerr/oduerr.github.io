@@ -53,7 +53,10 @@ Mathematik und Datenanalyse ist auch wichtig für das Verständniss der Corona E
 
 * Wikipedia [Artikel](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology)
 
-###### Ausführliche Arbeit für UK und USA
+###### Ausführliche Simulation für UK und USA
+
+Mit etwas forgeschrittenen Methoden wurde aktuell simuliert, wie sich die Fallzahlen bei verschiedenen Massnahmenn weiter entwickeln werden.
+
 * Ferguson, Neil et. al. (2020). Impact of non-pharmaceutical interventions (NPIs) to reduce COVID19 mortality and healthcare demand,  Imperial College London. [Artikel](https://www.imperial.ac.uk/media/imperial-college/medicine/sph/ide/gida-fellowships/Imperial-College-COVID19-NPI-modelling-16-03-2020.pdf)
 
 
