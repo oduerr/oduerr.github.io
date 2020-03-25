@@ -14,10 +14,10 @@ Diese Information richtet sich primär an Studierende der Fächer:
 * DS Data Science
 
 ## Start SomSem ab 20 April
-Bis dahin finden keine Vorlesungen statt. Wir sind auch angehalten keine online Vorlesungen bis dahin zu halten. Ich möchte Ihnen aber Material zur Vorbereitung zur Hand geben. Sie können selbstverständlich auch schon anfangen sich die Folien zu den Vorlesungen anzusehen. Dann haben Sie es im Semester etwas leichter. Für DA gilt, dass einige mathematische Vorkenntnisse nötig sind, bitte frischen Sie diese auf (siehe moodle für Details).
+Bis dahin finden keine Vorlesungen statt. Wir sind auch angehalten, keine online-Vorlesungen bis dahin zu halten. Ich möchte Ihnen aber Material zur Vorbereitung zur Hand geben. Sie können selbstverständlich auch schon anfangen, sich die Folien zu den Vorlesungen anzusehen. Dann haben Sie es im Semester etwas leichter. Für DA gilt, dass einige mathematische Vorkenntnisse nötig sind, bitte frischen Sie diese auf (siehe moodle für Details).
  
 
-Wir werden in allen oben genannten Vorlesung und in den begleitenden Veranstaltungen die Datenanalyse-/Programmiersprache R verwenden. Wenn Sie die Zeit nutzen wollen, wäre es eine sehr gute Gelegenheit sich mit R auseinanderzusetzen und mit der Sprache schon erste Erfahrungen zu sammeln. 
+Wir werden in allen oben genannten Vorlesung und in den begleitenden Veranstaltungen die Datenanalyse-/Programmiersprache R verwenden. Wenn Sie die Zeit nutzen wollen, wäre es jetzt eine sehr gute Gelegenheit sich mit R auseinanderzusetzen und mit der Sprache schon erste Erfahrungen zu sammeln. 
 
 
 ## Informationen zu R
@@ -31,7 +31,7 @@ Hier ist eine Anleitung zum Installieren der Software und für erste Schritte da
 R wird auch in der Datenanalyse der Corona Pandemie verwendet, sie können unter: [https://www.r-bloggers.com/](https://www.r-bloggers.com/) Beispiele finden.
  
 ## Datenanalyse der Corona Epidemie
-Mathematik und Datenanalyse ist auch wichtig für das Verständniss der Corona Epidemie. Im weiteren einige Vorschläge, um sich weiterzubilden
+Mathematik und Datenanalyse ist auch wichtig für das Verständnis der Corona Epidemie. Im weiteren einige Vorschläge, um sich weiterzubilden.
 
 ### Flatten the Curve
 
