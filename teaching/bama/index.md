@@ -57,6 +57,20 @@ Schreiben Sie ein kurze (1-2 Seiten) **Rohfassung** einer Disposition und Sie ve
 ### Formulierung einer Disposition
 Nach dem ersten Gespräch, formulieren Sie dann eine Disposition aufgrund derer ich dann die Arbeit als Betreuer annehme. In dieser Disposition, erweitern Sie die Rohfassung. Das heißt Sie führen Teilfragestellungen ein und erweitern den Methodenteil. Skizzieren Sie auch einen groben Projektplan.
 
+### Allgemeine Hinweise zur Arbeit
+
+Format, Textverarbeitungsprogramm (Word,Google-Docs,LaTeX,...), Zitierweise (IEEE, Harvard,...) und Sprache (Deutsch oder Englisch) ist mir egal. Auf was ich wert lege:
+
+* Schreiben Sie nicht mehr als 30-35 Seiten Haupttext (für eine BA) bzw. 45-50 (für eine MA) der Rest gehört zur Not in den Anhang. 
+* Kein Code im Haupttext (höchsten Pseudocode)
+* Stil: wissenschaftlich, knapp und prägnant (concise)
+* Figuren müssen eine aussagekräftige Unterschrift / Caption haben (in der Regel mehr als ein Satz). 
+* Alle Variablen in Formel müssen erklärt sein (ich sehe eher Fehler in Formeln als Rechtschreibfehler)
+* Fehlerbalken müssen, sofern möglich, angegeben werden. 
+
+
+
+
 Weitere gute Quellen sind
 [https://www.johner-institut.de/blog/karriere/wissenschaftliches-arbeiten/](https://www.johner-institut.de/blog/karriere/wissenschaftliches-arbeiten/)
 [https://homepage.univie.ac.at/roland.baessler/disposition.htm](https://homepage.univie.ac.at/roland.baessler/disposition.htm)
