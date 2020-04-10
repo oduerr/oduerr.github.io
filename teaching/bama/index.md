@@ -8,7 +8,7 @@ author: “Oliver Dürr”
 Diese Informationen sind für Bachelor- und Masterarbeiten gedacht, die ich an der HTWG betreue. 
 
 **Wichtig:**
-Falls Sie Arbeit in einer Firma machen, muss die Betreuung vollständig im Betrieb erfolgen. Es muss dort eine kompetente Ansprechperson vorhanden sein. In diesem Fall bin ich nur beratend (1-2 Termine) und bewertend tätig. Es muss also in der Firma zwingend das benötigte Know-how vorhanden sein. D.h. Sie brauchen dort einen Betreuer, der auf dem Gebiet schon gearbeitet hat und der Sie auch fachlich betreuen kann. 
+Falls Sie Arbeit in einer Firma machen, muss die Betreuung vollständig im Betrieb erfolgen. Es muss dort eine kompetente Ansprechperson vorhanden sein. In diesem Fall bin ich nur beratend (1-2 Termine) und bewertend tätig. Es muss also in der Firma zwingend das benötigte Know-how vorhanden sein. D.h. Sie brauchen dort einen Betreuer, der auf dem Gebiet schon gearbeitet hat und der Sie auch fachlich betreuen kann. Auch wenn die Arbeit in einem Betrieb betreut wird, nehme ich nur quatitative Arbeiten an.
 
 ## Forschungsthema: Deep Learning / Machine Learning
 Ich betreue vorzugsweise Arbeiten aus dem Bereich Deep Learning / Machine Learning. Einen Überblick über die bisher betreuten Arbeiten können Sie sich unter [http://oduerr.github.io/teaching/](http://oduerr.github.io/teaching/) verschaffen. 
@@ -62,11 +62,11 @@ Nach dem ersten Gespräch, formulieren Sie dann eine Disposition aufgrund derer 
 Format, Textverarbeitungsprogramm (Word,Google-Docs,LaTeX,...), Zitierweise (IEEE, Harvard,...) und Sprache (Deutsch oder Englisch) ist mir egal. Auf was ich wert lege:
 
 * Schreiben Sie nicht mehr als 30-35 Seiten Haupttext (für eine BA) bzw. 45-50 (für eine MA) der Rest gehört zur Not in den Anhang. 
-* Kein Code im Haupttext (höchsten Pseudocode)
 * Stil: wissenschaftlich, knapp und prägnant (concise)
 * Figuren müssen eine aussagekräftige Unterschrift / Caption haben (in der Regel mehr als ein Satz). 
 * Alle Variablen in Formel müssen erklärt sein (ich sehe eher Fehler in Formeln als Rechtschreibfehler)
 * Fehlerbalken müssen, sofern möglich, angegeben werden. 
+* In der Regel kein Code im Haupttext (eher Pseudocode)
 
 
 
