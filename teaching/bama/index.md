@@ -72,6 +72,10 @@ Format, Textverarbeitungsprogramm (Word,Google-Docs,LaTeX,...), Zitierweise (IEE
 
 
 Weitere gute Quellen sind
+
+Beispielglieder einer MA (im Prinzip auch für BA): [https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/-/blob/master/thesis.pdf](https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/-/blob/master/thesis.pdf) unter [https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/](https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/) finded  man die LaTeX Quellen
+
+
 [https://www.johner-institut.de/blog/karriere/wissenschaftliches-arbeiten/](https://www.johner-institut.de/blog/karriere/wissenschaftliches-arbeiten/)
 [https://homepage.univie.ac.at/roland.baessler/disposition.htm](https://homepage.univie.ac.at/roland.baessler/disposition.htm)
 
