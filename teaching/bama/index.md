@@ -67,6 +67,7 @@ Format, Textverarbeitungsprogramm (Word,Google-Docs,LaTeX,...), Zitierweise (IEE
 * Alle Variablen in Formel müssen erklärt sein (ich sehe eher Fehler in Formeln als Rechtschreibfehler)
 * Fehlerbalken müssen, sofern möglich, angegeben werden. 
 * In der Regel kein Code im Haupttext (eher Pseudocode)
+* Kein Tabellen / Figurenverzeichnise. Allerdings gerne Abkürzungsverzeichniss dort auch Symbole angeben (z.B. $p(x)$ Dichte der Zufallasvariable x)  
 
 
 
