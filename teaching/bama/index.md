@@ -57,7 +57,7 @@ Schreiben Sie ein kurze (1-2 Seiten) **Rohfassung** einer Disposition und Sie ve
 ### Formulierung einer Disposition
 Nach dem ersten Gespräch, formulieren Sie dann eine Disposition aufgrund derer ich dann die Arbeit als Betreuer annehme. In dieser Disposition, erweitern Sie die Rohfassung. Das heißt Sie führen Teilfragestellungen ein und erweitern den Methodenteil. Skizzieren Sie auch einen groben Projektplan.
 
-### Allgemeine Hinweise zur Arbeit
+## Allgemeine Hinweise zur Arbeit
 
 Format, Textverarbeitungsprogramm (Word,Google-Docs,LaTeX,...), Zitierweise (IEEE, Harvard,...) und Sprache (Deutsch oder Englisch) ist mir egal. Auf was ich wert lege:
 
@@ -65,12 +65,11 @@ Format, Textverarbeitungsprogramm (Word,Google-Docs,LaTeX,...), Zitierweise (IEE
 * Stil: wissenschaftlich, knapp und prägnant (concise)
 * Figuren müssen eine aussagekräftige Unterschrift / Caption haben (in der Regel mehr als ein Satz). 
 * Alle Variablen in Formel müssen erklärt sein (ich sehe eher Fehler in Formeln als Rechtschreibfehler)
+* Alle abgesetzten Formel (also nicht Text) sollten eine Nummer haben (das erleichtert Diskussion)  
 * Fehlerbalken müssen, sofern möglich, angegeben werden. 
 * In der Regel kein Code im Haupttext (eher Pseudocode)
-* Kein Tabellen / Figurenverzeichnise. Allerdings gerne Abkürzungsverzeichniss dort auch Symbole angeben (z.B. $p(x)$ Dichte der Zufallasvariable x)  
-
-
-
+* Keine Tabellen- / Figurenverzeichnisse. Allerdings gerne ein Abkürzungsverzeichniss dort auch Symbole angeben (z.B. $p(x)$ Dichte der Zufallsvariable x)  
+* Lassen Sie die Arbeit noch von jemand anderen Korrekturlesen. Gute Quellen für Rechtschreibungs- und Grammatik-Korrektur sind Duden Mentor (deutsch) oder Grammarly (englisch)
 
 Weitere gute Quellen sind
 
