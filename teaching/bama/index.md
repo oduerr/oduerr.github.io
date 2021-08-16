@@ -61,15 +61,18 @@ Nach dem ersten Gespräch, formulieren Sie dann eine Disposition aufgrund derer 
 
 Format, Textverarbeitungsprogramm (Word,Google-Docs,LaTeX,...), Zitierweise (IEEE, Harvard,...) und Sprache (Deutsch oder Englisch) ist mir egal. Auf was ich wert lege:
 
-* Schreiben Sie nicht mehr als 30-35 Seiten Haupttext (für eine BA) bzw. 45-50 (für eine MA) der Rest gehört zur Not in den Anhang. 
+* Schreiben Sie nicht mehr als 30-35 Seiten (inklusive von Figuren und Tabellen) Haupttext (für eine BA) bzw. 45-50 (für eine MA). Versuchen Sie eine "Geschichte zu erzählen". Alles, was nicht direkt damit zu tun hat, sollte man weglassen oder es gehört in den Anhang.  
 * Stil: wissenschaftlich, knapp und prägnant (concise)
-* Figuren müssen eine aussagekräftige Unterschrift / Caption haben (in der Regel mehr als ein Satz). 
+* Gendern: Verwenden Sie nicht ausschliesslich die männliche Form ansonsten haben Sie da freie Hand.
+* Figuren sind sehr wichtig und fliessen in die Bewertung ein. Sie müssen eine aussagekräftige Unterschrift / Caption haben (in der Regel mehr als ein Satz). Bei Grafen müssen die Achsen beschriftet sein.
 * Alle Variablen in Formel müssen erklärt sein (ich sehe eher Fehler in Formeln als Rechtschreibfehler)
 * Alle abgesetzten Formel (also nicht Text) sollten eine Nummer haben (das erleichtert Diskussion)  
 * Fehlerbalken müssen, sofern möglich, angegeben werden. 
 * In der Regel kein Code im Haupttext (eher Pseudocode)
+* Idealerweise liegt alles (Code und Daten oder download-links) um die Ergebnisse zu reproduzieren in einem öffentlichen git-hub repository.
 * Keine Tabellen- / Figurenverzeichnisse. Allerdings gerne ein Abkürzungsverzeichniss dort auch Symbole angeben (z.B. $p(x)$ Dichte der Zufallsvariable x)  
 * Lassen Sie die Arbeit noch von jemand anderen Korrekturlesen. Gute Quellen für Rechtschreibungs- und Grammatik-Korrektur sind Duden Mentor (deutsch) oder Grammarly (englisch)
+
 
 Weitere gute Quellen sind
 
