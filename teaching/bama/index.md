@@ -64,11 +64,12 @@ Format, Textverarbeitungsprogramm (Word,Google-Docs,LaTeX,...), Zitierweise (IEE
 * Schreiben Sie nicht mehr als 30-35 Seiten (inklusive von Figuren und Tabellen) Haupttext (für eine BA) bzw. 45-50 (für eine MA). Versuchen Sie eine "Geschichte zu erzählen". Alles, was nicht direkt damit zu tun hat, sollte man weglassen oder es gehört in den Anhang.  
 * Stil: wissenschaftlich, knapp und prägnant (concise)
 * Gendern: Verwenden Sie nicht ausschliesslich die männliche Form ansonsten haben Sie da freie Hand.
-* Figuren sind sehr wichtig und fliessen in die Bewertung ein. Sie müssen eine aussagekräftige Unterschrift / Caption haben (in der Regel mehr als ein Satz). Bei Grafen müssen die Achsen beschriftet sein.
+* Die Figuren sind sehr wichtig und fliessen in die Bewertung ein. Sie müssen eine aussagekräftige Unterschrift / Caption haben (in der Regel mehr als ein Satz). Bei Grafen müssen die Achsen beschriftet sein.
 * Alle Variablen in Formel müssen erklärt sein (ich sehe eher Fehler in Formeln als Rechtschreibfehler)
 * Alle abgesetzten Formel (also nicht Text) sollten eine Nummer haben (das erleichtert Diskussion)  
 * Fehlerbalken müssen, sofern möglich, angegeben werden. 
 * In der Regel kein Code im Haupttext (eher Pseudocode)
+* Arbeit muss das Ausgabedatum und Abgabedatum enthalten
 * Idealerweise liegt alles (Code und Daten oder download-links) um die Ergebnisse zu reproduzieren in einem öffentlichen git-hub repository.
 * Keine Tabellen- / Figurenverzeichnisse. Allerdings gerne ein Abkürzungsverzeichniss dort auch Symbole angeben (z.B. $p(x)$ Dichte der Zufallsvariable x)  
 * Lassen Sie die Arbeit noch von jemand anderen Korrekturlesen. Gute Quellen für Rechtschreibungs- und Grammatik-Korrektur sind Duden Mentor (deutsch) oder Grammarly (englisch)
