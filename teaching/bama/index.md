@@ -7,23 +7,24 @@ author: “Oliver Dürr”
 # Information zu Master und Bachelor Arbeiten 
 Diese Informationen sind für Bachelor- und Masterarbeiten gedacht, die ich an der HTWG betreue. 
 
-**Wichtig:**
-Falls Sie Arbeit in einer Firma machen, muss die Betreuung vollständig im Betrieb erfolgen. Es muss dort eine kompetente Ansprechperson vorhanden sein. In diesem Fall bin ich nur beratend (1-2 Termine) und bewertend tätig. Es muss also in der Firma zwingend das benötigte Know-how vorhanden sein. D.h. Sie brauchen dort einen Betreuer, der auf dem Gebiet schon gearbeitet hat und der Sie auch fachlich betreuen kann. Auch wenn die Arbeit in einem Betrieb betreut wird, nehme ich nur quantitative Arbeiten an. Auch, kann ich keine Arbeiten annehmen, bei denen es um die Evaluation von Softwaretechnologien und Softwarekomponenten geht.
+## Wichtige Informationen für Arbeiten in einer Firma
+Falls Sie Arbeit in einer Firma machen, muss die Betreuung vollständig im Betrieb erfolgen. Es muss dort eine kompetente Ansprechperson vorhanden sein. In diesem Fall bin ich nur beratend (1-2 Termine) und bewertend tätig. Es muss also in der Firma zwingend das benötigte Know-how vorhanden sein. D.h. Sie brauchen dort einen Betreuer, der auf dem Gebiet schon gearbeitet hat und der Sie auch fachlich betreuen kann. Auch wenn die Arbeit in einem Betrieb betreut wird, nehme ich nur quantitative Arbeiten an. Das Thema sollte nicht zu weit von meinem Forschungsthema entfernt sein damit ich die Arbeit adequat betreuen/bewerten kann. D.h. insbesondere kann ich keine Arbeiten annehmen, bei denen es um die Evaluation von Softwaretechnologien und Softwarekomponenten geht.
 
 ## Forschungsthema: Deep Learning / Machine Learning
-Ich betreue vorzugsweise Arbeiten aus dem Bereich Deep Learning / Machine Learning. Einen Überblick über die bisher betreuten Arbeiten können Sie sich unter [http://oduerr.github.io/teaching/](http://oduerr.github.io/teaching/) verschaffen. 
+Ich betreue vorzugsweise Arbeiten aus dem Bereich Deep Learning / Machine Learning. 
+<!--Einen Überblick über die bisher betreuten Arbeiten können Sie sich unter [http://oduerr.github.io/teaching/](http://oduerr.github.io/teaching/) verschaffen.--> 
 
-Aktuelle Ausschreibungen finden Sie unter: http://www.ios.htwg-konstanz.de/jobs-and-projects
+Aktuelle Ausschreibungen finden Sie unter: http://www.ios.htwg-konstanz.de/jobs-and-projects.
+
 
 Wichtig: Der Software-Engineering-Aspekt spielt bei mir keine Rolle. Ob Sie in der verwendeten Arbeit Design Pattern verwenden oder eine Reihe von Skripten ist mir egal, solange Sie auf Reproduzierbarkeit der Ergebnisse achten. 
 
-
-## Voraussetzungen
+## Voraussetzungen (insbesondere falls Arbeit nicht im Betrieb betreut wird)
 Es muss Vorwissen in den relevante Bereichen vorhanden sein. Dazu gehören:
 
 * Umgang mit Daten: Sie kennen die elementaren Grundlagen um Daten zu analysieren, Mittelwerte, Diagnose Plots usw.
 
-* Für Master: Vorwissen in Deep Learning und Machine Learning: Falls Sie die Vorlesung Deep Learning oder Machine Learning nicht besucht haben, sollten Sie Erfahrung vorweisen können, wie zum Beispiel durch die Teilnahme an einem Kaggle Wettbewerb.
+* Für Master: Vorwissen in Deep Learning, Machine Learning oder Data Analytics: Falls Sie die Vorlesung Deep Learning oder Machine Learning nicht besucht haben, sollten Sie Erfahrung vorweisen können, wie zum Beispiel durch die Teilnahme an einem Kaggle Wettbewerb.
 
 * Für Bachelor: Sie sollten gute Statitikkentnisse haben. Idealerweise habe Sie schon einmal etwas von Maschine Learning oder Data Mining gehört.  
 
@@ -32,7 +33,7 @@ Es muss Vorwissen in den relevante Bereichen vorhanden sein. Dazu gehören:
 ## Vorgehen
 
 ### Erster Kontakt 
-Schreiben Sie ein kurze (1-2 Seiten) **Rohfassung** einer Disposition und Sie vereinbaren dann einen ersten Termin um unverbindlich darüber zu sprechen. Alternativ kann das gerne auch in ein paar Powerpoint Folien geschehen. Inhalt dieser Rohfassung der Disposition: 
+Schreiben Sie ein kurze (1-2 Seiten) **Rohfassung** einer Disposition und Sie vereinbaren dann einen ersten Termin mit Ihrem potentiellen Betreuer um unverbindlich darüber zu sprechen. Alternativ kann das gerne auch in ein paar Powerpoint Folien geschehen. Inhalt dieser Rohfassung der Disposition: 
 
 * Anwendungsidee (falls vorhanden): Schildern Sie die (Business-)idee ihrer Arbeit.
 
