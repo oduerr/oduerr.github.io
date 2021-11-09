@@ -19,7 +19,7 @@ Aktuelle Ausschreibungen finden Sie unter: http://www.ios.htwg-konstanz.de/jobs-
 
 Wichtig: Der Software-Engineering-Aspekt spielt bei mir keine Rolle. Ob Sie in der verwendeten Arbeit Design Pattern verwenden oder eine Reihe von Skripten ist mir egal, solange Sie auf Reproduzierbarkeit der Ergebnisse achten. 
 
-## Voraussetzungen (insbesondere falls Arbeit nicht im Betrieb betreut wird)
+## Voraussetzungen (insbesondere falls die Arbeit nicht im Betrieb betreut wird)
 Es muss Vorwissen in den relevante Bereichen vorhanden sein. Dazu gehören:
 
 * Umgang mit Daten: Sie kennen die elementaren Grundlagen um Daten zu analysieren, Mittelwerte, Diagnose Plots usw.
@@ -33,7 +33,7 @@ Es muss Vorwissen in den relevante Bereichen vorhanden sein. Dazu gehören:
 ## Vorgehen
 
 ### Erster Kontakt 
-Schreiben Sie ein kurze (1-2 Seiten) **Rohfassung** einer Disposition und Sie vereinbaren dann einen ersten Termin mit Ihrem potentiellen Betreuer um unverbindlich darüber zu sprechen. Alternativ kann das gerne auch in ein paar Powerpoint Folien geschehen. Inhalt dieser Rohfassung der Disposition: 
+Schreiben Sie ein kurze (1-2 Seiten) **Rohfassung** einer Disposition und Sie vereinbaren dann einen ersten Termin mit Ihrem potentiellen Betreuer und mir um unverbindlich darüber zu sprechen. Alternativ kann das gerne auch in ein paar Powerpoint Folien geschehen. Inhalt dieser Rohfassung der Disposition: 
 
 * Anwendungsidee (falls vorhanden): Schildern Sie die (Business-)idee ihrer Arbeit.
 
