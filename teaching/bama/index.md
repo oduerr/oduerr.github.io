@@ -7,7 +7,7 @@ author: “Oliver Dürr”
 # Information zu Master und Bachelor Arbeiten 
 Diese Informationen sind für Bachelor- und Masterarbeiten gedacht, die ich an der HTWG betreue. 
 
-Es gibt im Prinzip, zwei Modi. Entweder machen Sie die Arbeit in einem Betrieb oder bei mir am Institut für optische Systeme (IOS). 
+Es gibt im Prinzip zwei Modi. Entweder machen Sie die Arbeit in einem Betrieb oder bei mir am Institut für optische Systeme (IOS). 
 
 ## Generelles
 Der Software-Engineering-Aspekt spielt bei mir keine Rolle. Ob Sie in der verwendeten Arbeit Design Pattern verwenden oder eine Reihe von Skripten ist mir egal, solange Sie auf Reproduzierbarkeit der Ergebnisse achten. 
@@ -95,11 +95,11 @@ Format, Textverarbeitungsprogramm (Word,Google-Docs,LaTeX,...), Zitierweise (IEE
 * Fehlerbalken müssen, sofern möglich, angegeben werden. 
 * In der Regel kein Code im Haupttext (eher Pseudocode)
 * Arbeit muss das Ausgabedatum und Abgabedatum enthalten
-* Idealerweise liegt alles (Code und Daten oder download-links) um die Ergebnisse zu reproduzieren in einem öffentlichen git-hub repository.
+* Wenn keine Geheimhaltung dageben spricht sollte alles (Code und Daten oder download-links) was nötig ist um die Ergebnisse zu reproduzieren in einem öffentlichen git-hub repository liegen.
 * Keine Tabellen- / Figurenverzeichnisse. Allerdings gerne ein Abkürzungsverzeichniss dort auch Symbole angeben (z.B. $p(x)$ Dichte der Zufallsvariable x)  
 * Lassen Sie die Arbeit noch von jemand anderen Korrekturlesen. Gute Quellen für Rechtschreibungs- und Grammatik-Korrektur sind Duden Mentor (deutsch) oder Grammarly (englisch)
 
-Ein gutes Beispiel ist die Master Arbeit von Ivonne Kovylov https://github.com/IvonneKo/Master_Thesis/blob/main/Thesis_MSI_Kovylov_.pdf 
+Ein gutes Beispiel für eine Master Arbeit ist die Arbeit von Ivonne Kovylov https://github.com/IvonneKo/Master_Thesis/blob/main/Thesis_MSI_Kovylov_.pdf 
 
 Weitere gute Quellen sind
 
