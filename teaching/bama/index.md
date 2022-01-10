@@ -7,18 +7,15 @@ author: “Oliver Dürr”
 # Information zu Master und Bachelor Arbeiten 
 Diese Informationen sind für Bachelor- und Masterarbeiten gedacht, die ich an der HTWG betreue. 
 
-**Wichtig:**
-Falls Sie Arbeit in einer Firma machen, muss die Betreuung vollständig im Betrieb erfolgen. Es muss dort eine kompetente Ansprechperson vorhanden sein. In diesem Fall bin ich nur beratend (1-2 Termine) und bewertend tätig. Es muss also in der Firma zwingend das benötigte Know-how vorhanden sein. D.h. Sie brauchen dort einen Betreuer, der auf dem Gebiet schon gearbeitet hat und der Sie auch fachlich betreuen kann. Auch wenn die Arbeit in einem Betrieb betreut wird, nehme ich nur quatitative Arbeiten an.
+Es gibt im Prinzip, zwei Modi. Entweder machen Sie die Arbeit in einem Betrieb oder bei mir am Institut für optische Systeme (IOS). 
 
-## Forschungsthema: Deep Learning / Machine Learning
-Ich betreue vorzugsweise Arbeiten aus dem Bereich Deep Learning / Machine Learning. Einen Überblick über die bisher betreuten Arbeiten können Sie sich unter [http://oduerr.github.io/teaching/](http://oduerr.github.io/teaching/) verschaffen. 
+## Generelles
+Der Software-Engineering-Aspekt spielt bei mir keine Rolle. Ob Sie in der verwendeten Arbeit Design Pattern verwenden oder eine Reihe von Skripten ist mir egal, solange Sie auf Reproduzierbarkeit der Ergebnisse achten. 
 
-Aktuelle Ausschreibungen finden Sie unter: http://www.ios.htwg-konstanz.de/jobs-and-projects
+### Forschungsthema: Deep Learning / Machine Learning
+Ich betreue vorzugsweise Arbeiten aus dem Bereich Deep Learning / Machine Learning. Einen Überblick über die bisher betreuten Arbeiten können Sie sich unter [http://oduerr.github.io/teaching/](http://oduerr.github.io/teaching/) verschaffen.
 
-Wichtig: Der Software-Engineering-Aspekt spielt bei mir keine Rolle. Ob Sie in der verwendeten Arbeit Design Pattern verwenden oder eine Reihe von Skripten ist mir egal, solange Sie auf Reproduzierbarkeit der Ergebnisse achten. 
-
-
-## Voraussetzungen
+### Voraussetzungen
 Es muss Vorwissen in den relevante Bereichen vorhanden sein. Dazu gehören:
 
 * Umgang mit Daten: Sie kennen die elementaren Grundlagen um Daten zu analysieren, Mittelwerte, Diagnose Plots usw.
@@ -27,12 +24,26 @@ Es muss Vorwissen in den relevante Bereichen vorhanden sein. Dazu gehören:
 
 * Für Bachelor: Sie sollten gute Statitikkentnisse haben. Idealerweise habe Sie schon einmal etwas von Maschine Learning oder Data Mining gehört.  
 
-* Falls Sie die Arbeit in einer Firma machen, muss in der Firma zwingend das benötigte Know-how vorhanden sein, um Sie auch technisch zu betreuen. Formal muss die Betreuungsperson in der Firma mindestens den gleichen Abschluss haben. Ich gehe aber davon aus das diese Person mindenstens in jedem Fall einen Master, idealerweise eine Promotion, haben sollte.
 
-## Vorgehen
+## Für Arbeiten in der Firma
+
+
+* **Wichtig:** Falls Sie Arbeit in einer Firma machen, muss die Betreuung vollständig im Betrieb erfolgen. Es muss dort eine kompetente Ansprechperson vorhanden sein. In diesem Fall bin ich in der Regel nur beratend (1-2 Termine) und bewertend tätig. Es muss also in der Firma zwingend das benötigte Know-how vorhanden sein. D.h. Sie brauchen dort einen Betreuer, der auf dem Gebiet schon gearbeitet hat und der Sie auch fachlich betreuen kann. 
+
+* Auch wenn die Arbeit in einem Betrieb betreut wird, nehme ich nur quatitative Arbeiten an. 
+
+* Formal muss die Betreuungsperson in der Firma mindestens den gleichen Abschluss haben. Ich gehe aber davon aus das diese Person mindestens in jedem Fall einen Master, idealerweise eine Promotion, haben sollte.
+
+### Geheimhaltung: 
+
+* Eine Sperrklausel ist in Ordnung, als Beamter des Landes BW unterschreibe ich aber keine NDAs. 
+
+* Idealerweise arbeiten Sie mit einem öffentlichen Datensatz (evt. zusätzlich zu einem Firmen internen). 
+
 
 ### Erster Kontakt 
-Schreiben Sie ein kurze (1-2 Seiten) **Rohfassung** einer Disposition und Sie vereinbaren dann einen ersten Termin um unverbindlich darüber zu sprechen. Alternativ kann das gerne auch in ein paar Powerpoint Folien geschehen. Inhalt dieser Rohfassung der Disposition: 
+
+Sie bereiten ein paar Folien (5-10) und vor und schicken Sie mir dann. Falls das Thema passt, machen wir dann einen ersten Termin aus, um unverbindlich darüber zu sprechen. Bei diesem ersten Gespräch muss der Betreuer der Firma mit dabei sein. Inhalt dieser Rohfassung der Disposition: 
 
 * Anwendungsidee (falls vorhanden): Schildern Sie die (Business-)idee ihrer Arbeit.
 
@@ -57,7 +68,19 @@ Schreiben Sie ein kurze (1-2 Seiten) **Rohfassung** einer Disposition und Sie ve
 ### Formulierung einer Disposition
 Nach dem ersten Gespräch, formulieren Sie dann eine Disposition aufgrund derer ich dann die Arbeit als Betreuer annehme. In dieser Disposition, erweitern Sie die Rohfassung. Das heißt Sie führen Teilfragestellungen ein und erweitern den Methodenteil. Skizzieren Sie auch einen groben Projektplan.
 
-### Allgemeine Hinweise zur Arbeit
+
+## Arbeiten am Institut 
+Wenn Sie die Arbeit am Institut schreiben, werden Sie entweder von mir direkt oder von einem Doktoranden betreut. Das Thema muss dann in das Forschungsportfolio passen. Auch wenn es nicht immer klappt, ist das Ziel eine Veröffentlichung in einem Journal oder für eine Konferenz oder Workshop. 
+
+### Forschung
+Aktuelle Ausschreibungen finden Sie unter: http://www.ios.htwg-konstanz.de/jobs-and-projects.
+
+### Betreuung
+* Wir treffen uns in der Regel einmal die Woche, um Fragen zu besprechen. 
+* Nach etwa 4 Wochen, werden Sie einen Einführungsvortrag halten, bei dem Sie Ihr Projekt der Gruppe (2-10) Personen vorstellen. Dies dient dazu, dass wir alle das gleiche Verständnis haben und evt. neue Ideen zu kreieren.  
+
+
+## Allgemeine Hinweise zur Arbeit
 
 Format, Textverarbeitungsprogramm (Word,Google-Docs,LaTeX,...), Zitierweise (IEEE, Harvard,...) und Sprache (Deutsch oder Englisch) ist mir egal. Auf was ich wert lege:
 
@@ -68,12 +91,8 @@ Format, Textverarbeitungsprogramm (Word,Google-Docs,LaTeX,...), Zitierweise (IEE
 * Fehlerbalken müssen, sofern möglich, angegeben werden. 
 * In der Regel kein Code im Haupttext (eher Pseudocode)
 
+Ein gutes Beispiel ist die Master Arbeit von Ivonne Kovylov https://github.com/IvonneKo/Master_Thesis/blob/main/Thesis_MSI_Kovylov_.pdf 
 
-
-
-Weitere gute Quellen sind
-[https://www.johner-institut.de/blog/karriere/wissenschaftliches-arbeiten/](https://www.johner-institut.de/blog/karriere/wissenschaftliches-arbeiten/)
-[https://homepage.univie.ac.at/roland.baessler/disposition.htm](https://homepage.univie.ac.at/roland.baessler/disposition.htm)
 
 
 
