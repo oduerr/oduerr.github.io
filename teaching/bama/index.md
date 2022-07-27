@@ -88,9 +88,8 @@ Format, Textverarbeitungsprogramm (Word,Google-Docs,LaTeX,...), Zitierweise (IEE
 
 * Schreiben Sie nicht mehr als 30-35 Seiten (inklusive von Figuren und Tabellen) Haupttext (für eine BA) bzw. 45-50 (für eine MA). Versuchen Sie eine "Geschichte zu erzählen". Alles, was nicht direkt damit zu tun hat, sollte man weglassen oder es gehört in den Anhang.  
 * Stil: wissenschaftlich, knapp und prägnant (concise)
-* Gendern: Verwenden Sie nicht ausschliesslich die männliche Form ansonsten haben Sie da freie Hand.
 * Die Figuren sind sehr wichtig und fliessen in die Bewertung ein. Sie müssen eine aussagekräftige Unterschrift / Caption haben (in der Regel mehr als ein Satz). Bei Grafen müssen die Achsen beschriftet sein.
-* Alle Variablen in Formel müssen erklärt sein (ich sehe eher Fehler in Formeln als Rechtschreibfehler)
+* Alle Variablen in Formel müssen erklärt sein (ich sehe eher Fehler in Formeln als Rechtschreibfehler). Schreiben Sie in LaTex ist https://bochang.me/blog/posts/latex/ eine gute Quelle für den Formelsatz
 * Alle abgesetzten Formel (also nicht Text) sollten eine Nummer haben (das erleichtert Diskussion)  
 * Fehlerbalken müssen, sofern möglich, angegeben werden. 
 * In der Regel kein Code im Haupttext (eher Pseudocode)
