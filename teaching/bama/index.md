@@ -30,7 +30,7 @@ Es muss Vorwissen in den relevante Bereichen vorhanden sein. Dazu gehören:
 
 * **Wichtig:** Falls Sie Arbeit in einer Firma machen, muss die Betreuung vollständig im Betrieb erfolgen. Es muss dort eine kompetente Ansprechperson vorhanden sein. In diesem Fall bin ich in der Regel nur beratend (1-2 Termine) und bewertend tätig. Es muss also in der Firma zwingend das benötigte Know-how vorhanden sein. D.h. Sie brauchen dort einen Betreuer, der auf dem Gebiet schon gearbeitet hat und der Sie auch fachlich betreuen kann. 
 
-* Auch wenn die Arbeit in einem Betrieb betreut wird, nehme ich nur quatitative Arbeiten an. 
+* Auch wenn die Arbeit in einem Betrieb betreut wird, nehme ich nur quatitative Arbeiten an, bei denen ich hinreichend Wissen habe um diese adequat zu bewerten. Ich nehme keine Arbeiten im Stile Evaluation des Softwarepackates XY an, dazu fehlt mir leider die Erfahrung soetwas zu bewerten.  
 
 * Formal muss die Betreuungsperson in der Firma mindestens den gleichen Abschluss haben. Ich gehe aber davon aus das diese Person mindestens in jedem Fall einen Master, idealerweise eine Promotion, haben sollte.
 
