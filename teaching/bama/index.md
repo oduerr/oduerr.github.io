@@ -6,8 +6,7 @@ author: “Oliver Dürr”
 
 # Information zu Master und Bachelor Arbeiten 
 Diese Informationen sind für Bachelor- und Masterarbeiten gedacht, die ich an der HTWG betreue. 
-
-Es gibt im Prinzip zwei Modi. Entweder machen Sie die Arbeit in einem Betrieb oder bei mir am Institut für optische Systeme (IOS). 
+Es gibt im Prinzip zwei Modi. Entweder machen Sie die Arbeit in einem Betrieb [siehe Arbeiten in einer Firma](#arbeiten-in-einer-firma) oder bei mir am Institut für optische Systeme [siehe Arbeiten am Institut](#arbeiten-am-institut) . 
 
 ## Generelles
 Der Software-Engineering-Aspekt spielt bei mir keine Rolle. Ob Sie in der verwendeten Arbeit Design Pattern verwenden oder eine Reihe von Skripten ist mir egal, solange Sie auf Reproduzierbarkeit der Ergebnisse achten. 
@@ -26,7 +25,7 @@ Es muss Vorwissen in den relevante Bereichen vorhanden sein. Dazu gehören:
 * Für Bachelor: Sie sollten gute Statitikkentnisse haben. Idealerweise habe Sie schon einmal etwas von Maschine Learning oder Data Mining gehört.  
 
 
-## Für Arbeiten in der Firma
+## Arbeiten in einer Firma 
 
 
 * **Wichtig:** Falls Sie Arbeit in einer Firma machen, muss die Betreuung vollständig im Betrieb erfolgen. Es muss dort eine kompetente Ansprechperson vorhanden sein. In diesem Fall bin ich in der Regel nur beratend (1-2 Termine) und bewertend tätig. Es muss also in der Firma zwingend das benötigte Know-how vorhanden sein. D.h. Sie brauchen dort einen Betreuer, der auf dem Gebiet schon gearbeitet hat und der Sie auch fachlich betreuen kann. 
@@ -64,18 +63,18 @@ Sie bereiten ein paar Folien (3-10) und vor und schicken Sie mir dann.
 	* Falls benötigt, ist IT-Infrastruktur vorhanden?
 	* Ist es erlaubt die Daten und die Ergebnisse der Arbeit zu veröffentlichen? 
 
-Falls das Thema passt, machen wir dann einen ersten Termin aus, um unverbindlich darüber zu sprechen. Bei diesem ersten Gespräch muss der Betreuer der Firma mit dabei sein. Inhalt dieser Rohfassung der Disposition: 
+Falls das Thema passt, machen wir dann einen ersten Termin aus, um unverbindlich darüber zu sprechen. Bei diesem ersten Gespräch muss der Betreuer der Firma mit dabei sein.  
 
 
 ### Formulierung einer Disposition
-Nach dem ersten Gespräch, formulieren Sie dann eine Disposition aufgrund derer ich dann die Arbeit als Betreuer annehme. In dieser Disposition, erweitern Sie die Rohfassung. Das heißt Sie führen Teilfragestellungen ein und erweitern den Methodenteil. Skizzieren Sie auch einen groben Projektplan.
+Nach dem ersten Gespräch, formulieren Sie dann eine Disposition aufgrund derer ich dann die Arbeit formal als Betreuer annehme. In dieser Disposition, erweitern Sie die Rohfassung. Das heißt Sie führen Teilfragestellungen ein und erweitern den Methodenteil. Skizzieren Sie auch einen groben Projektplan.
 
 
 ## Arbeiten am Institut 
 Wenn Sie die Arbeit am Institut schreiben, werden Sie entweder von mir direkt oder von einem Doktoranden betreut. Das Thema muss dann in das Forschungsportfolio passen. Auch wenn es nicht immer klappt, ist das Ziel eine Veröffentlichung in einem Journal oder für eine Konferenz oder Workshop. 
 
 ### Forschung
-Aktuelle Ausschreibungen finden Sie unter: http://www.ios.htwg-konstanz.de/jobs-and-projects.
+Aktuelle Ausschreibungen finden Sie unter: http://www.ios.htwg-konstanz.de/jobs-and-projects. Haben Sie Data Analysis oder Deep Learning gehört, können Sie mich auch so gerne anschreiben und nach aktuellen Themen fragen.
 
 ### Betreuung
 * Wir treffen uns in der Regel einmal die Woche, um Fragen zu besprechen. 
