@@ -5,7 +5,9 @@ author: “Oliver Dürr”
 ---
 
 # Betreute Arbeiten an der HWTG
-MA Master Arbeit, BA Bachelor Arbeit. Hat sich aus der Arbeit ein Paper ergeben, ist dieses verlinkt.
+MA = Master Arbeit,
+BA = Bachelor Arbeit. 
+Hat sich aus der Arbeit ein Paper ergeben ist dieses verlinkt.
 
 ## 2023
 - MA: Erkan Emre: Modellierung von Energieprognosen mit Unsicherheiten durch maschinelles Lernen ()
