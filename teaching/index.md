@@ -5,9 +5,28 @@ author: "Oliver Dürr"
 ---
 
 ## Teaching at HTWG Konstanz
-* 
 
-## Teaching at ZHAW 
+### Bachelor and Masterthesis
+* Information for potential Bachelor and Master Students [link](https://oduerr.github.io/teaching/bama/) 
+* Lists of Supervised Students [link](https://oduerr.github.io/teaching/bama/bama_htwg.html)
+
+### Courses
+* Statistik Bachelor Wirtschaftsinformatik [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=3632)
+* BI Bachelor [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=1296)
+* Machine Learning [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=1330)
+* Deep Learning [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=3032)
+* Data Science [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=3370)
+* Data Analysis [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=2564)
+
+## Teaching for continous eductaions
+* Deep Learning (CAS Machine Inteligence, ZHAW Winterthur) from 2017- (yearly)
+  * https://tensorchiefs.github.io/dl_course_2023/ 
+
+*  Deep Learning: A Probabilistic Approach (DAS and CAS in Applied Statistics, ETH Zurich) from 2020- (every 2nd year)
+   * [Course](https://www.vorlesungen.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?lerneinheitId=163848&semkez=2022W&lang=en) https://tensorchiefs.github.io/dl_rcourse_202/
+
+
+## Teaching at ZHAW (until 2018)
 
 ### Wahrscheinlichkeit und Statsistik (WaST)
 * WaST1 Descriptive Statistik 2 ECTS (last time: Fall 2013)
