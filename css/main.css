@@ -3,7 +3,7 @@ body {
     width: 70%;
 }
 nav ul, footer ul {
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
     padding: 0px;
     list-style: none;
     font-weight: bold;
@@ -14,19 +14,17 @@ nav ul li, footer ul li {
 }
 a {
     text-decoration: none;
-    color: #0077cc; /* Change link color to something more visible */
-    font-size: 1.1em; /* Increase font size */
-    /* Removed background color */
-    padding: 5px 10px; /* Add padding */
-    border-radius: 4px; /* Round the corners */
+    color: #0077cc;
+    font-size: 1.1em;
+    padding: 5px 10px;
+    border-radius: 4px;
 }
 a:hover {
     text-decoration: underline;
-    background-color: #e6e6e6; /* Slightly darken the background on hover */
 }
 h1 {
     font-size: 3em;
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
 }
 p {
     font-size: 1.1em;
@@ -45,4 +43,22 @@ ul.posts {
 
 ul.posts li {
     list-style: none;
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 768px) {
+    body {
+        margin: 20px auto;
+        width: 90%;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    p, nav ul li, footer ul li {
+        font-size: 1em;
+    }
+    nav ul li, footer ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
 }
