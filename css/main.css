@@ -14,10 +14,15 @@ nav ul li, footer ul li {
 }
 a {
     text-decoration: none;
-    color: #999;
+    color: #0077cc; /* Change link color to something more visible */
+    font-size: 1.1em; /* Increase font size */
+    background-color: #f2f2f2; /* Add a light background color */
+    padding: 5px 10px; /* Add padding */
+    border-radius: 4px; /* Round the corners */
 }
 a:hover {
     text-decoration: underline;
+    background-color: #e6e6e6; /* Slightly darken the background on hover */
 }
 h1 {
     font-size: 3em;
