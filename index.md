@@ -9,8 +9,7 @@ The main focus of my research is the combination of deep learning and probabilis
 </div>
 
 ## Publications
-Please visit my [google scholar site](https://scholar.google.ch/citations?user=T8hH3TMnFPwC&hl=de) for the latest list. My OrcidID is [https://orcid.org/0000-0003-2271-8630](https://orcid.org/0000-0003-2271-8630])
-
+Please visit my [google scholar site](https://scholar.google.ch/citations?user=T8hH3TMnFPwC&hl=de) for the latest list. My OrcidID is [orcid.org/0000-0003-2271-8630](https://orcid.org/0000-0003-2271-8630)
 
 # A selection of recent work
 
@@ -21,7 +20,7 @@ Our Book on probabilistic deep learning is finally out, it describes how to comb
 
 <div style="text-align: left;">
     <img src="imgs/probabilistic.jpg" alt="Probabilistic Image" style="float:left;" height="200">
-</div>
+</div><br>
 
 {% include uncertainty.md %}
 {% include dlHCS.md %}
