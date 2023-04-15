@@ -6,7 +6,7 @@ title: Research Interest
 The main focus of my current research is the combination of deep learning and probabilistic models (as shown in the following cartoon) 
 <div style="text-align: left;">
     <img src="imgs/ch05_00_opener.jpg" alt="image"  style="left;" width="300">
-    <br> as well as Bayes, and causality.
+    <br> as well as Bayes, and causality. 
 </div>
 
 ## Publications
