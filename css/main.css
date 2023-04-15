@@ -16,7 +16,7 @@ a {
     text-decoration: none;
     color: #0077cc; /* Change link color to something more visible */
     font-size: 1.1em; /* Increase font size */
-    background-color: #f2f2f2; /* Add a light background color */
+    /* Removed background color */
     padding: 5px 10px; /* Add padding */
     border-radius: 4px; /* Round the corners */
 }
