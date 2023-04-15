@@ -19,8 +19,10 @@ author: "Oliver Dürr"
 * Data Analysis (Master) [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=2564)
 
 ## Teaching for continous eductaions
+Together with Beate Sick I teach the following courses
+
 * Deep Learning (CAS Machine Inteligence, ZHAW Winterthur) from 2017- (yearly)
-  * https://tensorchiefs.github.io/dl_course_2023/ 
+  * [https://tensorchiefs.github.io/dl_course_2023/](https://tensorchiefs.github.io/dl_course_2023/) 
 
 *  Deep Learning: A Probabilistic Approach (DAS and CAS in Applied Statistics, ETH Zurich) from 2020- (every 2nd year)
    * [Course](https://www.vorlesungen.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?lerneinheitId=163848&semkez=2022W&lang=en) https://tensorchiefs.github.io/dl_rcourse_202/
