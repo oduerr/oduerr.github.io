@@ -1,19 +1,27 @@
 ---
 layout: default
-title: Projects
+title: Research Interest
 ---
-<h2>{{ page.title }}</h2>
-Our Book on probabilistic deep learning is finally out as an early access version (2 chapters published 5 more to come). In a nutshell, it's deep learning as curve-fitting. 
+# Research Interest
+The main focus of my research is the combination of deep learning and probabilistic modelling (as shown in the following cartoon). 
+![imgs/ch05_00_opener.jpg](imgs/ch05_00_opener.jpg) and Bayes.
 
-The first chapters explain "standard" deep learning using the maximum likelihood principle. Later chapters will also include a Bayesian approach to deal with uncertainty. Go and check it out! :-) 
 
+## Publications
+Please visit my [google scholar site](https://scholar.google.ch/citations?user=T8hH3TMnFPwC&hl=de) for the latest list. My OrcidID is https://orcid.org/0000-0003-2271-8630
+
+
+# A selection of recent work
+
+## Book on probabilistic deep learning
+Our Book on probabilistic deep learning is finally out, it describes how to combine probabilistic modelling with deep learning.
 [https://www.manning.com/books/probabilistic-deep-learning-with-python](https://www.manning.com/books/probabilistic-deep-learning-with-python)
  You can find the Jupyter notebooks [here](https://tensorchiefs.github.io/dl_book/)
 
 ![imgs/probabilistic.jpg](imgs/probabilistic.jpg)
 
 
-A selection of recent research projects. 
+
 
 {% include uncertainty.md %}
 {% include dlHCS.md %}
