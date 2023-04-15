@@ -25,7 +25,7 @@ Together with Beate Sick I teach the following courses
   * [https://tensorchiefs.github.io/dl_course_2023/](https://tensorchiefs.github.io/dl_course_2023/) 
 
 *  Deep Learning: A Probabilistic Approach (DAS and CAS in Applied Statistics, ETH Zurich) from 2020- (every 2nd year)
-   * [Course](https://www.vorlesungen.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?lerneinheitId=163848&semkez=2022W&lang=en) https://tensorchiefs.github.io/dl_rcourse_202/
+   * [Course](https://www.vorlesungen.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?lerneinheitId=163848&semkez=2022W&lang=en) [https://tensorchiefs.github.io/dl_rcourse_202/](https://tensorchiefs.github.io/dl_rcourse_202/)
 
 
 ## Teaching at ZHAW (until 2018)
@@ -60,7 +60,7 @@ Teaching done for the master of advanced studies (MAS Data Science) and certific
 * Tutorials on deep learning especially using TensorFlow [github repository](https://github.com/oduerr/dl_tutorial)
 * A tutotial session for teachers in data analysis based on our booklet: [Datenanalyse; Anregungen zur Umsetzung der "Datenanalyse" im eidg. Rahmenlehrplan 2012 für die Berufsmaturität](https://dl.dropboxusercontent.com/u/9154523/paper/bms-broschuere-datenanalyse-sick-d%C3%BCrr.pdf); Beate Sick, Oliver Dürr
 
-### Bachelor, Project Thesis and Master Thesis
+### Bachelor, Project Thesis and Master Thesis supervised at the ZHAW 
 * I (co-)supervised the following Bachelor (BA), Project Thesis (PA), or Master Thesis
 
 HS 2017 PA | Arthritis Net -- Automated bone erosion scoring for rheumatoid arthritis with deep convolutional neural networks | Janick Rohrbach
