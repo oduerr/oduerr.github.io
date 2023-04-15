@@ -6,17 +6,17 @@ author: "Oliver Dürr"
 
 ## Teaching at HTWG Konstanz
 
-### Bachelor and Masterthesis
+### Bachelor and Masterthesis at HTWG
 * Information for potential Bachelor and Master Students [link](https://oduerr.github.io/teaching/bama/) 
 * Lists of Supervised Students [link](https://oduerr.github.io/teaching/bama/bama_htwg.html)
 
-### Courses
-* Statistik Bachelor Wirtschaftsinformatik [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=3632)
-* BI Bachelor [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=1296)
-* Machine Learning [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=1330)
-* Deep Learning [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=3032)
-* Data Science [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=3370)
-* Data Analysis [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=2564)
+### Courses at HTWG
+* Statistik (Bachelor)  [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=3632)
+* BI (Bachelor) [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=1296)
+* Machine Learning (Master) [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=1330)
+* Deep Learning (Master) [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=3032)
+* Data Science (Master) [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=3370)
+* Data Analysis (Master) [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=2564)
 
 ## Teaching for continous eductaions
 * Deep Learning (CAS Machine Inteligence, ZHAW Winterthur) from 2017- (yearly)
