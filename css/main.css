@@ -53,7 +53,7 @@ footer {
 
 ul.posts { 
     margin: 20px auto 40px; 
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 ul.posts li {
@@ -63,7 +63,7 @@ ul.posts li {
 /* Media query for mobile devices */
 @media screen and (max-width: 768px) {
     body {
-        margin: 20px auto;
+        margin: 1px auto;
         width: 90%;
     }
     h1 {
