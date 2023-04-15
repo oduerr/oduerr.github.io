@@ -19,7 +19,9 @@ Our Book on probabilistic deep learning is finally out, it describes how to comb
 [https://www.manning.com/books/probabilistic-deep-learning-with-python](https://www.manning.com/books/probabilistic-deep-learning-with-python)
  You can find the Jupyter notebooks [here](https://tensorchiefs.github.io/dl_book/)
 
-<img src="imgs/probabilistic.jpg" alt="Probabilistic Image" style="float:left;" height="300">
+<div style="text-align: left;">
+    <img src="imgs/probabilistic.jpg" alt="Probabilistic Image" style="float:left;" height="200">
+</div>
 
 {% include uncertainty.md %}
 {% include dlHCS.md %}
