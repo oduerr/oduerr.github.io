@@ -16,11 +16,12 @@ Please visit my [google scholar site](https://scholar.google.ch/citations?user=T
 ## Book on probabilistic deep learning
 Our Book on probabilistic deep learning is finally out, it describes how to combine probabilistic modelling with deep learning.
 [https://www.manning.com/books/probabilistic-deep-learning-with-python](https://www.manning.com/books/probabilistic-deep-learning-with-python)
- You can find the Jupyter notebooks [here](https://tensorchiefs.github.io/dl_book/)
 
 <div style="text-align: left;">
     <img src="imgs/probabilistic.jpg" alt="Probabilistic Image" style="float:left;" height="200">
-</div><br>
+</div>
+You can find the Jupyter notebooks [here](https://tensorchiefs.github.io/dl_book/)<br>
+
 
 {% include uncertainty.md %}
 {% include dlHCS.md %}
