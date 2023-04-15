@@ -15,16 +15,31 @@ nav ul li, footer ul li {
 a {
     text-decoration: none;
     color: #0077cc;
-    font-size: 1.1em;
-    padding: 5px 10px;
-    border-radius: 4px;
+    font-size: 1.em;
+    padding: 2px 2px;
+    border-radius: 1px;
 }
 a:hover {
     text-decoration: underline;
 }
 h1 {
-    font-size: 3em;
-    font-family: 'Helvetica', 'Arial', 'Sans-Serif';
+    font-size: 1.5em;
+    font-family: 'Helvetica', 'Arial', Sans-Serif;
+}
+
+h2 {
+    font-size: 1.3em;
+    font-family: 'Helvetica', 'Arial', Sans-Serif;
+}
+
+h3 {
+    font-size: 1.1em;
+    font-family: 'Helvetica', 'Arial', Sans-Serif;
+}
+
+h4 {
+    font-size: 1em;
+    font-family: 'Helvetica', 'Arial', Sans-Serif;
 }
 p {
     font-size: 1.1em;
