@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Untitled"
+title: "Teaching"
 author: "Oliver Dürr"
 ---
 
