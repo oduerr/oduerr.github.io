@@ -4,7 +4,7 @@ title: Research Interest
 ---
 # Research Interest
 The main focus of my research is the combination of deep learning and probabilistic models (as shown in the following cartoon) 
-<img src="imgs/ch05_00_opener.jpg" alt="image" width="300"><br>Bayes, and causality.
+<img src="imgs/ch05_00_opener.jpg" alt="image"  style="float:left;" width="300"><br>Bayes, and causality.
 
 
 ## Publications
@@ -18,10 +18,7 @@ Our Book on probabilistic deep learning is finally out, it describes how to comb
 [https://www.manning.com/books/probabilistic-deep-learning-with-python](https://www.manning.com/books/probabilistic-deep-learning-with-python)
  You can find the Jupyter notebooks [here](https://tensorchiefs.github.io/dl_book/)
 
-![imgs/probabilistic.jpg](imgs/probabilistic.jpg)
-
-
-
+<img src="imgs/probabilistic.jpg" alt="Probabilistic Image" style="float:left;" height="300">
 
 {% include uncertainty.md %}
 {% include dlHCS.md %}
