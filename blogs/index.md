@@ -9,7 +9,7 @@ author: "Oliver Dürr"
 
 # Older Talks
 Talks I gave at the brownbag seminars in [Winterthur](https://tensorchiefs.github.io/bbs/) in [Konstanz](https://ioskn.github.io/bbs/). 
-[Older talks](https://github.com/oduerr/talks_old/index.html).
+[Older talks](https://github.com/oduerr/blogs/old_talks.html).
 
 
 <h2>{{ page.title }}</h2>
