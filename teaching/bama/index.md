@@ -12,7 +12,7 @@ Es gibt im Prinzip zwei Modi. Entweder machen Sie die Arbeit in einem Betrieb [s
 Der Software-Engineering-Aspekt spielt bei mir keine Rolle. Ob Sie in der verwendeten Arbeit Design Pattern verwenden oder eine Reihe von Skripten ist mir egal, solange Sie auf Reproduzierbarkeit der Ergebnisse achten. 
 
 ### Forschungsthema: Deep Learning / Machine Learning
-Ich betreue vorzugsweise Arbeiten aus dem Bereich Deep Learning / Machine Learning. Einen Überblick über die bisher betreuten Arbeiten können Sie sich unter [http://oduerr.github.io/teaching/](http://oduerr.github.io/teaching/bama_htwg.html) verschaffen.
+Ich betreue vorzugsweise Arbeiten aus dem Bereich Deep Learning / Machine Learning. Einen Überblick über die bisher betreuten Arbeiten können Sie sich unter [http://oduerr.github.io/teaching/](https://oduerr.github.io/teaching/bama/bama_htwg.html) verschaffen.
 
 ### Voraussetzungen
 
