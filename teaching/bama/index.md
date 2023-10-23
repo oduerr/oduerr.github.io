@@ -36,7 +36,7 @@ Es muss Vorwissen in den relevante Bereichen vorhanden sein. Dazu gehören:
 
 ### Geheimhaltung: 
 
-* Eine Sperrklausel ist in Ordnung, als Beamter des Landes BW unterschreibe ich aber keine NDAs. 
+* Eine Sperrklausel ist in Ordnung. NDAs kann und darf ich nicht unterzeichen, da ich nicht für die Hochschule zeichnungsberechtig bin.  
 
 * Idealerweise arbeiten Sie mit einem öffentlichen Datensatz (evt. zusätzlich zu einem Firmen internen). 
 
