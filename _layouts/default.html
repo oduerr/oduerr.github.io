@@ -1,34 +1,44 @@
 <!DOCTYPE html>
-	<html>
-		<head>
-			<title>{{ page.title }}</title>
-			<script type="text/javascript"
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <meta name="description" content="Oliver Dürr's academic and research interests">
+    <meta name="keywords" content="Data Science, Statistics, Machine Learning, Deep Learning">
+    <meta name="author" content="Oliver Dürr">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+	<script type="text/javascript"
         src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
       </script>
-			<!-- link to main stylesheet -->
-			<link rel="stylesheet" type="text/css" href="/css/main.css">
-		</head>
-		<body>
-			<nav>
-	    		<ul>
-	    			<li><a href="/">Research</a></li>
-		        	<li><a href="/teaching">Teaching</a></li>
-	        		<li><a href="/blogs">Talks and Blog</a></li>
-	        		<li><a href="/about">About / Contact</a></li>
-	    		</ul>
-			</nav>
-			<div class="container">
-			
-			  {{ content }}
-			
-			</div><!-- /.container -->
-			<footer>
-	    		<ul>
-	        		<li><a href="mailto:oliver.duerr@zhaw.ch">email</a></li>
-	        		<li><a href="https://github.com/oduerr">github.com/oduerr</a></li>
-	        		<li><a href="https://www.researchgate.net/profile/Oliver_Duerr">researchgate</a></li>
-	        		<li><a href="https://ch.linkedin.com/in/oliver-d%C3%BCrr-64154213">linkedin</a></li>
-				</ul>
-			</footer>
-		</body>
-	</html>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Research</a></li>
+                <li><a href="/teaching">Teaching</a></li>
+				<li><a href="/news">News</a></li>
+                <li><a href="/blogs">Talks and Blog</a></li>
+                <li><a href="/about">About / Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        {{ content }}
+    </main>
+    <footer>
+		<ul>
+			<li><a href="mailto:oliver.duerr@zhaw.ch"><i class="fas fa-envelope"></i> Email</a></li>
+			<li><a href="https://github.com/oduerr"><i class="fab fa-github"></i> GitHub</a></li>
+			<li><a href="https://www.researchgate.net/profile/Oliver_Duerr"><i class="ai ai-researchgate"></i> ResearchGate</a></li>
+			<li><a href="https://scholar.google.com/citations?user=T8hH3TMnFPwC"><i class="ai ai-google-scholar"></i> Google Scholar</a></li>
+			<li><a href="https://ch.linkedin.com/in/oliver-d%C3%BCrr-64154213"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+		</ul>		
+    </footer>
+</body>
+</html>

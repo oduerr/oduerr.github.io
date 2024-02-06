@@ -2,7 +2,7 @@
 
 In high content phenotypic screening millions of cells need to be classified based on their morphology. Images of the cells are taken at different 5 'color channels' using different fluorescent markers. 
 
-<img src="imgs/duerr_fig1.png" alt="Duerr Figure 1" width="400" style="float:left;"> 
+<img src="../imgs/duerr_fig1.png" alt="Duerr Figure 1" width="400" style="float:left;"> 
 
 In this project we compared the conventional pipeline (upper branch) against a deep learning approach (lower branch). For the deep learning approach the construction of appropriate feature definitions is part of the training. Whereas, in the traditional pipeline expert knowledge is required for the tedious creation of handcrafted features. Compared to the best traditional method, the misclassification rate in the deep learning approach is reduced from 8.9% to 6.6%.
 
