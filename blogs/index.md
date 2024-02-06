@@ -6,6 +6,13 @@ author: "Oliver Dürr"
 # Talks
 
 ## Recent
+
+(November 2023) LLMs a Deep Dive into the mechanic
+
+<a href="https://ioskn.github.io/bbs/">
+  <img src="../imgs/talk_llm.png" width="350">
+</a>
+
 (March 2023) Neural network-based transformation models for prediction and inference 
 
 <a href="https://www.dropbox.com/s/jf0gxpmm99fuucx/kneib_OD_BS.pdf?dl=0">
