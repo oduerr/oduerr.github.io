@@ -1,3 +1,12 @@
+img.profile-photo {
+    border-radius: 80% 80%; /* Adjust the values to make it more or less oval */
+    /* Other CSS properties as needed */
+}
+img.profile-photo2 {
+    border-radius: 50% / 80% 80%; /* Adjust the values to make it more or less oval */
+    /* Other CSS properties as needed */
+}
+
 body {
     margin: 60px auto;
     width: 70%;

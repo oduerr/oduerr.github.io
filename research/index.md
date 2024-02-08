@@ -2,12 +2,14 @@
 layout: default
 title: Research Interest
 ---
-<div style="text-align: right;">
-    <img src="../imgs/Oliver_Elvis.png" alt="image" style="float: right;" width="250">
-</div>
+
 
 # Research Interest
-The main focus of my current research is the combination of deep learning and statistics. This includes using **a) deep learning to model uncertainty**, **b) modeling the uncertainty of deep learning models** and **c) combining deep learning and statistical models**.  
+<div style="text-align: right;">
+    <img src="../imgs/Oliver_Elvis.jpg" alt="image" style="float: right;" width="250" class="profile-photo2">
+</div>
+The main focus of my current research is the combination of deep learning and statistics. 
+This includes using **a) deep learning to model uncertainty**, **b) modeling the uncertainty of deep learning models** and **c) combining deep learning and statistical models**.  
 
 ## a) Using deep learning to model uncertainty
 Predictions in complex systems are often uncertain in a principled way. You can't predict the weather tomorrow exactly, but you can predict the probability of rain. This uncertainty can be easily modelled in deep learning frameworks. The network outputs a probability distribution instead of a single value. This kind of probability is also referred to as aleatoric uncertainty. We contribute to this field by developing [deep transformation models](https://scholar.google.ch/citations?view_op=view_citation&hl=de&user=T8hH3TMnFPwC&sortby=pubdate&citation_for_view=T8hH3TMnFPwC:mB3voiENLucC) allowing flexible output distribuitons and extended the method to include [interpretable traditional statistical regression models](https://www.sciencedirect.com/science/article/abs/pii/S003132032100443X). We applied these models to predict the [day ahead power consumption](https://ieeexplore.ieee.org/abstract/document/10066318) or [medical applications](https://onlinelibrary.wiley.com/doi/abs/10.1002/bimj.202100379). 
