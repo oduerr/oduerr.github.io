@@ -10,7 +10,7 @@ I am a theoretical/computational physicist by training and a professor of data s
 
 For over twenty years, I have utilized the power of computing and mathematics to explore and tackle various intriguing challenges, particularly in the analysis of data of various kinds. My current research focus is on the intersection of deep learning and statistics, where I explore the fascinating relationship between these two fields. 
 
-For detailed insights into my research interests, recent updates, and a comprehensive list of my publications, please visit my [Research](research), [News](news), and [Google Scholar](https://scholar.google.ch/citations?user=T8hH3TMnFPwC&hl=de) pages
+For detailed insights into my research interests, recent updates, and a comprehensive list of my publications, please visit my [Research](../research), [News](../news), and [Google Scholar](https://scholar.google.ch/citations?user=T8hH3TMnFPwC&hl=de) pages
 
 
 
