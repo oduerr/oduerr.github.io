@@ -1,22 +1,22 @@
 ---
 layout: default
-title: Oliver Dürr
+title: Research Interest
 ---
 
-
 # Oliver Dürr
-I am Oliver Dürr a theoretical / computational physicist by training. 
-For nearly two decades, I've been harnessing the power of computers and mathematics to tackle a diverse array of intriguing challenges.
-I am especially fascinated about data analysis and statistical learning (a.k.a. machine learning). 
-In my research, I am currently concentrating on deep learning, with a particular emphasis on its relationship to probabilistic modeling.
-I hold a position as professor for data science at the [University of Applied Sciences, Konstanz (HTWG)](https://www.htwg-konstanz.de/hochschule/fakultaeten/informatik/orga/professoren/duerr) 
-	and I am affiliated with the <a href='https://www.ios.htwg-konstanz.de/machine-learning-workgroup'>IOS</a> and serve as a co-director of the newly founded Thurgau Institute for Digital Transformation 
-	[TIDIT](https://www.htwg-konstanz.de/aktuelles/news/neues-forschungsinstitut-im-kanton-thurgau).
+<img src="../imgs/oliver_taiwan.jpg" alt="image" style="float: right;" width="200"  class="profile-photo">
+
+I am a theoretical/computational physicist by training and a professor of data science at the [University of Applied Sciences, Konstanz (HTWG)](https://www.htwg-konstanz.de/hochschule/fakultaeten/informatik/orga/professoren/duerr). I am also affiliated with the [Institute for Optical Systems (IOS)](https://www.ios.htwg-konstanz.de/) and serve as a co-director of the newly founded Thurgau Institute for Digital Transformation [TIDIT](https://www.htwg-konstanz.de/aktuelles/news/neues-forschungsinstitut-im-kanton-thurgau).
+
+For over twenty years, I have utilized the power of computing and mathematics to explore and tackle various intriguing challenges, particularly in the analysis of data of various kinds. My current research focus is on the intersection of deep learning and statistics, where I explore the fascinating relationship between these two fields. 
+
+For detailed insights into my research interests, recent updates, and a comprehensive list of my publications, please visit my [Research](research), [News](news), and [Google Scholar](https://scholar.google.ch/citations?user=T8hH3TMnFPwC&hl=de) pages
 
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+<table width="70%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td width="40%" align="left" style="vertical-align: top">
+    <td width="30%" align="left" style="vertical-align: top">
     	<h4 style="margin: 0px 0px 20px 0px">Contact</h4>
 		Prof. Dr. Oliver Dürr <br>
 		HTWG-Konstanz <br>
