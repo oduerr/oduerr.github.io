@@ -13,13 +13,13 @@ author: "Oliver Dürr"
   <img src="../imgs/talk_llm.png" width="350">
 </a>
 
-(March 2023) Neural network-based transformation models for prediction and inference.  
+(March 2023) Neural network-based transformation models for prediction and inference [slides](https://www.dropbox.com/s/jf0gxpmm99fuucx/kneib_OD_BS.pdf?dl=0).
 
 <a href="https://www.dropbox.com/s/jf0gxpmm99fuucx/kneib_OD_BS.pdf?dl=0">
   <img src="../imgs/kalk_kneip_2023.png" width="400">
 </a>
 
-(March 2023) KI im Jahre 2023
+(March 2023) KI im Jahre 2023 [slides](https://oduerr.github.io/talks/ki_2023.html).
 
 <a href="https://oduerr.github.io/talks/ki_2023.html">
   <img src="../imgs/talk_ki.png" width="350">
