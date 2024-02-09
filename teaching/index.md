@@ -27,7 +27,7 @@ Welcome to my teaching page! As an educator in data science, machine learning, a
 * Data Science (Master) [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=3370)
 * Data Analysis (Master) [moodle](https://moodle.htwg-konstanz.de/moodle/course/view.php?id=2564)
 
-## Continous Eductaions
+## Continous Education
 Together with Beate Sick I teach the following courses.
 
 * Deep Learning (CAS Machine Intelligence, ZHAW Winterthur) from 2017- (yearly)
