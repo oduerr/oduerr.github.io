@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR to Spotify with Preview and Text</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+    #video {
+      width: 80%;
+      margin: 20px auto;
+      display: block;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+    }
+    #qr-preview {
+      position: absolute;
+      top: 0;
+      left: 10%;
+      width: 80%;
+      height: auto;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>QR to Spotify with Preview and Text</h1>
+  <video id="video" autoplay></video>
+  <canvas id="qr-preview"></canvas>
+  <div id="output"></div>
+  <button id="authorize">Authorize Spotify</button>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
+  <script>
+    const video = document.getElementById('video');
+    const qrPreview = document.getElementById('qr-preview');
+    const output = document.getElementById('output');
+    const authorizeButton = document.getElementById('authorize');
+    let spotifyAccessToken = null;
+
+    // Start QR Scanner
+    async function startQRScanner() {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+      video.srcObject = stream;
+
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+
+      qrPreview.width = video.offsetWidth;
+      qrPreview.height = video.offsetHeight;
+
+      setInterval(() => {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const qrCode = jsQR(imageData.data, canvas.width, canvas.height);
+
+        if (qrCode) {
+          drawBoundingBox(qrCode.location, qrCode.data);
+          handleQRCode(qrCode.data);
+        } else {
+          clearPreview();
+        }
+      }, 500);
+    }
+
+    // Draw Bounding Box with Text
+    function drawBoundingBox(location, data) {
+      if (location) {
+        const scaleX = qrPreview.width / video.videoWidth;
+        const scaleY = qrPreview.height / video.videoHeight;
+        const { topLeftCorner, topRightCorner, bottomRightCorner, bottomLeftCorner } = location;
+
+        const ctx = qrPreview.getContext('2d');
+        ctx.clearRect(0, 0, qrPreview.width, qrPreview.height);
+        ctx.strokeStyle = 'green';
+        ctx.lineWidth = 4;
+
+        // Scale the bounding box to match the video size
+        ctx.beginPath();
+        ctx.moveTo(topLeftCorner.x * scaleX, topLeftCorner.y * scaleY);
+        ctx.lineTo(topRightCorner.x * scaleX, topRightCorner.y * scaleY);
+        ctx.lineTo(bottomRightCorner.x * scaleX, bottomRightCorner.y * scaleY);
+        ctx.lineTo(bottomLeftCorner.x * scaleX, bottomLeftCorner.y * scaleY);
+        ctx.closePath();
+        ctx.stroke();
+
+        // Add text near the bounding box
+        ctx.font = '16px Arial';
+        ctx.fillStyle = 'green';
+        ctx.fillText(data, topLeftCorner.x * scaleX, topLeftCorner.y * scaleY - 10);
+      }
+    }
+
+    // Clear QR Preview
+    function clearPreview() {
+      const ctx = qrPreview.getContext('2d');
+      ctx.clearRect(0, 0, qrPreview.width, qrPreview.height);
+    }
+
+    // Handle Detected QR Code
+    function handleQRCode(data) {
+      if (data.startsWith('https://open.spotify.com/track/')) {
+        const trackId = data.split('/track/')[1].split('?')[0];
+        output.innerText = `Detected Spotify Track ID: ${trackId}`;
+        playSpotifyTrack(trackId);
+      } else {
+        output.innerText = 'Invalid QR Code. Please scan a Spotify track URL.';
+      }
+    }
+
+    // Spotify Authentication
+    authorizeButton.addEventListener('click', () => {
+      const clientId = ''; // Add your Spotify client ID here
+      const redirectUri = location.href; // Redirect back to this page
+      const scopes = 'user-modify-playback-state user-read-playback-state';
+      const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}`;
+      window.location.href = authUrl;
+    });
+
+    // Extract Spotify Access Token
+    function extractAccessToken() {
+      const hash = window.location.hash;
+      if (hash.includes('access_token')) {
+        spotifyAccessToken = new URLSearchParams(hash.substring(1)).get('access_token');
+        output.innerText = 'Spotify authorized! You can now scan a QR code.';
+      }
+    }
+
+    // Play Spotify Track
+    async function playSpotifyTrack(trackId) {
+      if (!spotifyAccessToken) {
+        output.innerText = 'Please authorize Spotify first!';
+        return;
+      }
+
+      const activeDevice = await fetch('https://api.spotify.com/v1/me/player/devices', {
+        headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+      }).then(res => res.json())
+        .then(data => data.devices.find(device => device.is_active)?.id);
+
+      if (!activeDevice) {
+        output.innerText = 'No active Spotify device found!';
+        return;
+      }
+
+      await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${activeDevice}`, {
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+        body: JSON.stringify({ uris: [`spotify:track:${trackId}`] }),
+      });
+      output.innerText = 'Playing track on Spotify!';
+    }
+
+    // Initialize
+    startQRScanner();
+    extractAccessToken();
+  </script>
+</body>
+</html>
