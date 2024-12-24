@@ -127,7 +127,7 @@
 
     // Spotify Authentication
     authorizeButton.addEventListener('click', () => {
-      const clientId = ''; // Add your Spotify client ID here
+      const clientId = 'd81545e258004fdb87a8dc3b42a7ebcd'; // Add your Spotify client ID here
       const redirectUri = location.href; // Redirect back to this page
       const scopes = 'user-modify-playback-state user-read-playback-state';
       const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}`;
