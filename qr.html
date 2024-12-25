@@ -159,7 +159,8 @@
 
     // Display Song URL
     function displaySongUrl(url) {
-      songUrl.innerHTML = `Current Song: <a href="${url}" target="_blank">${url}</a>`;
+      const trackId = data.split('/track/')[1].split('?')[0];
+      songUrl.innerHTML = `Current Song: <a href="${url}" target="_blank">${trackId}</a>`;
     }
 
     // Spotify Authentication
@@ -205,18 +206,40 @@
       output.innerText = 'Playing track on Spotify!';
     }
 
-    // Skip Function
-    async function skip(seconds) {
-      const currentPosition = await fetch('https://api.spotify.com/v1/me/player', {
+    // Skip Function with End-of-Track Handling
+  async function skip(seconds) {
+      try {
+      // Fetch the current playback position and track duration
+      const playerState = await fetch('https://api.spotify.com/v1/me/player', {
         headers: { Authorization: `Bearer ${spotifyAccessToken}` },
-      }).then(res => res.json())
-        .then(data => data.progress_ms);
+      }).then(res => res.json());
 
-      await fetch(`https://api.spotify.com/v1/me/player/seek?position_ms=${currentPosition + seconds * 1000}`, {
+      const currentPosition = playerState.progress_ms; // Current position in milliseconds
+      const trackDuration = playerState.item.duration_ms; // Total track duration in milliseconds
+
+      // Calculate the new position after skipping
+      let newPosition = currentPosition + seconds * 1000;
+
+      // Ensure newPosition stays within the track's bounds
+      if (newPosition < 0) {
+        newPosition = 0; // Do not skip before the start of the track
+      } else if (newPosition > trackDuration) {
+        newPosition = trackDuration; // Do not skip beyond the end of the track
+      }
+
+      // Seek to the new position
+      await fetch(`https://api.spotify.com/v1/me/player/seek?position_ms=${newPosition}`, {
         method: 'PUT',
-        headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+          headers: { Authorization: `Bearer ${spotifyAccessToken}` },
       });
+
+      // Provide feedback to the user
+      output.innerText = `Skipped to ${Math.floor(newPosition / 1000)} seconds.`;
+    } catch (error) {
+      console.error('Error during skip operation:', error);
+      output.innerText = 'Error skipping track. Please try again.';
     }
+  }
 
     // Button Event Listeners
     back30Button.addEventListener('click', () => skip(-30));
