@@ -32,12 +32,13 @@
 
     /* Each tab takes full viewport width */
     .tab {
-      flex: 0 0 100%;
+      flex: 0 0 100%; /* Ensures each tab takes up full width */
       width: 100vw;
       height: 100vh;
       scroll-snap-align: start;
       padding: 20px;
-      position: relative;
+      display: block; /* Reset layout inside the tab */
+      box-sizing: border-box;
     }
 
     /* Styles for each tab (optional) */
@@ -45,7 +46,11 @@
       background-color: #f0f8ff;
     }
     .tab2 {
-      background-color: #ffe4e1;
+      display: flex;
+      flex-direction: column; /* Stack elements vertically */
+      align-items: flex-start; /* Align content to the left */
+      gap: 10px; /* Add spacing between items */
+      background-color: #ff0000;
     }
 
     /* Video and Canvas styling */
@@ -111,26 +116,35 @@
     <!-- TAB 1: QR Scanner -->
     <div class="tab tab1">
       <h1>QR Scanner</h1>
+      <button id="back-30">Back -30s</button>
+      <button id="skip-30">Skip +30s</button>
       <video id="video" autoplay></video>
       <canvas id="qr-preview"></canvas>
       <div id="output"></div>
       <div id="song-url"></div>
       <button id="authorize">Authorize Spotify</button>
-      <button id="back-30">Back -30s</button>
-      <button id="skip-30">Skip +30s</button>
+      <footer style="text-align: center; margin-top: 20px; font-size: 14px; color:gray;">
+        Last changed: <span id="last-changed">—</span>
+      </footer>
     </div>
 
-    <!-- TAB 2: Track Info -->
     <div class="tab tab2">
       <h1>Track Info</h1>
       <img id="album-art" src="" alt="Album Art" />
       <div id="track-name-display">Track: —</div>
       <div id="artist-name-display">Artist: —</div>
       <div>Album: <span id="album-name-display">—</span></div>
-      <a id="google-search" href="#" target="_blank" rel="noopener noreferrer">Search on Google</a>
+      <div>Release Date: <span id="release-date-display">—</span></div>
+      <div>Popularity: <span id="track-popularity-display">—</span>/100</div>
+      <div>Genres: <span id="track-genres-display">—</span></div>
+      <div>
+        <a id="google-search" href="#" target="_blank" rel="noopener noreferrer">Search on Google</a>
+      </div>
     </div>
 
   </div>
+
+
 
   <!-- jsQR Library -->
   <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
@@ -146,10 +160,14 @@
     const skip30Button = document.getElementById('skip-30');
 
     // Track Info Tab References
+    // Element References
     const albumArtEl = document.getElementById('album-art');
     const trackNameEl = document.getElementById('track-name-display');
     const artistNameEl = document.getElementById('artist-name-display');
     const albumNameEl = document.getElementById('album-name-display');
+    const releaseDateEl = document.getElementById('release-date-display');
+    const popularityEl = document.getElementById('track-popularity-display');
+    const genresEl = document.getElementById('track-genres-display');
     const googleSearchEl = document.getElementById('google-search');
 
     // Globals
@@ -269,36 +287,55 @@
       }
     }
 
-    // 5. Fetch Track Info for Tab 2
-    async function fetchTrackInfo(trackId) {
-      if (!spotifyAccessToken) return;
+    // Fetch Track Info for Second Tab
+  async function fetchTrackInfo(trackId) {
+    if (!spotifyAccessToken) {
+      console.error("Spotify access token not available.");
+      return;
+    }
 
-      try {
-        const response = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`, {
+    try {
+      // Fetch track data from Spotify API
+      const trackResponse = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`, {
+        headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+      });
+      const trackData = await trackResponse.json();
+
+      // Extract data from the track
+      const trackName = trackData.name;
+      const artistName = trackData.artists?.[0]?.name || 'Unknown';
+      const albumName = trackData.album?.name || 'Unknown';
+      const releaseDate = trackData.album?.release_date || 'Unknown';
+      const popularity = trackData.popularity || 0;
+      const albumArtUrl = trackData.album?.images?.[0]?.url || '';
+
+      // Fetch artist data for genres (if needed)
+      const artistId = trackData.artists?.[0]?.id;
+      let genres = [];
+      if (artistId) {
+        const artistResponse = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, {
           headers: { Authorization: `Bearer ${spotifyAccessToken}` },
         });
-        const trackData = await response.json();
-
-        // Extract relevant data
-        const trackName = trackData.name;
-        const artistName = trackData.artists?.[0]?.name || 'Unknown';
-        const albumName = trackData.album?.name || 'Unknown';
-        const albumArtUrl = trackData.album?.images?.[0]?.url || '';
-        
-        // Update the second tab
-        albumArtEl.src = albumArtUrl;
-        trackNameEl.textContent = `Track: ${trackName}`;
-        artistNameEl.textContent = `Artist: ${artistName}`;
-        albumNameEl.textContent = albumName;
-
-        // Create a Google search link combining artist + album
-        const googleQuery = encodeURIComponent(`${artistName} ${albumName}`);
-        googleSearchEl.href = `https://www.google.com/search?q=${googleQuery}`;
-      } catch (error) {
-        console.error('Error fetching track info:', error);
-        output.innerText = 'Error fetching track details. Please try again.';
+        const artistData = await artistResponse.json();
+        genres = artistData.genres || [];
       }
+
+      // Update the HTML elements
+      albumArtEl.src = albumArtUrl;
+      trackNameEl.textContent = `Track: ${trackName}`;
+      artistNameEl.textContent = `Artist: ${artistName}`;
+      albumNameEl.textContent = albumName;
+      releaseDateEl.textContent = releaseDate;
+      popularityEl.textContent = popularity;
+      genresEl.textContent = genres.length ? genres.join(', ') : 'Unknown';
+
+      // Update Google Search Link
+      const googleQuery = encodeURIComponent(`${artistName} ${albumName}`);
+      googleSearchEl.href = `https://www.google.com/search?q=${googleQuery}`;
+    } catch (error) {
+      console.error('Error fetching track info:', error);
     }
+  }
 
     // 6. Play Spotify Track
     async function playSpotifyTrack(trackId) {
@@ -371,6 +408,14 @@
     // 8. Initialize
     startQRScanner();
     extractAccessToken();
+  </script>
+  <!-- JavaScript to Set Last Changed Date -->
+
+  <script>
+    // Dynamically set the last modified date
+    const lastChangedEl = document.getElementById('last-changed'); // Target the span in the footer
+    const lastModifiedDate = new Date(document.lastModified); // Get the last modified date of the file
+    lastChangedEl.textContent = lastModifiedDate.toLocaleString(); // Format as a readable string
   </script>
 </body>
 </html>
