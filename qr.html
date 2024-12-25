@@ -159,8 +159,7 @@
 
     // Display Song URL
     function displaySongUrl(url) {
-      const trackId = data.split('/track/')[1].split('?')[0];
-      songUrl.innerHTML = `Current Song: <a href="${url}" target="_blank">${trackId}</a>`;
+      songUrl.innerHTML = `Current Song: <a href="${url}" target="_blank">${url}</a>`;
     }
 
     // Spotify Authentication
