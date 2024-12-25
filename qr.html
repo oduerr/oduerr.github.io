@@ -45,7 +45,7 @@
 </head>
 <body>
   <h1>QR to Spotify</h1>
-  <button id="skip-15">Skip +15s</button>
+  <button id="back-30">Back -30s</button>
   <button id="skip-30">Skip +30s</button>
   <video id="video" autoplay></video>
   <canvas id="qr-preview"></canvas>
@@ -59,7 +59,7 @@
     const output = document.getElementById('output');
     const songUrl = document.getElementById('song-url');
     const authorizeButton = document.getElementById('authorize');
-    const skip15Button = document.getElementById('skip-15');
+    const back30Button = document.getElementById('back-30');
     const skip30Button = document.getElementById('skip-30');
 
     let spotifyAccessToken = null;
@@ -67,63 +67,78 @@
 
     // Start QR Scanner
     async function startQRScanner() {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-      video.srcObject = stream;
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+        video.srcObject = stream;
 
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
 
-      qrPreview.width = video.offsetWidth;
-      qrPreview.height = video.offsetHeight;
+        qrPreview.width = video.offsetWidth;
+        qrPreview.height = video.offsetHeight;
 
-      setInterval(() => {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        setInterval(() => {
+          try {
+            // **Performance Optimization**
+            // Dynamically adjust the canvas size based on the video size
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const qrCode = jsQR(imageData.data, canvas.width, canvas.height);
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const qrCode = jsQR(imageData.data, canvas.width, canvas.height);
 
-        if (qrCode) {
-          if (qrCode.data !== lastScannedQR) {
-            drawBoundingBox(qrCode.location, qrCode.data);
-            handleQRCode(qrCode.data);
-            lastScannedQR = qrCode.data;
+            if (qrCode) {
+              if (qrCode.data !== lastScannedQR) { // Avoid re-processing the same QR code
+                lastScannedQR = qrCode.data;
+                drawBoundingBox(qrCode.location, qrCode.data);
+                handleQRCode(qrCode.data);
+              }
+            } else {
+              clearPreview();
+            }
+          } catch (error) {
+            console.error('Error during QR code processing:', error);
+            output.innerText = 'Error scanning QR code. Please try again.';
           }
-        } else {
-          clearPreview();
-        }
-      }, 500);
-    }
-
-    // Draw Bounding Box with Text
-    function drawBoundingBox(location, data) {
-      if (location) {
-        const scaleX = qrPreview.width / video.videoWidth;
-        const scaleY = qrPreview.height / video.videoHeight;
-        const { topLeftCorner, topRightCorner, bottomRightCorner, bottomLeftCorner } = location;
-
-        const ctx = qrPreview.getContext('2d');
-        ctx.clearRect(0, 0, qrPreview.width, qrPreview.height);
-        ctx.strokeStyle = 'green';
-        ctx.lineWidth = 4;
-
-        // Scale the bounding box to match the video size
-        ctx.beginPath();
-        ctx.moveTo(topLeftCorner.x * scaleX, topLeftCorner.y * scaleY);
-        ctx.lineTo(topRightCorner.x * scaleX, topRightCorner.y * scaleY);
-        ctx.lineTo(bottomRightCorner.x * scaleX, bottomRightCorner.y * scaleY);
-        ctx.lineTo(bottomLeftCorner.x * scaleX, bottomLeftCorner.y * scaleY);
-        ctx.closePath();
-        ctx.stroke();
-
-        // Add text near the bounding box
-        ctx.font = '16px Arial';
-        ctx.fillStyle = 'green';
-        ctx.fillText(data, topLeftCorner.x * scaleX, topLeftCorner.y * scaleY - 10);
+        }, 300); // Faster scanning interval without overwhelming performance
+      } catch (error) {
+        console.error('Error accessing camera:', error);
+        output.innerText = 'Unable to access camera. Please check permissions.';
       }
     }
 
+    // Draw Bounding Box with Text
+   function drawBoundingBox(location, data) {
+      try {
+        if (location) {
+          const scaleX = qrPreview.width / video.videoWidth;
+          const scaleY = qrPreview.height / video.videoHeight;
+          const { topLeftCorner, topRightCorner, bottomRightCorner, bottomLeftCorner } = location;
+
+          const ctx = qrPreview.getContext('2d');
+          ctx.clearRect(0, 0, qrPreview.width, qrPreview.height);
+          ctx.strokeStyle = 'green';
+          ctx.lineWidth = 4;
+
+          // Scale the bounding box to match the video size
+          ctx.beginPath();
+          ctx.moveTo(topLeftCorner.x * scaleX, topLeftCorner.y * scaleY);
+          ctx.lineTo(topRightCorner.x * scaleX, topRightCorner.y * scaleY);
+          ctx.lineTo(bottomRightCorner.x * scaleX, bottomRightCorner.y * scaleY);
+          ctx.lineTo(bottomLeftCorner.x * scaleX, bottomLeftCorner.y * scaleY);
+          ctx.closePath();
+          ctx.stroke();
+
+          // Add text near the bounding box
+          ctx.font = '16px Arial';
+          ctx.fillStyle = 'green';
+          ctx.fillText(data, topLeftCorner.x * scaleX, topLeftCorner.y * scaleY - 10);
+        }
+      } catch (error) {
+        console.error('Error drawing bounding box:', error);
+      }
+    }
     // Clear QR Preview
     function clearPreview() {
       const ctx = qrPreview.getContext('2d');
@@ -190,7 +205,7 @@
       output.innerText = 'Playing track on Spotify!';
     }
 
-    // Skip Forward Function
+    // Skip Function
     async function skip(seconds) {
       const currentPosition = await fetch('https://api.spotify.com/v1/me/player', {
         headers: { Authorization: `Bearer ${spotifyAccessToken}` },
@@ -204,7 +219,7 @@
     }
 
     // Button Event Listeners
-    skip15Button.addEventListener('click', () => skip(15));
+    back30Button.addEventListener('click', () => skip(-30));
     skip30Button.addEventListener('click', () => skip(30));
 
     // Initialize
