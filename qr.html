@@ -238,9 +238,9 @@
 
             // 3) If a QR code is found, draw bounding box in the preview canvas
             if (qrCode) {
+              drawBoundingBox(qrCode.location, qrCode.data); // Always draw the bounding box
               if (qrCode.data !== lastScannedQR) {
                 lastScannedQR = qrCode.data;
-                drawBoundingBox(qrCode.location, qrCode.data);
                 handleQRCode(qrCode.data);
               }
             } else {
@@ -302,10 +302,10 @@
         const trackId = data.split('/track/')[1].split('?')[0];
         output.innerText = `Detected Spotify Track ID: ${trackId}`;
         songUrl.innerHTML = `Song URL: <a href="${data}" target="_blank">${data}</a>`;
-        TrackInfo(trackId); // <-- NEW: Fetch track details for second tafetchb
         playSpotifyTrack(trackId);
+        fetchTrackInfo(trackId); // <-- NEW: Fetch track details for second tafetchb
       } else {
-        output.innerText = 'Invalid QR Code. Please scan a Spotify track URL.';
+        output.innerText = 'Invalid QR Code. Please scan a Spotify track URL.`; 
       }
     }
 
