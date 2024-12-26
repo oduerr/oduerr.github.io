@@ -118,8 +118,18 @@
       <h1>QR Scanner</h1>
       <button id="back-30">Back -30s</button>
       <button id="skip-30">Skip +30s</button>
-      <video id="video" autoplay></video>
-      <canvas id="qr-preview"></canvas>
+
+      <!-- Wrap video + overlay canvas in a relative container -->
+      <div id="video-wrapper" style="position: relative; display: inline-block;">
+        <video id="video" autoplay style="display: block;"></video>
+        <canvas id="qr-preview" style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          pointer-events: none;
+        "></canvas>
+      </div>
+
       <div id="output"></div>
       <div id="song-url"></div>
       <button id="authorize">Authorize Spotify</button>
@@ -177,26 +187,47 @@
     // 1. Start QR Scanner
     async function startQRScanner() {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: 'environment' }
+        });
         video.srcObject = stream;
 
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-
-        // Resize the preview canvas to match the video element
-        qrPreview.width = video.offsetWidth;
-        qrPreview.height = video.offsetHeight;
+        // Create the scanning canvas in memory
+        const scanningCanvas = document.createElement('canvas');
+        const scanningCtx = scanningCanvas.getContext('2d');
 
         setInterval(() => {
           try {
-            // Dynamically adjust the canvas size based on the video size
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            // 1) Keep scanning canvas in sync with actual video resolution
+            scanningCanvas.width = video.videoWidth;
+            scanningCanvas.height = video.videoHeight;
 
-            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const qrCode = jsQR(imageData.data, canvas.width, canvas.height);
+            // 2) Keep preview canvas the same size as the *displayed* video
+            //    (so bounding boxes align visually)
+            qrPreview.width = video.clientWidth;
+            qrPreview.height = video.clientHeight;
 
+            // Grab the image from the video
+            scanningCtx.drawImage(
+              video,
+              0, 0,
+              scanningCanvas.width,
+              scanningCanvas.height
+            );
+
+            // Process with jsQR
+            const imageData = scanningCtx.getImageData(
+              0, 0,
+              scanningCanvas.width,
+              scanningCanvas.height
+            );
+            const qrCode = jsQR(
+              imageData.data,
+              scanningCanvas.width,
+              scanningCanvas.height
+            );
+
+            // 3) If a QR code is found, draw bounding box in the preview canvas
             if (qrCode) {
               if (qrCode.data !== lastScannedQR) {
                 lastScannedQR = qrCode.data;
@@ -211,6 +242,7 @@
             output.innerText = 'Error scanning QR code. Please try again.';
           }
         }, 300);
+
       } catch (error) {
         console.error('Error accessing camera:', error);
         output.innerText = 'Unable to access camera. Please check permissions.';
