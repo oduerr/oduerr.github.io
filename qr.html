@@ -302,8 +302,8 @@
         const trackId = data.split('/track/')[1].split('?')[0];
         output.innerText = `Detected Spotify Track ID: ${trackId}`;
         songUrl.innerHTML = `Song URL: <a href="${data}" target="_blank">${data}</a>`;
+        TrackInfo(trackId); // <-- NEW: Fetch track details for second tafetchb
         playSpotifyTrack(trackId);
-        fetchTrackInfo(trackId); // <-- NEW: Fetch track details for second tab
       } else {
         output.innerText = 'Invalid QR Code. Please scan a Spotify track URL.';
       }
