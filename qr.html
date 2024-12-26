@@ -133,6 +133,12 @@
       <div id="output"></div>
       <div id="song-url"></div>
       <button id="authorize">Authorize Spotify</button>
+      <label for="device-select">Choose a Spotify device:</label>
+      <select id="device-select">
+        <option value="">-- No device selected --</option>
+        <!-- Devices will be dynamically populated -->
+      </select>
+      <br/>
       <footer style="text-align: center; margin-top: 20px; font-size: 14px; color:gray;">
         Last changed: <span id="last-changed">—</span>
       </footer>
@@ -166,6 +172,9 @@
     const songUrl = document.getElementById('song-url');
 
     const authorizeButton = document.getElementById('authorize');
+    const deviceSelect = document.getElementById('device-select'); // Dropdown element
+    let selectedDeviceId = null; // Store selected device ID
+
     const back30Button = document.getElementById('back-30');
     const skip30Button = document.getElementById('skip-30');
 
@@ -300,6 +309,39 @@
       }
     }
 
+    async function fetchAvailableDevices() {
+      if (!spotifyAccessToken) return;
+
+      try {
+        const response = await fetch('https://api.spotify.com/v1/me/player/devices', {
+          headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+        });
+        const data = await response.json();
+
+        // Clear existing options in dropdown
+        deviceSelect.innerHTML = '<option value="">-- No device selected --</option>';
+
+        // Populate the dropdown with available devices
+        data.devices.forEach(device => {
+          const option = document.createElement('option');
+          option.value = device.id;
+          option.textContent = device.name;
+          deviceSelect.appendChild(option);
+        });
+
+        // Listen for device selection
+        deviceSelect.addEventListener('change', () => {
+          selectedDeviceId = deviceSelect.value;
+          output.innerText = selectedDeviceId
+            ? `Selected device: ${deviceSelect.options[deviceSelect.selectedIndex].textContent}`
+            : 'No device selected';
+        });
+      } catch (error) {
+        console.error('Error fetching devices:', error);
+        output.innerText = 'Error fetching devices. Please try again.';
+      }
+    }
+
     // 4. Spotify Authorization
     authorizeButton.addEventListener('click', () => {
       const clientId = 'd81545e258004fdb87a8dc3b42a7ebcd'; // Provide your Spotify Client ID
@@ -320,6 +362,8 @@
       // Disable the authorization button and update its label
       authorizeButton.disabled = true;
       authorizeButton.textContent = 'Spotify Authorized';
+
+      fetchAvailableDevices();
     }
   }
 
@@ -380,6 +424,17 @@
         output.innerText = 'Please authorize Spotify first!';
         return;
       }
+
+      if (!selectedDeviceId) {
+        output.innerText = 'Please select a device first!';
+        return;
+      }
+
+      await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${selectedDeviceId}`, {
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+        body: JSON.stringify({ uris: [`spotify:track:${trackId}`] }),
+      });
 
       try {
         const activeDevice = await fetch('https://api.spotify.com/v1/me/player/devices', {
