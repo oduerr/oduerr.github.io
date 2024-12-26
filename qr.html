@@ -280,12 +280,17 @@
 
     // Extract Spotify Access Token from URL
     function extractAccessToken() {
-      const hash = window.location.hash;
-      if (hash.includes('access_token')) {
-        spotifyAccessToken = new URLSearchParams(hash.substring(1)).get('access_token');
-        output.innerText = 'Spotify authorized! You can now scan a QR code.';
-      }
+    const hash = window.location.hash;
+    if (hash.includes('access_token')) {
+      spotifyAccessToken = new URLSearchParams(hash.substring(1)).get('access_token');
+      output.innerText = 'Spotify authorized! You can now scan a QR code.';
+
+      // Disable the authorization button and update its label
+      authorizeButton.disabled = true;
+      authorizeButton.textContent = 'Spotify Authorized';
     }
+  }
+
 
     // Fetch Track Info for Second Tab
   async function fetchTrackInfo(trackId) {
