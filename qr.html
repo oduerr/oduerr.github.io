@@ -456,7 +456,7 @@
         output.innerText = 'Playing track on Spotify!';
       } catch (error) {
         console.error('Error playing Spotify track:', error);
-        output.innerText = 'Error playing the track. Please try again.';
+        output.innerText = `Error playing the track. Please try again. Error: ${error.message}`;
       }
     }
 
