@@ -425,39 +425,22 @@
         return;
       }
 
-      let deviceId = selectedDeviceId; // Start with the user-selected device
+      const activeDevice = await fetch('https://api.spotify.com/v1/me/player/devices', {
+        headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+      }).then(res => res.json())
+        .then(data => data.devices.find(device => device.is_active)?.id);
 
-      try {
-        // If no device is selected, fallback to the active device
-        if (!deviceId) {
-          const devicesResponse = await fetch('https://api.spotify.com/v1/me/player/devices', {
-            headers: { Authorization: `Bearer ${spotifyAccessToken}` },
-          });
-          const devicesData = await devicesResponse.json();
-
-          // Find the active device
-          const activeDevice = devicesData.devices.find(device => device.is_active);
-          if (activeDevice) {
-            deviceId = activeDevice.id;
-            output.innerText = `No device selected, using active device: ${activeDevice.name}`;
-          } else {
-            output.innerText = 'No active Spotify device found! Please select a device.';
-            return; // Exit early if no active device is found
-          }
-        }
-
-        // Send the play request
-        await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`, {
-          method: 'PUT',
-          headers: { Authorization: `Bearer ${spotifyAccessToken}` },
-          body: JSON.stringify({ uris: [`spotify:track:${trackId}`] }),
-        });
-
-        output.innerText = 'Playing track on Spotify!';
-      } catch (error) {
-        console.error('Error playing Spotify track:', error);
-        output.innerText = `Error playing the track. Please try again. Error: ${error.message}`;
+      if (!activeDevice) {
+        output.innerText = 'No active Spotify device found!';
+        return;
       }
+
+      await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${activeDevice}`, {
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+        body: JSON.stringify({ uris: [`spotify:track:${trackId}`] }),
+      });
+      output.innerText = 'Playing track on Spotify!';
     }
 
     // 7. Skip / Back
