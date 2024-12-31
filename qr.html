@@ -1,346 +1,520 @@
-<script>
-  // HTML Element References
-  const video = document.getElementById('video');
-  const qrPreview = document.getElementById('qr-preview');
-  const output = document.getElementById('output');
-  const songUrl = document.getElementById('song-url');
-
-  const authorizeButton = document.getElementById('authorize');
-  const deviceSelect = document.getElementById('device-select'); // Dropdown element
-  let selectedDeviceId = null; // Store selected device ID
-
-  const back30Button = document.getElementById('back-30');
-  const skip30Button = document.getElementById('skip-30');
-
-  // Track Info Tab References
-  const albumArtEl = document.getElementById('album-art');
-  const trackNameEl = document.getElementById('track-name-display');
-  const artistNameEl = document.getElementById('artist-name-display');
-  const albumNameEl = document.getElementById('album-name-display');
-  const releaseDateEl = document.getElementById('release-date-display');
-  const popularityEl = document.getElementById('track-popularity-display');
-  const genresEl = document.getElementById('track-genres-display');
-  const googleSearchEl = document.getElementById('google-search');
-
-  // Globals
-  let spotifyAccessToken = null;
-  let lastScannedQR = null;
-
-  // 1. Start QR Scanner
-  async function startQRScanner() {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: 'environment' }
-      });
-      video.srcObject = stream;
-
-      // Create the scanning canvas in memory
-      const scanningCanvas = document.createElement('canvas');
-      const scanningCtx = scanningCanvas.getContext('2d');
-
-      setInterval(() => {
-        try {
-          scanningCanvas.width = video.videoWidth;
-          scanningCanvas.height = video.videoHeight;
-
-          // Match preview canvas size to *displayed* video size
-          qrPreview.width = video.clientWidth;
-          qrPreview.height = video.clientHeight;
-
-          // Draw current video frame onto the scanning canvas
-          scanningCtx.drawImage(video, 0, 0, scanningCanvas.width, scanningCanvas.height);
-
-          const imageData = scanningCtx.getImageData(0, 0, scanningCanvas.width, scanningCanvas.height);
-          const qrCode = jsQR(imageData.data, scanningCanvas.width, scanningCanvas.height);
-
-          if (qrCode) {
-            drawBoundingBox(qrCode.location, qrCode.data);
-            if (qrCode.data !== lastScannedQR) {
-              lastScannedQR = qrCode.data;
-              handleQRCode(qrCode.data);
-            }
-          } else {
-            clearPreview();
-          }
-        } catch (error) {
-          console.error('Error during QR code processing:', error);
-          output.innerText = 'Error scanning QR code. Please try again.';
-        }
-      }, 300);
-
-    } catch (error) {
-      console.error('Error accessing camera:', error);
-      output.innerText = `Unable to access camera. ${error.message}`;
-    }
-  }
-
-  // 2. Draw bounding box around QR code
-  function drawBoundingBox(location, data) {
-    try {
-      if (location) {
-        const scaleX = qrPreview.width / video.videoWidth;
-        const scaleY = qrPreview.height / video.videoHeight;
-        const { topLeftCorner, topRightCorner, bottomRightCorner, bottomLeftCorner } = location;
-
-        const ctx = qrPreview.getContext('2d');
-        ctx.clearRect(0, 0, qrPreview.width, qrPreview.height);
-        ctx.strokeStyle = 'green';
-        ctx.lineWidth = 4;
-
-        // Scale bounding box to match the video size
-        ctx.beginPath();
-        ctx.moveTo(topLeftCorner.x * scaleX, topLeftCorner.y * scaleY);
-        ctx.lineTo(topRightCorner.x * scaleX, topRightCorner.y * scaleY);
-        ctx.lineTo(bottomRightCorner.x * scaleX, bottomRightCorner.y * scaleY);
-        ctx.lineTo(bottomLeftCorner.x * scaleX, bottomLeftCorner.y * scaleY);
-        ctx.closePath();
-        ctx.stroke();
-
-        // Text near bounding box
-        ctx.font = '16px Arial';
-        ctx.fillStyle = 'green';
-        ctx.fillText(data, topLeftCorner.x * scaleX, topLeftCorner.y * scaleY - 10);
-      }
-    } catch (error) {
-      console.error('Error drawing bounding box:', error);
-    }
-  }
-
-  // Clear QR Preview
-  function clearPreview() {
-    const ctx = qrPreview.getContext('2d');
-    ctx.clearRect(0, 0, qrPreview.width, qrPreview.height);
-  }
-
-  // 3. Handle Detected QR Code
-  function handleQRCode(data) {
-    if (data.startsWith('https://open.spotify.com/track/')) {
-      const trackId = data.split('/track/')[1].split('?')[0];
-      output.innerText = `Detected Spotify Track ID: ${trackId}`;
-      songUrl.innerHTML = `Song URL: <a href="${data}" target="_blank">${data}</a>`;
-      playSpotifyTrack(trackId);
-      fetchTrackInfo(trackId);
-    } else {
-      output.innerText = `Invalid QR Code. Please scan a Spotify track URL.`; 
-    }
-  }
-
-  async function fetchAvailableDevices() {
-    if (!spotifyAccessToken) return;
-
-    try {
-      const response = await fetch('https://api.spotify.com/v1/me/player/devices', {
-        headers: { Authorization: `Bearer ${spotifyAccessToken}` },
-      });
-      if (!response.ok) {
-        throw new Error(`Spotify devices endpoint returned ${response.status}: ${response.statusText}`);
-      }
-      const data = await response.json();
-
-      // Clear existing options in dropdown
-      deviceSelect.innerHTML = '<option value="">-- No device selected --</option>';
-
-      // Populate the dropdown with available devices
-      data.devices.forEach(device => {
-        const option = document.createElement('option');
-        option.value = device.id;
-        option.textContent = device.name;
-        deviceSelect.appendChild(option);
-      });
-
-      // Listen for device selection
-      deviceSelect.addEventListener('change', () => {
-        selectedDeviceId = deviceSelect.value;
-        output.innerText = selectedDeviceId
-          ? `Selected device: ${deviceSelect.options[deviceSelect.selectedIndex].textContent}`
-          : 'No device selected';
-      });
-    } catch (error) {
-      console.error('Error fetching devices:', error);
-      output.innerText = `Error fetching devices. ${error.message}`;
-    }
-  }
-
-  // 4. Spotify Authorization
-  authorizeButton.addEventListener('click', () => {
-    const clientId = 'd81545e258004fdb87a8dc3b42a7ebcd'; // Provide your Spotify Client ID
-    const redirectUri = location.href;
-    const scopes = 'user-modify-playback-state user-read-playback-state';
-    const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}`;
-
-    window.location.href = authUrl;
-  });
-
-  // Extract Spotify Access Token from URL
-  function extractAccessToken() {
-    const hash = window.location.hash;
-    if (hash.includes('access_token')) {
-      spotifyAccessToken = new URLSearchParams(hash.substring(1)).get('access_token');
-      output.innerText = 'Spotify authorized! You can now scan a QR code.';
-
-      // Disable the authorization button and update its label
-      authorizeButton.disabled = true;
-      authorizeButton.textContent = 'Spotify Authorized';
-
-      fetchAvailableDevices();
-    }
-  }
-
-  // 5. Fetch Track Info for Second Tab
-  async function fetchTrackInfo(trackId) {
-    if (!spotifyAccessToken) {
-      output.innerText = 'Spotify token not available. Please authorize first.';
-      return;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QR2Spotify Tabs Example</title>
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    try {
-      // 5A. Fetch track data
-      const trackResponse = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`, {
-        headers: { Authorization: `Bearer ${spotifyAccessToken}` },
-      });
-      if (!trackResponse.ok) {
-        throw new Error(`Track fetch error: ${trackResponse.status} - ${trackResponse.statusText}`);
-      }
-      const trackData = await trackResponse.json();
+    body {
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
 
-      // 5B. Extract data from the track
-      const trackName = trackData.name;
-      const artistName = trackData.artists?.[0]?.name || 'Unknown';
-      const albumName = trackData.album?.name || 'Unknown';
-      const releaseDate = trackData.album?.release_date || 'Unknown';
-      const popularity = trackData.popularity || 0;
-      const albumArtUrl = trackData.album?.images?.[0]?.url || '';
+    /* Horizontal scroll container for tabs */
+    .tabs-container {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+    .tabs-container::-webkit-scrollbar {
+      display: none; /* Hide scrollbar on WebKit */
+    }
 
-      // 5C. Fetch artist data for genres
-      let genres = [];
+    /* Each tab takes full viewport width */
+    .tab {
+      flex: 0 0 100%; /* Ensures each tab takes up full width */
+      width: 100vw;
+      height: 100vh;
+      scroll-snap-align: start;
+      padding: 20px;
+      display: block; /* Reset layout inside the tab */
+      box-sizing: border-box;
+    }
+
+    /* Styles for each tab (optional) */
+    .tab1 {
+      background-color: #f0f8ff;
+    }
+    .tab2 {
+      display: flex;
+      flex-direction: column; /* Stack elements vertically */
+      align-items: flex-start; /* Align content to the left */
+      gap: 10px; /* Add spacing between items */
+      background-color: #ff0000;
+    }
+
+    /* Video and Canvas styling */
+    #video {
+      width: 80%;
+      margin: 20px auto;
+      display: block;
+    }
+    #qr-preview {
+      position: absolute;
+      top: 80px;
+      left: 10%;
+      width: 80%;
+      height: auto;
+      pointer-events: none;
+    }
+
+    /* Buttons and output styling */
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+    }
+    #song-url {
+      margin-top: 10px;
+      font-size: 16px;
+      color: blue;
+    }
+
+    /* Track info tab */
+    #album-art {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      margin: 20px auto;
+      display: block;
+    }
+    #track-name-display,
+    #artist-name-display {
+      font-size: 18px;
+      margin: 10px;
+      color: #333;
+    }
+    #google-search {
+      display: inline-block;
+      margin: 20px 0;
+      color: #0000ee;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- TABS CONTAINER -->
+  <div class="tabs-container">
+
+    <!-- TAB 1: QR Scanner -->
+    <div class="tab tab1">
+      <h1>QR Scanner</h1>
+      <button id="back-30">Back -30s</button>
+      <button id="skip-30">Skip +30s</button>
+
+      <!-- Wrap video + overlay canvas in a relative container -->
+      <div id="video-wrapper" style="position: relative; display: inline-block;">
+        <video id="video" autoplay style="display: block;"></video>
+        <canvas id="qr-preview" style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          pointer-events: none;
+        "></canvas>
+      </div>
+
+      <div id="output"></div>
+      <div id="song-url"></div>
+      <button id="authorize">Authorize Spotify</button>
+      <label for="device-select">Choose a Spotify device:</label>
+      <select id="device-select">
+        <option value="">-- No device selected --</option>
+        <!-- Devices will be dynamically populated -->
+      </select>
+      <br/>
+      <footer style="text-align: center; margin-top: 20px; font-size: 14px; color:gray;">
+        Last changed: <span id="last-changed">—</span>
+      </footer>
+    </div>
+
+    <div class="tab tab2">
+      <h1>Track Info</h1>
+      <img id="album-art" src="" alt="Album Art" />
+      <div id="track-name-display">Track: —</div>
+      <div id="artist-name-display">Artist: —</div>
+      <div>Album: <span id="album-name-display">—</span></div>
+      <div>Release Date: <span id="release-date-display">—</span></div>
+      <div>Popularity: <span id="track-popularity-display">—</span>/100</div>
+      <div>Genres: <span id="track-genres-display">—</span></div>
+      <div>
+        <a id="google-search" href="#" target="_blank" rel="noopener noreferrer">Search on Google</a>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <!-- jsQR Library -->
+  <script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
+  <script>
+    // HTML Element References
+    const video = document.getElementById('video');
+    const qrPreview = document.getElementById('qr-preview');
+    const output = document.getElementById('output');
+    const songUrl = document.getElementById('song-url');
+  
+    const authorizeButton = document.getElementById('authorize');
+    const deviceSelect = document.getElementById('device-select'); // Dropdown element
+    let selectedDeviceId = null; // Store selected device ID
+  
+    const back30Button = document.getElementById('back-30');
+    const skip30Button = document.getElementById('skip-30');
+  
+    // Track Info Tab References
+    const albumArtEl = document.getElementById('album-art');
+    const trackNameEl = document.getElementById('track-name-display');
+    const artistNameEl = document.getElementById('artist-name-display');
+    const albumNameEl = document.getElementById('album-name-display');
+    const releaseDateEl = document.getElementById('release-date-display');
+    const popularityEl = document.getElementById('track-popularity-display');
+    const genresEl = document.getElementById('track-genres-display');
+    const googleSearchEl = document.getElementById('google-search');
+  
+    // Globals
+    let spotifyAccessToken = null;
+    let lastScannedQR = null;
+  
+    // 1. Start QR Scanner
+    async function startQRScanner() {
       try {
-        const artistId = trackData.artists?.[0]?.id;
-        if (artistId) {
-          const artistResponse = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, {
-            headers: { Authorization: `Bearer ${spotifyAccessToken}` },
-          });
-          if (!artistResponse.ok) {
-            throw new Error(`Artist fetch error: ${artistResponse.status} - ${artistResponse.statusText}`);
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: 'environment' }
+        });
+        video.srcObject = stream;
+  
+        // Create the scanning canvas in memory
+        const scanningCanvas = document.createElement('canvas');
+        const scanningCtx = scanningCanvas.getContext('2d');
+  
+        setInterval(() => {
+          try {
+            scanningCanvas.width = video.videoWidth;
+            scanningCanvas.height = video.videoHeight;
+  
+            // Match preview canvas size to *displayed* video size
+            qrPreview.width = video.clientWidth;
+            qrPreview.height = video.clientHeight;
+  
+            // Draw current video frame onto the scanning canvas
+            scanningCtx.drawImage(video, 0, 0, scanningCanvas.width, scanningCanvas.height);
+  
+            const imageData = scanningCtx.getImageData(0, 0, scanningCanvas.width, scanningCanvas.height);
+            const qrCode = jsQR(imageData.data, scanningCanvas.width, scanningCanvas.height);
+  
+            if (qrCode) {
+              drawBoundingBox(qrCode.location, qrCode.data);
+              if (qrCode.data !== lastScannedQR) {
+                lastScannedQR = qrCode.data;
+                handleQRCode(qrCode.data);
+              }
+            } else {
+              clearPreview();
+            }
+          } catch (error) {
+            console.error('Error during QR code processing:', error);
+            output.innerText = 'Error scanning QR code. Please try again.';
           }
-          const artistData = await artistResponse.json();
-          genres = artistData.genres || [];
-        }
-      } catch (artistErr) {
-        console.error('Error fetching artist info:', artistErr);
-        output.innerText = `Warning: could not fetch artist info. ${artistErr.message}`;
+        }, 300);
+  
+      } catch (error) {
+        console.error('Error accessing camera:', error);
+        output.innerText = `Unable to access camera. ${error.message}`;
       }
-
-      // 5D. Update the HTML elements in second tab
-      albumArtEl.src = albumArtUrl;
-      trackNameEl.textContent = `Track: ${trackName}`;
-      artistNameEl.textContent = `Artist: ${artistName}`;
-      albumNameEl.textContent = albumName;
-      releaseDateEl.textContent = releaseDate;
-      popularityEl.textContent = popularity;
-      genresEl.textContent = genres.length ? genres.join(', ') : 'Unknown';
-
-      // 5E. Update Google Search Link
-      const googleQuery = encodeURIComponent(`${artistName} ${albumName}`);
-      googleSearchEl.href = `https://www.google.com/search?q=${googleQuery}`;
-    } catch (error) {
-      console.error('Error fetching track info:', error);
-      output.innerText = `Error fetching track info. ${error.message}`;
     }
-  }
-
-  // 6. Play Spotify Track
-  async function playSpotifyTrack(trackId) {
-    if (!spotifyAccessToken) {
-      output.innerText = 'Please authorize Spotify first!';
-      return;
+  
+    // 2. Draw bounding box around QR code
+    function drawBoundingBox(location, data) {
+      try {
+        if (location) {
+          const scaleX = qrPreview.width / video.videoWidth;
+          const scaleY = qrPreview.height / video.videoHeight;
+          const { topLeftCorner, topRightCorner, bottomRightCorner, bottomLeftCorner } = location;
+  
+          const ctx = qrPreview.getContext('2d');
+          ctx.clearRect(0, 0, qrPreview.width, qrPreview.height);
+          ctx.strokeStyle = 'green';
+          ctx.lineWidth = 4;
+  
+          // Scale bounding box to match the video size
+          ctx.beginPath();
+          ctx.moveTo(topLeftCorner.x * scaleX, topLeftCorner.y * scaleY);
+          ctx.lineTo(topRightCorner.x * scaleX, topRightCorner.y * scaleY);
+          ctx.lineTo(bottomRightCorner.x * scaleX, bottomRightCorner.y * scaleY);
+          ctx.lineTo(bottomLeftCorner.x * scaleX, bottomLeftCorner.y * scaleY);
+          ctx.closePath();
+          ctx.stroke();
+  
+          // Text near bounding box
+          ctx.font = '16px Arial';
+          ctx.fillStyle = 'green';
+          ctx.fillText(data, topLeftCorner.x * scaleX, topLeftCorner.y * scaleY - 10);
+        }
+      } catch (error) {
+        console.error('Error drawing bounding box:', error);
+      }
     }
-
-    try {
-      // If the user selected a device, use that; otherwise fallback to "active" device
-      let deviceId = selectedDeviceId;
-      if (!deviceId) {
-        // fallback to the user’s currently active device (if any)
+  
+    // Clear QR Preview
+    function clearPreview() {
+      const ctx = qrPreview.getContext('2d');
+      ctx.clearRect(0, 0, qrPreview.width, qrPreview.height);
+    }
+  
+    // 3. Handle Detected QR Code
+    function handleQRCode(data) {
+      if (data.startsWith('https://open.spotify.com/track/')) {
+        const trackId = data.split('/track/')[1].split('?')[0];
+        output.innerText = `Detected Spotify Track ID: ${trackId}`;
+        songUrl.innerHTML = `Song URL: <a href="${data}" target="_blank">${data}</a>`;
+        playSpotifyTrack(trackId);
+        fetchTrackInfo(trackId);
+      } else {
+        output.innerText = `Invalid QR Code. Please scan a Spotify track URL.`; 
+      }
+    }
+  
+    async function fetchAvailableDevices() {
+      if (!spotifyAccessToken) return;
+  
+      try {
         const response = await fetch('https://api.spotify.com/v1/me/player/devices', {
           headers: { Authorization: `Bearer ${spotifyAccessToken}` },
         });
         if (!response.ok) {
-          throw new Error(`Device list error: ${response.status} - ${response.statusText}`);
+          throw new Error(`Spotify devices endpoint returned ${response.status}: ${response.statusText}`);
         }
         const data = await response.json();
-        deviceId = data.devices.find(d => d.is_active)?.id;
+  
+        // Clear existing options in dropdown
+        deviceSelect.innerHTML = '<option value="">-- No device selected --</option>';
+  
+        // Populate the dropdown with available devices
+        data.devices.forEach(device => {
+          const option = document.createElement('option');
+          option.value = device.id;
+          option.textContent = device.name;
+          deviceSelect.appendChild(option);
+        });
+  
+        // Listen for device selection
+        deviceSelect.addEventListener('change', () => {
+          selectedDeviceId = deviceSelect.value;
+          output.innerText = selectedDeviceId
+            ? `Selected device: ${deviceSelect.options[deviceSelect.selectedIndex].textContent}`
+            : 'No device selected';
+        });
+      } catch (error) {
+        console.error('Error fetching devices:', error);
+        output.innerText = `Error fetching devices. ${error.message}`;
       }
-
-      // If still no device ID, we cannot play
-      if (!deviceId) {
-        output.innerText = 'No active device found! Please select or open Spotify on a device.';
+    }
+  
+    // 4. Spotify Authorization
+    authorizeButton.addEventListener('click', () => {
+      const clientId = 'd81545e258004fdb87a8dc3b42a7ebcd'; // Provide your Spotify Client ID
+      const redirectUri = location.href;
+      const scopes = 'user-modify-playback-state user-read-playback-state';
+      const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}`;
+  
+      window.location.href = authUrl;
+    });
+  
+    // Extract Spotify Access Token from URL
+    function extractAccessToken() {
+      const hash = window.location.hash;
+      if (hash.includes('access_token')) {
+        spotifyAccessToken = new URLSearchParams(hash.substring(1)).get('access_token');
+        output.innerText = 'Spotify authorized! You can now scan a QR code.';
+  
+        // Disable the authorization button and update its label
+        authorizeButton.disabled = true;
+        authorizeButton.textContent = 'Spotify Authorized';
+  
+        fetchAvailableDevices();
+      }
+    }
+  
+    // 5. Fetch Track Info for Second Tab
+    async function fetchTrackInfo(trackId) {
+      if (!spotifyAccessToken) {
+        output.innerText = 'Spotify token not available. Please authorize first.';
         return;
       }
-
-      // Send the 'play' command to the chosen device
-      const playResponse = await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`, {
-        method: 'PUT',
-        headers: { Authorization: `Bearer ${spotifyAccessToken}` },
-        body: JSON.stringify({ uris: [`spotify:track:${trackId}`] }),
-      });
-      if (!playResponse.ok) {
-        throw new Error(`Play command error: ${playResponse.status} - ${playResponse.statusText}`);
+  
+      try {
+        // 5A. Fetch track data
+        const trackResponse = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`, {
+          headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+        });
+        if (!trackResponse.ok) {
+          throw new Error(`Track fetch error: ${trackResponse.status} - ${trackResponse.statusText}`);
+        }
+        const trackData = await trackResponse.json();
+  
+        // 5B. Extract data from the track
+        const trackName = trackData.name;
+        const artistName = trackData.artists?.[0]?.name || 'Unknown';
+        const albumName = trackData.album?.name || 'Unknown';
+        const releaseDate = trackData.album?.release_date || 'Unknown';
+        const popularity = trackData.popularity || 0;
+        const albumArtUrl = trackData.album?.images?.[0]?.url || '';
+  
+        // 5C. Fetch artist data for genres
+        let genres = [];
+        try {
+          const artistId = trackData.artists?.[0]?.id;
+          if (artistId) {
+            const artistResponse = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, {
+              headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+            });
+            if (!artistResponse.ok) {
+              throw new Error(`Artist fetch error: ${artistResponse.status} - ${artistResponse.statusText}`);
+            }
+            const artistData = await artistResponse.json();
+            genres = artistData.genres || [];
+          }
+        } catch (artistErr) {
+          console.error('Error fetching artist info:', artistErr);
+          output.innerText = `Warning: could not fetch artist info. ${artistErr.message}`;
+        }
+  
+        // 5D. Update the HTML elements in second tab
+        albumArtEl.src = albumArtUrl;
+        trackNameEl.textContent = `Track: ${trackName}`;
+        artistNameEl.textContent = `Artist: ${artistName}`;
+        albumNameEl.textContent = albumName;
+        releaseDateEl.textContent = releaseDate;
+        popularityEl.textContent = popularity;
+        genresEl.textContent = genres.length ? genres.join(', ') : 'Unknown';
+  
+        // 5E. Update Google Search Link
+        const googleQuery = encodeURIComponent(`${artistName} ${albumName}`);
+        googleSearchEl.href = `https://www.google.com/search?q=${googleQuery}`;
+      } catch (error) {
+        console.error('Error fetching track info:', error);
+        output.innerText = `Error fetching track info. ${error.message}`;
       }
-
-      output.innerText = 'Playing track on Spotify!';
-    } catch (error) {
-      console.error('Error playing track:', error);
-      output.innerText = `Error playing track. ${error.message}`;
     }
-  }
-
-  // 7. Skip / Back
-  async function skip(seconds) {
-    if (!spotifyAccessToken) {
-      output.innerText = 'Please authorize Spotify first!';
-      return;
+  
+    // 6. Play Spotify Track
+    async function playSpotifyTrack(trackId) {
+      if (!spotifyAccessToken) {
+        output.innerText = 'Please authorize Spotify first!';
+        return;
+      }
+  
+      try {
+        // If the user selected a device, use that; otherwise fallback to "active" device
+        let deviceId = selectedDeviceId;
+        if (!deviceId) {
+          // fallback to the user’s currently active device (if any)
+          const response = await fetch('https://api.spotify.com/v1/me/player/devices', {
+            headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+          });
+          if (!response.ok) {
+            throw new Error(`Device list error: ${response.status} - ${response.statusText}`);
+          }
+          const data = await response.json();
+          deviceId = data.devices.find(d => d.is_active)?.id;
+        }
+  
+        // If still no device ID, we cannot play
+        if (!deviceId) {
+          output.innerText = 'No active device found! Please select or open Spotify on a device.';
+          return;
+        }
+  
+        // Send the 'play' command to the chosen device
+        const playResponse = await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`, {
+          method: 'PUT',
+          headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+          body: JSON.stringify({ uris: [`spotify:track:${trackId}`] }),
+        });
+        if (!playResponse.ok) {
+          throw new Error(`Play command error: ${playResponse.status} - ${playResponse.statusText}`);
+        }
+  
+        output.innerText = 'Playing track on Spotify!';
+      } catch (error) {
+        console.error('Error playing track:', error);
+        output.innerText = `Error playing track. ${error.message}`;
+      }
     }
-
-    try {
-      const playerResponse = await fetch('https://api.spotify.com/v1/me/player', {
-        headers: { Authorization: `Bearer ${spotifyAccessToken}` },
-      });
-      if (!playerResponse.ok) {
-        throw new Error(`Player state error: ${playerResponse.status} - ${playerResponse.statusText}`);
+  
+    // 7. Skip / Back
+    async function skip(seconds) {
+      if (!spotifyAccessToken) {
+        output.innerText = 'Please authorize Spotify first!';
+        return;
       }
-      const playerState = await playerResponse.json();
-
-      // Defensive checks
-      if (!playerState || !playerState.item) {
-        throw new Error('No player state found or no track is currently playing.');
+  
+      try {
+        const playerResponse = await fetch('https://api.spotify.com/v1/me/player', {
+          headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+        });
+        if (!playerResponse.ok) {
+          throw new Error(`Player state error: ${playerResponse.status} - ${playerResponse.statusText}`);
+        }
+        const playerState = await playerResponse.json();
+  
+        // Defensive checks
+        if (!playerState || !playerState.item) {
+          throw new Error('No player state found or no track is currently playing.');
+        }
+  
+        const currentPosition = playerState.progress_ms;
+        const trackDuration = playerState.item.duration_ms;
+        let newPosition = currentPosition + seconds * 1000;
+  
+        // Prevent skipping out of bounds
+        if (newPosition < 0) newPosition = 0;
+        if (newPosition > trackDuration) newPosition = trackDuration;
+  
+        const seekResponse = await fetch(`https://api.spotify.com/v1/me/player/seek?position_ms=${newPosition}`, {
+          method: 'PUT',
+          headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+        });
+        if (!seekResponse.ok) {
+          throw new Error(`Seek command error: ${seekResponse.status} - ${seekResponse.statusText}`);
+        }
+  
+        output.innerText = `Skipped to ${Math.floor(newPosition / 1000)} seconds.`;
+      } catch (error) {
+        console.error('Error skipping track:', error);
+        output.innerText = `Error skipping track. ${error.message}`;
       }
-
-      const currentPosition = playerState.progress_ms;
-      const trackDuration = playerState.item.duration_ms;
-      let newPosition = currentPosition + seconds * 1000;
-
-      // Prevent skipping out of bounds
-      if (newPosition < 0) newPosition = 0;
-      if (newPosition > trackDuration) newPosition = trackDuration;
-
-      const seekResponse = await fetch(`https://api.spotify.com/v1/me/player/seek?position_ms=${newPosition}`, {
-        method: 'PUT',
-        headers: { Authorization: `Bearer ${spotifyAccessToken}` },
-      });
-      if (!seekResponse.ok) {
-        throw new Error(`Seek command error: ${seekResponse.status} - ${seekResponse.statusText}`);
-      }
-
-      output.innerText = `Skipped to ${Math.floor(newPosition / 1000)} seconds.`;
-    } catch (error) {
-      console.error('Error skipping track:', error);
-      output.innerText = `Error skipping track. ${error.message}`;
     }
-  }
-
-  back30Button.addEventListener('click', () => skip(-30));
-  skip30Button.addEventListener('click', () => skip(30));
-
-  // 8. Initialize
-  startQRScanner();
-  extractAccessToken();
-</script>
+  
+    back30Button.addEventListener('click', () => skip(-30));
+    skip30Button.addEventListener('click', () => skip(30));
+  
+    // 8. Initialize
+    startQRScanner();
+    extractAccessToken();
+  </script>
+  <script>
+    // Dynamically set the last modified date
+    const lastChangedEl = document.getElementById('last-changed'); // Target the span in the footer
+    const lastModifiedDate = new Date(document.lastModified); // Get the last modified date of the file
+    lastChangedEl.textContent = lastModifiedDate.toLocaleString(); // Format as a readable string
+  </script>
+</body>
+</html>
