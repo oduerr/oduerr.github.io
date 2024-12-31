@@ -420,28 +420,37 @@
 
     // 6. Play Spotify Track
     async function playSpotifyTrack(trackId) {
-      if (!spotifyAccessToken) {
-        output.innerText = 'Please authorize Spotify first!';
-        return;
-      }
+  if (!spotifyAccessToken) {
+    output.innerText = 'Please authorize Spotify first!';
+    return;
+  }
 
-      const activeDevice = await fetch('https://api.spotify.com/v1/me/player/devices', {
-        headers: { Authorization: `Bearer ${spotifyAccessToken}` },
-      }).then(res => res.json())
-        .then(data => data.devices.find(device => device.is_active)?.id);
+  // If the user selected a device, use that; otherwise fallback to "active" device
+  let deviceId = selectedDeviceId;
+  if (!deviceId) {
+    // fallback to the user’s currently active device (if any)
+    const response = await fetch('https://api.spotify.com/v1/me/player/devices', {
+      headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+    });
+    const data = await response.json();
+    deviceId = data.devices.find(d => d.is_active)?.id;
+  }
 
-      if (!activeDevice) {
-        output.innerText = 'No active Spotify device found!';
-        return;
-      }
+  // If still no device ID, we cannot play
+  if (!deviceId) {
+    output.innerText = 'No active device found! Please select or open Spotify on a device.';
+    return;
+  }
 
-      await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${activeDevice}`, {
-        method: 'PUT',
-        headers: { Authorization: `Bearer ${spotifyAccessToken}` },
-        body: JSON.stringify({ uris: [`spotify:track:${trackId}`] }),
-      });
-      output.innerText = 'Playing track on Spotify!';
-    }
+  // Send the 'play' command to the chosen device
+  await fetch(`https://api.spotify.com/v1/me/player/play?device_id=${deviceId}`, {
+    method: 'PUT',
+    headers: { Authorization: `Bearer ${spotifyAccessToken}` },
+    body: JSON.stringify({ uris: [`spotify:track:${trackId}`] }),
+  });
+
+  output.innerText = 'Playing track on Spotify!';
+}
 
     // 7. Skip / Back
     async function skip(seconds) {
