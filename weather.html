@@ -70,56 +70,71 @@
     // 3) Fetch & Plot Function
     // ------------------------------
     function fetchAndPlot() {
-      const statusElement = document.getElementById("status");
-      statusElement.textContent = "Fetching data...";
-      
-      const selectedLoc = JSON.parse(locSelect.value); // {lat, lon, name}
-      const selectedModel = modSelect.value;
+    const statusElement = document.getElementById("status");
+    statusElement.textContent = "Checking selection...";
 
-      // Hourly variables and daily variables
-      const hourlyVars = [
+    const selectedLoc = JSON.parse(locSelect.value); // {lat, lon, name}
+    const selectedModel = modSelect.value;
+
+    // ✅ Unique cache key for each location + model
+    const cacheKey = `${selectedLoc.lat},${selectedLoc.lon},${selectedModel}`;
+    
+    // ✅ Retrieve cache
+    const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY) || "{}");
+
+    if (cachedData[cacheKey]) {
+        const cachedEntry = cachedData[cacheKey];
+
+        // ✅ Check if cache is still valid
+        if (Date.now() - cachedEntry.timestamp < CACHE_EXPIRATION_MS) {
+            console.log("Using cached data for", selectedLoc.name);
+            processWeatherData(cachedEntry.data, selectedLoc, selectedModel);
+            statusElement.textContent = `Loaded from cache (${selectedLoc.name})`;
+            return;
+        }
+    }
+
+    // ✅ If no valid cache, fetch new data
+    statusElement.textContent = "Fetching data...";
+
+    // Hourly & daily variables
+    const hourlyVars = [
         "temperature_2m", "relative_humidity_2m", "dew_point_2m",
         "precipitation", "precipitation_probability", "weather_code",
         "cloud_cover", "cloud_cover_low", "cloud_cover_mid",
         "cloud_cover_high", "visibility"
-      ];
-      const dailyVars = ["sunrise", "sunset"];
+    ];
+    const dailyVars = ["sunrise", "sunset"];
 
-      // Build API URL
-      const params = new URLSearchParams({
+    // Build API URL
+    const params = new URLSearchParams({
         latitude: selectedLoc.lat,
         longitude: selectedLoc.lon,
         hourly: hourlyVars.join(","),
         daily: dailyVars.join(","),
         models: selectedModel
-      });
-      const apiUrl = `https://api.open-meteo.com/v1/forecast?${params.toString()}`;
+    });
+    const apiUrl = `https://api.open-meteo.com/v1/forecast?${params.toString()}`;
 
-      // Check cache
-      const cachedData = localStorage.getItem(CACHE_KEY);
-      if (cachedData) {
-        const parsed = JSON.parse(cachedData);
-        if (Date.now() - parsed.timestamp < CACHE_EXPIRATION_MS) {
-          console.log("Using cached data");
-          processWeatherData(parsed.data, selectedLoc, selectedModel);
-          statusElement.textContent = "Loaded from cache";
-          return;
-        }
-      }
-
-      // Fetch new data
-      fetch(apiUrl)
+    // Fetch new data
+    fetch(apiUrl)
         .then(res => res.json())
         .then(data => {
-          localStorage.setItem(CACHE_KEY, JSON.stringify({ data: data, timestamp: Date.now() }));
-          processWeatherData(data, selectedLoc, selectedModel);
-          statusElement.textContent = "Data updated at " + new Date().toLocaleTimeString();
+            // ✅ Store new data in cache
+            cachedData[cacheKey] = {
+                data: data,
+                timestamp: Date.now()
+            };
+            localStorage.setItem(CACHE_KEY, JSON.stringify(cachedData));
+
+            processWeatherData(data, selectedLoc, selectedModel);
+            statusElement.textContent = `Data updated at ${new Date().toLocaleTimeString()}`;
         })
         .catch(err => {
-          console.error("Error:", err);
-          statusElement.textContent = "Error fetching data";
+            console.error("Error:", err);
+            statusElement.textContent = "Error fetching data";
         });
-    }
+      }
 
     // ------------------------------
     // 4) Process Data & Plot (Using Plotly.js)
