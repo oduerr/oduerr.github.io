@@ -3,29 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Weather Forecast</title>
-  <!-- Load Plotly.js -->
+  <!-- Load Plotly.js (latest version from CDN) -->
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
-  <!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
   <style>
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    #controls {
-      margin: 10px;
-    }
-    #plot {
-      width: 100vw;
-      height: calc(100vh - 100px); /* Fill window, minus some space for controls */
-    }
+    #controls { margin: 10px; display: flex; align-items: center; gap: 10px; }
+    #plot { width: 100vw; height: calc(100vh - 120px); }
+    #status { font-size: 0.9em; color: gray; }
   </style>
 </head>
 <body>
-
-  <!-- Controls: dropdowns for location & model -->
+  <!-- Controls: dropdowns for location & model, and a button with status -->
   <div id="controls">
     <label for="locationSelect">Location:</label>
     <select id="locationSelect"></select>
 
     <label for="modelSelect">Model:</label>
     <select id="modelSelect"></select>
+
+    <button id="updateButton" onclick="fetchAndPlot()">Update Forecast</button>
+    <span id="status">Ready</span>
   </div>
 
   <div id="plot"></div>
@@ -39,203 +36,344 @@
       { name: "Chäserrugg", lat: 47.1549, lon: 9.3128 },
       { name: "Zurich", lat: 47.3769, lon: 8.5417 }
     ];
-
     const models = [
       { label: "DWD Seamless", value: "icon_seamless" },
-      { label: "DWD ICON D2", value: "dwd_icon_d2" },
+      { label: "DWD ICON D2", value: "icon_d2" },
       { label: "MeteoFrance Seamless", value: "meteofrance_seamless" }
     ];
-
-    // Insert location options
     const locSelect = document.getElementById("locationSelect");
-    locations.forEach((loc) => {
+    locations.forEach(loc => {
       const opt = document.createElement("option");
-      opt.value = JSON.stringify({ lat: loc.lat, lon: loc.lon });
+      // Store lat, lon, and name in the value (as JSON)
+      opt.value = JSON.stringify({ lat: loc.lat, lon: loc.lon, name: loc.name });
       opt.textContent = loc.name;
       locSelect.appendChild(opt);
     });
-
-    // Insert model options
     const modSelect = document.getElementById("modelSelect");
-    models.forEach((m) => {
+    models.forEach(m => {
       const opt = document.createElement("option");
       opt.value = m.value;
       opt.textContent = m.label;
       modSelect.appendChild(opt);
     });
-
-    // Default selection
-    locSelect.selectedIndex = 0;        // Konstanz
-    modSelect.selectedIndex = 0;        // DWD ICON D2
+    // Default selections
+    locSelect.selectedIndex = 0;
+    modSelect.selectedIndex = 0;
 
     // ------------------------------
-    // 2) Build Plot Function
+    // 2) Caching Setup (Option 1: localStorage)
     // ------------------------------
-    
+    const CACHE_KEY = "weatherDataCache";
+    const CACHE_EXPIRATION_MS = 60 * 60 * 1000; // 1 hour
+
+    // ------------------------------
+    // 3) Fetch & Plot Function
+    // ------------------------------
     function fetchAndPlot() {
-      // Read user selections
-      const selectedLoc = JSON.parse(locSelect.value); // {lat, lon}
-      const selectedModel = modSelect.value;
+    const statusElement = document.getElementById("status");
+    statusElement.textContent = "Checking selection...";
 
-      // Hourly variables
-      const hourlyVars = [
+    const selectedLoc = JSON.parse(locSelect.value); // {lat, lon, name}
+    const selectedModel = modSelect.value;
+
+    // ✅ Unique cache key for each location + model
+    const cacheKey = `${selectedLoc.lat},${selectedLoc.lon},${selectedModel}`;
+    
+    // ✅ Retrieve cache
+    const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY) || "{}");
+
+    if (cachedData[cacheKey]) {
+        const cachedEntry = cachedData[cacheKey];
+
+        // ✅ Check if cache is still valid
+        if (Date.now() - cachedEntry.timestamp < CACHE_EXPIRATION_MS) {
+            console.log("Using cached data for", selectedLoc.name);
+            processWeatherData(cachedEntry.data, selectedLoc, selectedModel);
+            statusElement.textContent = `Loaded from cache (${selectedLoc.name})`;
+            return;
+        }
+    }
+
+    // ✅ If no valid cache, fetch new data
+    statusElement.textContent = "Fetching data...";
+
+    // Hourly & daily variables
+    const hourlyVars = [
         "temperature_2m", "relative_humidity_2m", "dew_point_2m",
         "precipitation", "precipitation_probability", "weather_code",
         "cloud_cover", "cloud_cover_low", "cloud_cover_mid",
         "cloud_cover_high", "visibility"
-      ];
+    ];
+    const dailyVars = ["sunrise", "sunset"];
 
-      // Build Open-Meteo API URL
-      const params = {
+    // Build API URL
+    const params = new URLSearchParams({
         latitude: selectedLoc.lat,
         longitude: selectedLoc.lon,
-        hourly: hourlyVars,
-        models: [selectedModel]
-      };
+        hourly: hourlyVars.join(","),
+        daily: dailyVars.join(","),
+        models: selectedModel
+    });
+    const apiUrl = `https://api.open-meteo.com/v1/forecast?${params.toString()}`;
 
-      const queryString = new URLSearchParams(params).toString();
-      const apiUrl = "https://api.open-meteo.com/v1/forecast?" + queryString;
-
-      // Convert UTC to German local time
-      const convertToGermanTime = (utcString) => {
-        const utcDate = new Date(utcString + "Z");
-        return new Date(utcDate.toLocaleString("en-US", { timeZone: "Europe/Berlin" }));
-      };
-
-      // Fetch data & plot
-      fetch(apiUrl)
-        .then(response => response.json())
+    // Fetch new data
+    fetch(apiUrl)
+        .then(res => res.json())
         .then(data => {
-          const hourly = data.hourly;
-          if(!hourly || !hourly.time) {
-            console.error("Invalid data:", data);
-            return;
+            // ✅ Store new data in cache
+            cachedData[cacheKey] = {
+                data: data,
+                timestamp: Date.now()
+            };
+            localStorage.setItem(CACHE_KEY, JSON.stringify(cachedData));
+
+            processWeatherData(data, selectedLoc, selectedModel);
+            statusElement.textContent = `Data updated at ${new Date().toLocaleTimeString()}`;
+        })
+        .catch(err => {
+            console.error("Error:", err);
+            statusElement.textContent = "Error fetching data";
+        });
+      }
+
+    // ------------------------------
+    // 4) Process Data & Plot (Using Plotly.js)
+    // ------------------------------
+    function processWeatherData(data, selectedLoc, model) {
+      // Extract hourly data
+      const hourly = data.hourly;
+      // Convert hourly times (assumed to be ISO strings in UTC) to German local time
+      const timesUTC = hourly.time.map(t => new Date(t + "Z"));
+      const timesLocal = timesUTC.map(t => new Date(t.toLocaleString("en-US", { timeZone: "Europe/Berlin" })));
+
+      // Extract arrays (use empty arrays if missing)
+      const temperature = hourly.temperature_2m || [];
+      const dewPoint = hourly.dew_point_2m || [];
+      const humidity = hourly.relative_humidity_2m || [];
+      const precipitation = hourly.precipitation || [];
+      const precipProb = hourly.precipitation_probability || [];
+      const cloudCover = hourly.cloud_cover || [];
+      const cloudCoverLow = hourly.cloud_cover_low || [];
+      const cloudCoverMid = hourly.cloud_cover_mid || [];
+      const cloudCoverHigh = hourly.cloud_cover_high || [];
+      const visibility = (hourly.visibility || []).map(v => v / 1000);
+      const weatherCode = hourly.weather_code || [];
+
+      // Weather icons mapping
+      const weatherIconMap = {
+        "0": "☀️", "1": "🌤️", "2": "⛅", "3": "☁️", 
+        "45": "🌫️", "48": "🌫️", "51": "🌦️", "53": "🌦️",
+        "55": "🌦️", "56": "🌧️", "57": "🌧️", "61": "🌧️",
+        "63": "🌧️", "65": "🌧️", "66": "🌧️", "67": "🌧️",
+        "71": "🌨️", "73": "🌨️", "75": "🌨️", "77": "❄️",
+        "80": "🌦️", "81": "🌦️", "82": "🌧️", "85": "🌨️",
+        "86": "🌨️", "95": "⛈️", "96": "⛈️", "99": "⛈️"
+      };
+      const weatherIcons = weatherCode.map(code => weatherIconMap[code] || "");
+
+      // Process daily data: sunrise and sunset (take first value)
+      // const sunrise = new Date(data.daily.sunrise[0] + "Z").toLocaleTimeString("de-DE", { timeZone: "Europe/Berlin" });
+      // const sunset = new Date(data.daily.sunset[0] + "Z").toLocaleTimeString("de-DE", { timeZone: "Europe/Berlin" });
+      
+      const sunrise = "07:33";  // Fixed sunrise time
+      const sunset = "17:00";   // Fixed sunset time
+
+      // Build traces for 3 rows:
+      // Row 1: Temperature, Dew Point, Humidity, and Weather Icons
+      const traceTemp = { x: timesLocal, y: temperature, mode: 'lines', name: 'Temperature (°C)', line: { color: 'red' }, yaxis: "y1" };
+      const traceDew = { x: timesLocal, y: dewPoint, mode: 'lines', name: 'Dew Point (°C)', line: { color: 'red', width: 1, dash: 'dot' }, opacity: 0.6, yaxis: "y1" };
+      const traceHum = { x: timesLocal, y: humidity, mode: 'lines', name: 'Humidity (%)', line: { color: 'royalblue' }, yaxis: "y2" };
+      const traceIcons = { x: timesLocal, y: temperature.map(t => t + 1), mode: 'text', text: weatherIcons, textfont: { size: 18 }, name: 'Weather', yaxis: "y1" };
+
+      // Row 2: Precipitation and Precipitation Probability
+      const tracePrecip = { x: timesLocal, y: precipitation, type: 'bar', name: 'Precipitation (mm)', marker: { color: 'skyblue' }, yaxis: "y3" };
+      const tracePrecipProb = { x: timesLocal, y: precipProb, mode: 'lines', name: 'Precipitation Prob (%)', line: { color: 'green' }, yaxis: "y4" };
+
+      // Row 3: Cloud Cover and Visibility
+      // Create cloud cover "tiles" using a scale function
+      const scaleCloud = (values, center) => {
+        const up = values.map(v => center + (v / 12));
+        const down = values.map(v => center - (v / 12));
+        return { up, down };
+      };
+      const lowCloud = scaleCloud(cloudCoverLow, 25);
+      const midCloud = scaleCloud(cloudCoverMid, 50);
+      const highCloud = scaleCloud(cloudCoverHigh, 75);
+      
+      const xMirror = timesLocal.concat([...timesLocal].reverse());
+      const traceCloudLow = { x: xMirror, y: lowCloud.up.concat(lowCloud.down.reverse()), fill: 'toself', mode: 'lines', name: 'Cloud Cover Low', line: { color: 'lightblue', width: 1 }, opacity: 0.6, yaxis: "y5" };
+      const traceCloudMid = { x: xMirror, y: midCloud.up.concat(midCloud.down.reverse()), fill: 'toself', mode: 'lines', name: 'Cloud Cover Mid', line: { color: 'gray', width: 1 }, opacity: 0.6, yaxis: "y5" };
+      const traceCloudHigh = { x: xMirror, y: highCloud.up.concat(highCloud.down.reverse()), fill: 'toself', mode: 'lines', name: 'Cloud Cover High', line: { color: 'black', width: 1 }, opacity: 0.6, yaxis: "y5" };
+      const traceCloudTotal = { x: timesLocal, y: cloudCover, mode: 'lines', name: 'Total Cloud Cover', line: { color: 'black', width: 2 }, yaxis: "y5" };
+      const traceVisibility = { x: timesLocal, y: visibility, mode: 'lines', name: 'Visibility (km)', line: { color: 'brown', width: 2, dash: 'dot' }, yaxis: "y6" };
+
+      //--------
+      // Convert to Date objects (we assume the time is for each day)
+    const startDate = timesLocal[0]; // First timestamp in the dataset
+    const endDate = timesLocal[timesLocal.length - 1]; // Last timestamp
+
+    const nightShading = [];
+
+    // Loop over each day in the dataset
+    let currentDate = new Date(startDate);
+    while (currentDate <= endDate) {
+        // Construct sunrise and sunset Date objects for each day
+        const sunriseTime = "07:33";  // Fixed sunrise time
+        const sunsetTime = "17:00";   // Fixed sunset time
+
+        const sunrise = new Date(currentDate);        
+        sunrise.setHours(parseInt(sunriseTime.split(":")[0]), parseInt(sunriseTime.split(":")[1]), 0);
+
+        const sunset = new Date(currentDate);
+        sunset.setHours(parseInt(sunsetTime.split(":")[0]), parseInt(sunsetTime.split(":")[1]), 0);
+
+        nightShading.push(
+          {
+              type: "rect",
+              x0: currentDate.toISOString(),
+              x1: sunrise.toISOString(),
+              y0: 0, y1: 1,
+              xref: "x",
+              yref: "paper",
+              fillcolor: "rgba(0, 0, 0, 0.08)",  // Light gray shade
+              layer: "below",
+              line: { width: 0 }
+          },
+          {
+              type: "rect",
+              x0: sunset.toISOString(),
+              x1: new Date(currentDate.getTime() + 24 * 3600 * 1000).toISOString(),
+              y0: 0, y1: 1,
+              xref: "x",
+              yref: "paper",
+              fillcolor: "rgba(0, 0, 0, 0.08)",  // Light gray shade
+              layer: "below",
+              line: { width: 0 }
           }
+      );
 
-          // Convert times to local
-          const timesLocal = hourly.time.map(t => convertToGermanTime(t));
+          // Add dashed lines at sunrise and sunset
+          nightShading.push(
+              {
+                  type: "line",
+                  x0: sunrise.toISOString(),
+                  x1: sunrise.toISOString(),
+                  y0: 0, y1: 1,
+                  xref: "x",
+                  yref: "paper",
+                  line: { color: "blue", dash: "dash", width: 0.2 }  // Dashed blue line for sunrise
+              },
+              {
+                  type: "line",
+                  x0: new Date(currentDate.getTime() + 24 * 3600 * 1000).toISOString(),
+                  x1: new Date(currentDate.getTime() + 24 * 3600 * 1000).toISOString(),
+                  y0: 0, y1: 1,
+                  xref: "x",
+                  yref: "paper",
+                  line: { color: "rgba(0, 0, 0, 0.08)", dash: "dash", width: 2 }  // Dashed blue line for sunrise
+              },
+              {
+                  type: "line",
+                  x0: sunset.toISOString(),
+                  x1: sunset.toISOString(),
+                  y0: 0, y1: 1,
+                  xref: "x",
+                  yref: "paper",
+                  line: { color: "orange", dash: "dash", width: 0.2 }  // Dashed orange line for sunset
+              }
+          );
+            // Move to the next day
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
 
-          // Extract arrays
-          const temperature = hourly.temperature_2m || [];
-          const dewPoint = hourly.dew_point_2m || [];
-          const humidity = hourly.relative_humidity_2m || [];
-          const precipitation = hourly.precipitation || [];
-          const precipProb = hourly.precipitation_probability || [];
-          const cloudCover = hourly.cloud_cover || [];
-          const cloudCoverLow = hourly.cloud_cover_low || [];
-          const cloudCoverMid = hourly.cloud_cover_mid || [];
-          const cloudCoverHigh = hourly.cloud_cover_high || [];
-          const visibility = (hourly.visibility || []).map(v => v / 1000); // in km
-          const weatherCode = hourly.weather_code || [];
+      //-----
+      
+      // "Now" vertical line (using current local time)
+      const now_local_iso = new Date().toISOString();
+      const shapeNow = {
+        type: 'line',
+        x0: now_local_iso,
+        x1: now_local_iso,
+        y0: 0,
+        y1: 1,
+        xref: 'x',
+        yref: 'paper',
+        line: { color: 'red', dash: 'dash', width: 2 }
+      };
 
-          // Weather icons
-          const weatherIconMap = {
-            "0": "☀️", "1": "🌤️", "2": "⛅", "3": "☁️",
-            "45": "🌫️", "48": "🌫️", "51": "🌦️", "53": "🌦️",
-            "55": "🌦️", "56": "🌧️", "57": "🌧️", "61": "🌧️",
-            "63": "🌧️", "65": "🌧️", "66": "🌧️", "67": "🌧️",
-            "71": "🌨️", "73": "🌨️", "75": "🌨️", "77": "❄️",
-            "80": "🌦️", "81": "🌦️", "82": "🌧️", "85": "🌨️",
-            "86": "🌨️", "95": "⛈️", "96": "⛈️", "99": "⛈️"
-          };
-          const weatherIcons = weatherCode.map(code => weatherIconMap[code] || "");
+      // Build all traces
+      const allTraces = [
+        traceTemp, traceDew, traceHum, traceIcons,
+        tracePrecip, tracePrecipProb,
+        traceCloudLow, traceCloudMid, traceCloudHigh, traceCloudTotal,
+        traceVisibility
+      ];
 
-          // Cloud cover "tiles"
-          const scaleCloud = (values, center) => {
-            const up = values.map(v => center + (v / 4));
-            const down = values.map(v => center - (v / 4));
-            return { up, down };
-          };
-          const lowCloud = scaleCloud(cloudCoverLow, 25);
-          const midCloud = scaleCloud(cloudCoverMid, 50);
-          const highCloud = scaleCloud(cloudCoverHigh, 75);
-          const xMirror = timesLocal.concat([...timesLocal].reverse());
+      // Build layout: using grid for 3 rows and a lower separate x-axis for date labels (if desired)
+     // Step 1: Find the unique days in the dataset
+    const uniqueDays = [...new Set(timesLocal.map(t => t.toISOString().split("T")[0]))];
 
-          // "Now" vertical line
-          const now_local = new Date();
-          const shapeNow = { 
-            type: 'line',
-            x0: now_local.toISOString(),
-            x1: now_local.toISOString(),
-            y0: 0,
-            y1: 1,
-            xref: 'x',
-            yref: 'paper',
-            line: { color: 'red', dash: 'dash', width: 2 }
+    // Step 2: Create annotations at noon for each day
+    const weekdayAnnotations = uniqueDays.map(day => {
+        const noonTime = new Date(`${day}T12:00:00`);  // Set noon time
+        return {
+            x: noonTime.toISOString(),   // X position at noon
+            y: 1.05,                     // Y position (above first row)
+            xref: "x",
+            yref: "paper",
+            text: noonTime.toLocaleDateString("en-US", { weekday: "long" }), // "Monday", "Tuesday", etc.
+            showarrow: false,
+            font: { size: 14, color: "black", weight: "bold" },
+            align: "center"
         };
+    });
 
-          // Build traces
-          const traceTemp = { x: timesLocal, y: temperature, mode: 'lines', name: 'Temperature (°C)', line: { color: 'red' }, yaxis: "y1" };
-          const traceDew = { x: timesLocal, y: dewPoint, mode: 'lines', name: 'Dew Point (°C)', line: { color: 'blue', width: 1, dash: 'dot' }, opacity: 0.6, yaxis: "y1" };
-          const traceHum = { x: timesLocal, y: humidity, mode: 'lines', name: 'Humidity (%)', line: { color: 'royalblue' }, yaxis: "y2" };
+    // Step 3: Add the annotations to the layout
+    const layout = {
+        title: {
+            text: `${model} for ${selectedLoc.name} (${selectedLoc.lat}°N, ${selectedLoc.lon}°E, Alt: ${data.elevation || "N/A"} m) – Sunrise: ${sunrise}, Sunset: ${sunset}`,
+            //text: `allo`,
+            x: 0.01, // Align title to the left
+            y: -0.05,  // Move title up
+            xanchor: "left"
+        },
+        showtitle:true,
+        width: window.innerWidth,
+        height: window.innerHeight * 0.90,
+        grid: { rows: 3, columns: 1, pattern: "independent" },
 
-          const tracePrecip = { x: timesLocal, y: precipitation, type: 'bar', name: 'Precip (mm)', marker: { color: 'skyblue' }, yaxis: "y3" };
-          const tracePrecipProb = { x: timesLocal, y: precipProb, mode: 'lines', name: 'Precip Prob (%)', line: { color: 'green' }, yaxis: "y4" };
+        // X-axis settings
+        xaxis: {
+            title: "Time (CET/CEST)",
+            tickformat: "%b %d %H:%M",  // "Fri, Feb 23 12:00"
+            tickmode: "auto",
+            autorange: true,
+            showgrid: true,
+            tickangle: -30,
+            rangeslider: { visible: false },
+            anchor: "y5",
+        },
 
-          const traceCloudLow = { x: xMirror, y: lowCloud.up.concat(lowCloud.down.reverse()), fill: 'toself', mode: 'lines', name: 'Cloud Cover Low', line: { color: 'lightblue', width: 1 }, opacity: 0.6, yaxis: "y5" };
-          const traceCloudMid = { x: xMirror, y: midCloud.up.concat(midCloud.down.reverse()), fill: 'toself', mode: 'lines', name: 'Cloud Cover Mid', line: { color: 'gray', width: 1 }, opacity: 0.6, yaxis: "y5" };
-          const traceCloudHigh = { x: xMirror, y: highCloud.up.concat(highCloud.down.reverse()), fill: 'toself', mode: 'lines', name: 'Cloud Cover High', line: { color: 'black', width: 1 }, opacity: 0.6, yaxis: "y5" };
-          const traceCloudTotal = { x: timesLocal, y: cloudCover, mode: 'lines', name: 'Total Cloud Cover', line: { color: 'black', width: 2 }, yaxis: "y5" };
+        yaxis:  { title: "Temp (°C)", domain: [0.70, 1], color: "red" },  // 🔼 Slightly larger top row
+        yaxis2: { title: "Humidity (%)", overlaying: "y", side: "right", color: "blue" },
 
-          const traceVisibility = { x: timesLocal, y: visibility, mode: 'lines', name: 'Visibility (km)', line: { color: 'brown', width: 2, dash: 'dot' }, yaxis: "y6" };
+        yaxis3: { title: "Precip (mm)", domain: [0.45, 0.70], color: "skyblue"  },  // 🔽 Smaller middle row
+        yaxis4: { title: "Precip Prob (%)", overlaying: "y3", side: "right", color: "green" },
 
-          const traceIcons = {
-            x: timesLocal,
-            y: temperature.map(t => t + 1),
-            mode: 'text',
-            text: weatherIcons,
-            textfont: { size: 18 },
-            name: 'Weather',
-            yaxis: "y1"
-          };
+        yaxis5: { title: "Cloud Cover (%)", domain: [0, 0.35] },  // 🔼 More space for bottom row
+        yaxis6: { title: "Visibility (km)", overlaying: "y5", side: "right", range: [0, 100], color: "darkred" },
 
-          const allTraces = [
-            traceTemp, traceDew, traceHum, traceIcons,
-            tracePrecip, tracePrecipProb,
-            traceCloudLow, traceCloudMid, traceCloudHigh, traceCloudTotal,
-            traceVisibility
-          ];
-
-          const layout = {
-            title: `Weather Forecast (${selectedModel}) for ${selectedLoc.lat}°N, ${selectedLoc.lon}°E`,
-            width: window.innerWidth,   // fill browser width
-            height: window.innerHeight * 0.8,  // dynamic height
-            grid: { rows: 3, columns: 1, pattern: 'independent' },
-
-            xaxis: { title: "Time (CET/CEST)", tickformat: "%Y-%m-%d<br>%A %H:%M", dtick: 12 * 3600 * 1000 },
-            yaxis: { title: "Temp (°C) & Dew", domain: [0.7, 1] },
-            yaxis2: { title: "Humidity (%)", overlaying: "y", side: "right" },
-
-            yaxis3: { title: "Precip (mm)", domain: [0.35, 0.7] },
-            yaxis4: { title: "Precip Prob (%)", overlaying: "y3", side: "right" },
-
-            yaxis5: { title: "Cloud Cover (%)", domain: [0, 0.35] },
-            yaxis6: { title: "Visibility (km)", overlaying: "y5", side: "right", range: [0, 10] },
-
-            shapes: [ shapeNow ]  // Oops, let's fix it properly below
-          };
-
-          // We can't define shapeNow inline, so let's define it properly:
-          layout.shapes = [{
-            type: 'line',
-            x0: now_local,
-            x1: now_local,
-            y0: 0.2,
-            y1: 1,
-            xref: 'x',
-            yref: 'paper',
-            line: { color: 'red', dash: 'dash', width: 2 }
-          }];
+        shapes: [...nightShading, shapeNow],
+        showlegend: false,  // Hide legend
+        annotations: weekdayAnnotations  // ✅ Add weekday labels at noon
+    };
 
           Plotly.newPlot('plot', allTraces, layout);
-        })
-        .catch(error => console.error(error));
-    }
-
+        }
     // Initialize the plot with default selections
     fetchAndPlot();
 
-    // If user changes location or model, re-plot
+    // Re-plot when location or model changes
     document.getElementById("locationSelect").addEventListener("change", fetchAndPlot);
     document.getElementById("modelSelect").addEventListener("change", fetchAndPlot);
   </script>
