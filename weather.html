@@ -38,7 +38,7 @@
     ];
     const models = [
       { label: "DWD Seamless", value: "icon_seamless" },
-      { label: "DWD ICON D2", value: "icon_d2" },
+      { label: "DWD ICON D2 ", value: "icon_d2" },
       { label: "MeteoFrance Seamless", value: "meteofrance_seamless" }
     ];
     const locSelect = document.getElementById("locationSelect");
@@ -65,6 +65,8 @@
     // ------------------------------
     const CACHE_KEY = "weatherDataCache";
     const CACHE_EXPIRATION_MS = 60 * 60 * 1000; // 1 hour
+    //const CACHE_EXPIRATION_MS = 1000; // 1 sec debugging
+
 
     // ------------------------------
     // 3) Fetch & Plot Function
@@ -112,6 +114,7 @@
         longitude: selectedLoc.lon,
         hourly: hourlyVars.join(","),
         daily: dailyVars.join(","),
+        "timezone": "Europe/Berlin",
         models: selectedModel
     });
     const apiUrl = `https://api.open-meteo.com/v1/forecast?${params.toString()}`;
@@ -143,8 +146,8 @@
       // Extract hourly data
       const hourly = data.hourly;
       // Convert hourly times (assumed to be ISO strings in UTC) to German local time
-      const timesUTC = hourly.time.map(t => new Date(t + "Z"));
-      const timesLocal = timesUTC.map(t => new Date(t.toLocaleString("en-US", { timeZone: "Europe/Berlin" })));
+      //const timesUTC = hourly.time.map(t => new Date(t + "Z"));
+      const timesLocal = hourly.time; // No need to convert to local time since query is already in local time
 
       // Extract arrays (use empty arrays if missing)
       const temperature = hourly.temperature_2m || [];
@@ -175,8 +178,15 @@
       // const sunrise = new Date(data.daily.sunrise[0] + "Z").toLocaleTimeString("de-DE", { timeZone: "Europe/Berlin" });
       // const sunset = new Date(data.daily.sunset[0] + "Z").toLocaleTimeString("de-DE", { timeZone: "Europe/Berlin" });
       
-      const sunrise = "07:33";  // Fixed sunrise time
-      const sunset = "17:00";   // Fixed sunset time
+      const sunrise = new Date(data.daily.sunrise[0]) // Don't change too much
+      const sunset = new Date(data.daily.sunset[0])
+      
+      // Make Date Objects for all sunrises and sunsets
+      const sunrises = data.daily.sunrise.map(sunrise => new Date(sunrise));
+      const sunsets = data.daily.sunset.map(sunset => new Date(sunset)); 
+      
+      //const sunrise = "07:33";  // Fixed sunrise time
+      //const sunset = "17:00";   // Fixed sunset time
 
       // Build traces for 3 rows:
       // Row 1: Temperature, Dew Point, Humidity, and Weather Icons
@@ -207,87 +217,27 @@
       const traceCloudTotal = { x: timesLocal, y: cloudCover, mode: 'lines', name: 'Total Cloud Cover', line: { color: 'black', width: 2 }, yaxis: "y5" };
       const traceVisibility = { x: timesLocal, y: visibility, mode: 'lines', name: 'Visibility (km)', line: { color: 'brown', width: 2, dash: 'dot' }, yaxis: "y6" };
 
-      //--------
-      // Convert to Date objects (we assume the time is for each day)
-    const startDate = timesLocal[0]; // First timestamp in the dataset
-    const endDate = timesLocal[timesLocal.length - 1]; // Last timestamp
+    //--------
+    // Convert to Date objects (we assume the time is for each day)
+    //const startDate = timesLocal[0]; // First timestamp in the dataset
+    //const endDate = new Date(timesLocal[timesLocal.length - 1]); // Last timestamp
 
     const nightShading = [];
+    for (let i = 0; i < sunrises.length - 1; i++) {
+        // Define the night period as the time between sunset[i] and sunrise[i+1]
+        nightShading.push({
+            type: "rect",
+            xref: "x",
+            yref: "paper",
+            x0: sunsets[i],   // Start of the night (sunset)
+            x1: sunrises[i + 1], // End of the night (next sunrise)
+            y0: 0, y1: 1,  // Full height (paper coordinates from 0 to 1)
+            fillcolor: "rgba(0, 0, 0, 0.08)", // Semi-transparent black for night shading
+            layer: "below",
+            line: { width: 0 }
+        });
+    }
 
-    // Loop over each day in the dataset
-    let currentDate = new Date(startDate);
-    while (currentDate <= endDate) {
-        // Construct sunrise and sunset Date objects for each day
-        const sunriseTime = "07:33";  // Fixed sunrise time
-        const sunsetTime = "17:00";   // Fixed sunset time
-
-        const sunrise = new Date(currentDate);        
-        sunrise.setHours(parseInt(sunriseTime.split(":")[0]), parseInt(sunriseTime.split(":")[1]), 0);
-
-        const sunset = new Date(currentDate);
-        sunset.setHours(parseInt(sunsetTime.split(":")[0]), parseInt(sunsetTime.split(":")[1]), 0);
-
-        nightShading.push(
-          {
-              type: "rect",
-              x0: currentDate.toISOString(),
-              x1: sunrise.toISOString(),
-              y0: 0, y1: 1,
-              xref: "x",
-              yref: "paper",
-              fillcolor: "rgba(0, 0, 0, 0.08)",  // Light gray shade
-              layer: "below",
-              line: { width: 0 }
-          },
-          {
-              type: "rect",
-              x0: sunset.toISOString(),
-              x1: new Date(currentDate.getTime() + 24 * 3600 * 1000).toISOString(),
-              y0: 0, y1: 1,
-              xref: "x",
-              yref: "paper",
-              fillcolor: "rgba(0, 0, 0, 0.08)",  // Light gray shade
-              layer: "below",
-              line: { width: 0 }
-          }
-      );
-
-          // Add dashed lines at sunrise and sunset
-          nightShading.push(
-              {
-                  type: "line",
-                  x0: sunrise.toISOString(),
-                  x1: sunrise.toISOString(),
-                  y0: 0, y1: 1,
-                  xref: "x",
-                  yref: "paper",
-                  line: { color: "blue", dash: "dash", width: 0.2 }  // Dashed blue line for sunrise
-              },
-              {
-                  type: "line",
-                  x0: new Date(currentDate.getTime() + 24 * 3600 * 1000).toISOString(),
-                  x1: new Date(currentDate.getTime() + 24 * 3600 * 1000).toISOString(),
-                  y0: 0, y1: 1,
-                  xref: "x",
-                  yref: "paper",
-                  line: { color: "rgba(0, 0, 0, 0.08)", dash: "dash", width: 2 }  // Dashed blue line for sunrise
-              },
-              {
-                  type: "line",
-                  x0: sunset.toISOString(),
-                  x1: sunset.toISOString(),
-                  y0: 0, y1: 1,
-                  xref: "x",
-                  yref: "paper",
-                  line: { color: "orange", dash: "dash", width: 0.2 }  // Dashed orange line for sunset
-              }
-          );
-            // Move to the next day
-            currentDate.setDate(currentDate.getDate() + 1);
-        }
-
-      //-----
-      
       // "Now" vertical line (using current local time)
       const now_local_iso = new Date().toISOString();
       const shapeNow = {
@@ -311,7 +261,7 @@
 
       // Build layout: using grid for 3 rows and a lower separate x-axis for date labels (if desired)
      // Step 1: Find the unique days in the dataset
-    const uniqueDays = [...new Set(timesLocal.map(t => t.toISOString().split("T")[0]))];
+    const uniqueDays = [...new Set(timesLocal.map(t => t.split("T")[0]))];
 
     // Step 2: Create annotations at noon for each day
     const weekdayAnnotations = uniqueDays.map(day => {
@@ -331,8 +281,7 @@
     // Step 3: Add the annotations to the layout
     const layout = {
         title: {
-            text: `${model} for ${selectedLoc.name} (${selectedLoc.lat}°N, ${selectedLoc.lon}°E, Alt: ${data.elevation || "N/A"} m) – Sunrise: ${sunrise}, Sunset: ${sunset}`,
-            //text: `allo`,
+            text: `${model} for ${selectedLoc.name} (${selectedLoc.lat.toFixed(2)}°N, ${selectedLoc.lon.toFixed(2)}°E, Alt: ${data.elevation || "N/A"} m) – Sunrise: ${sunrise.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}, Sunset: ${sunset.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`,
             x: 0.01, // Align title to the left
             y: -0.05,  // Move title up
             xanchor: "left"
