@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>⛅ Forecast</title>
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; font-size: 11px; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 11px;
+    }
 
     /* 🔹 Floating Controls (Compact) */
     #controls {
       position: absolute;
-      top: 0px; left: 10px;
+      top: 0px;
+      left: 10px;
       background: rgba(255, 255, 255, 0.8);
       padding: 5px 8px;
       border-radius: 5px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       z-index: 10;
     }
-    
-    select, #status {
+
+    select,
+    #status {
       font-size: 11px;
       padding: 2px 4px;
       margin-right: 5px;
@@ -27,12 +35,14 @@
     /* 🔹 Ensure Plot Fills the Screen */
     #plot {
       width: 100vw;
-      height: 100vh; /* Uses almost full height */
+      height: 100vh;
+      /* Uses almost full height */
     }
   </style>
 </head>
+
 <body>
-    <!-- 🔹 Floating Controls (Top-Left Corner) -->
+  <!-- 🔹 Floating Controls (Top-Left Corner) -->
   <div id="controls">
     <label for="locationSelect">📍</label>
     <select id="locationSelect"></select>
@@ -42,12 +52,16 @@
 
     <span id="status">✅ Ready</span>
     <button onclick="window.open('https://www.meteoradar.ch/bilder/mch_aktuell.php', '_blank')">🌧️ Radar</button>
+    <span id="konstanzTemperature"></span>
   </div>
 
   <!-- 🔹 Fullscreen Plotly Chart -->
   <div id="plot"></div>
 
   <script>
+    let measured_temp = null;
+    let measured_water_temp = null;
+
     // ------------------------------
     // 1) Define Available Locations & Models
     // ------------------------------
@@ -55,10 +69,10 @@
       { name: "Konstanz", lat: 47.6952, lon: 9.1307 },
       { name: "🏔️ Chäserrugg", lat: 47.1549, lon: 9.3128 },
       { name: "Zurich", lat: 47.3769, lon: 8.5417 },
-      { name: "Fischbach", lat:48.157652, lon: 8.487578},
+      { name: "Fischbach", lat: 48.157652, lon: 8.487578 },
     ];
     const models = [
-      { id: "icon_d2_det", label: "🇩🇪 ICON D2 48h", model: "icon_d2", type: "deterministic" }, 
+      { id: "icon_d2_det", label: "🇩🇪 ICON D2 48h", model: "icon_d2", type: "deterministic" },
       { id: "icon_seamless_det", label: "🇩🇪 Seamless", model: "icon_seamless", type: "deterministic" },
       { id: "arpege_europe_det", label: "🇫🇷 ARPEGE Europe", model: "arpege_europe", type: "deterministic" },
       { id: "arome_france_det", label: "🇫🇷 AROME France", model: "arome_france", type: "deterministic" },
@@ -79,10 +93,10 @@
     });
     const modSelect = document.getElementById("modelSelect");
     models.forEach(m => {
-        const opt = document.createElement("option");
-        opt.value = m.id;  // ✅ Store `id` instead of `model`
-        opt.textContent = m.label;
-        modSelect.appendChild(opt);
+      const opt = document.createElement("option");
+      opt.value = m.id;  // ✅ Store `id` instead of `model`
+      opt.textContent = m.label;
+      modSelect.appendChild(opt);
     });
     // Default selections
     locSelect.selectedIndex = 0;
@@ -94,8 +108,6 @@
     const CACHE_KEY = "weatherDataCache";
     const CACHE_EXPIRATION_MS = 60 * 60 * 1000; // 1 hour
     //const CACHE_EXPIRATION_MS = 1000; // 1 sec debugging
-
-
 
     // Function to fetch temperature and water temperature for Konstanz
     function fetchKonstanzWeather(callback) {
@@ -110,134 +122,144 @@
               console.error("Error fetching Konstanz weather:", error);
               callback("N/A", "N/A");  // Fallback values
       });
-}
+    }
 
     // ------------------------------
     // 3) Fetch & Plot Function
     // ------------------------------
     function fetchAndPlot() {
-        const statusElement = document.getElementById("status");
-        statusElement.textContent = "Checking selection...";
+      const statusElement = document.getElementById("status");
+      statusElement.textContent = "Checking selection...";
 
-        const selectedLoc = JSON.parse(locSelect.value); // {lat, lon, name}
+      const selectedLoc = JSON.parse(locSelect.value); // {lat, lon, name}
+
+      const selectedModel = models.find(m => m.id === modSelect.value);
+      // If Konstanz is selected, fetch and display the current temperature
+      
+      if(selectedLoc.name === "Konstanz") {
+          fetchKonstanzWeather((airTemp, waterTemp) => {
+            document.getElementById("konstanzTemperature").textContent = "Current Temperature: " + airTemp + "°C";
+          });
+        } else {
+          document.getElementById("konstanzTemperature").textContent = "";
+      }
         
-        const selectedModel = models.find(m => m.id === modSelect.value);
 
       if (!selectedModel) {
-          console.error("⚠️ No model found for selected value:", modSelect.value);
+        console.error("⚠️ No model found for selected value:", modSelect.value);
       } else {
-          console.log("✅ Selected Model:", selectedModel);
+        console.log("✅ Selected Model:", selectedModel);
       }
 
       // ✅ Unique cache key for each location + model
       const cacheKey = `${selectedLoc.lat},${selectedLoc.lon},${selectedModel.id}`;
       const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY) || "{}");
       if (cachedData[cacheKey]) {
-          const cachedEntry = cachedData[cacheKey];
+        const cachedEntry = cachedData[cacheKey];
 
-          // ✅ Check if cache is still valid
-          if (Date.now() - cachedEntry.timestamp < CACHE_EXPIRATION_MS) {
-              console.log("Using cached data for", selectedLoc.name);
-              processWeatherData(cachedEntry.data, selectedLoc, selectedModel);
-              statusElement.textContent = `Loaded from cache (${selectedLoc.name})`;
-              return;
-          }
+        // ✅ Check if cache is still valid
+        if (Date.now() - cachedEntry.timestamp < CACHE_EXPIRATION_MS) {
+          console.log("Using cached data for", selectedLoc.name);
+          processWeatherData(cachedEntry.data, selectedLoc, selectedModel);
+          statusElement.textContent = `Loaded from cache (${selectedLoc.name})`;
+          return;
+        }
       }
 
-        // ✅ If no valid cache, fetch new data
-        statusElement.textContent = "Fetching data...";
+      // ✅ If no valid cache, fetch new data
+      statusElement.textContent = "Fetching data...";
 
-        // Hourly & daily variables
-        let hourlyVars;
-        let apiUrl;
-        if (selectedModel.type === "ensemble") {
-          hourlyVars = [ //Not all variables are available for ensemble models
-                "temperature_2m", "relative_humidity_2m",
-                "precipitation", //"weather_code",
-                "cloud_cover"
-            ];
-            apiUrl = `https://ensemble-api.open-meteo.com/v1/ensemble?`;
-        } else {
-          hourlyVars = [
-                "temperature_2m", "relative_humidity_2m", "dew_point_2m",
-                "precipitation", "precipitation_probability", "weather_code",
-                "cloud_cover", "cloud_cover_low", "cloud_cover_mid",
-                "cloud_cover_high", "visibility", "sunshine_duration"
-            ];
-            apiUrl = `https://api.open-meteo.com/v1/forecast?`;
-        }
-        
-        const dailyVars = ["sunrise", "sunset"];
+      // Hourly & daily variables
+      let hourlyVars;
+      let apiUrl;
+      if (selectedModel.type === "ensemble") {
+        hourlyVars = [ //Not all variables are available for ensemble models
+          "temperature_2m", "relative_humidity_2m",
+          "precipitation", //"weather_code",
+          "cloud_cover"
+        ];
+        apiUrl = `https://ensemble-api.open-meteo.com/v1/ensemble?`;
+      } else {
+        hourlyVars = [
+          "temperature_2m", "relative_humidity_2m", "dew_point_2m",
+          "precipitation", "precipitation_probability", "weather_code",
+          "cloud_cover", "cloud_cover_low", "cloud_cover_mid",
+          "cloud_cover_high", "visibility", "sunshine_duration"
+        ];
+        apiUrl = `https://api.open-meteo.com/v1/forecast?`;
+      }
 
-        // Build API URL
-        const params = new URLSearchParams({
-            latitude: selectedLoc.lat,
-            longitude: selectedLoc.lon,
-            hourly: hourlyVars.join(","),
-            daily: dailyVars.join(","),
-            "timezone": "Europe/Berlin",
-            models: selectedModel.model,
+      const dailyVars = ["sunrise", "sunset"];
+
+      // Build API URL
+      const params = new URLSearchParams({
+        latitude: selectedLoc.lat,
+        longitude: selectedLoc.lon,
+        hourly: hourlyVars.join(","),
+        daily: dailyVars.join(","),
+        "timezone": "Europe/Berlin",
+        models: selectedModel.model,
+      });
+
+      // Fetch new data
+      fetch(apiUrl + params.toString())
+        .then(res => res.json())
+        .then(data => {
+          // ✅ Store new data in cache
+          cachedData[cacheKey] = {
+            data: data,
+            timestamp: Date.now()
+          };
+          localStorage.setItem(CACHE_KEY, JSON.stringify(cachedData));
+
+          processWeatherData(data, selectedLoc, selectedModel);
+          statusElement.textContent = `Data updated at ${new Date().toLocaleTimeString()}`;
+        })
+        .catch(err => {
+          console.error("Error:", err);
+          statusElement.textContent = "Error fetching data";
         });
-  
-        // Fetch new data
-        fetch(apiUrl + params.toString())
-            .then(res => res.json())
-            .then(data => {
-                // ✅ Store new data in cache
-                cachedData[cacheKey] = {
-                    data: data,
-                    timestamp: Date.now()
-                };
-                localStorage.setItem(CACHE_KEY, JSON.stringify(cachedData));
-
-                processWeatherData(data, selectedLoc, selectedModel);
-                statusElement.textContent = `Data updated at ${new Date().toLocaleTimeString()}`;
-            })
-            .catch(err => {
-                console.error("Error:", err);
-                statusElement.textContent = "Error fetching data";
-            });
     }
 
-      // Function to create continuous ensemble traces
-      function create_continuous_ensemble_traces(hourly, variable_name, yaxis = "y1", color = "red") {
-        const traces = [];
+    // Function to create continuous ensemble traces
+    function create_continuous_ensemble_traces(hourly, variable_name, yaxis = "y1", color = "red") {
+      const traces = [];
 
-        // 🔍 Debugging: Print available keys to check naming issues
-        console.log("Available Keys in hourly:", Object.keys(hourly));
-        console.log("Processing variable:", variable_name);
+      // 🔍 Debugging: Print available keys to check naming issues
+      console.log("Available Keys in hourly:", Object.keys(hourly));
+      console.log("Processing variable:", variable_name);
 
-        // Extract base variable (e.g., "temperature_2m")
-        if (hourly[variable_name]) {
-            traces.push({
-                x: hourly.time,  
-                y: hourly[variable_name],  
-                mode: "lines",
-                name: `${variable_name} (Mean)`,  
-                line: { color: color, width: 3 }, // Main variable in red
-                yaxis: yaxis
-            });
-        } else {
-          console.warn(`⚠️ Base variable ${variable_name} not found!`);
-        }
-
-        // Extract ensemble members dynamically
-        Object.keys(hourly).forEach(key => {
-            if (key.startsWith(variable_name + "_member")) {  // Match member variables
-                traces.push({
-                    x: hourly.time,  
-                    y: hourly[key],  
-                    mode: "lines",
-                    name: key.replace("_", " "),  
-                    line: { color: color, width: 1 },  
-                    opacity: 0.2,  
-                    yaxis: yaxis
-                });
-            }
+      // Extract base variable (e.g., "temperature_2m")
+      if (hourly[variable_name]) {
+        traces.push({
+          x: hourly.time,
+          y: hourly[variable_name],
+          mode: "lines",
+          name: `${variable_name} (Mean)`,
+          line: { color: color, width: 3 }, // Main variable in red
+          yaxis: yaxis
         });
-        console.log(`✅ Created ${traces.length} traces for ${variable_name}`);
-        return traces;
-      }    
+      } else {
+        console.warn(`⚠️ Base variable ${variable_name} not found!`);
+      }
+
+      // Extract ensemble members dynamically
+      Object.keys(hourly).forEach(key => {
+        if (key.startsWith(variable_name + "_member")) {  // Match member variables
+          traces.push({
+            x: hourly.time,
+            y: hourly[key],
+            mode: "lines",
+            name: key.replace("_", " "),
+            line: { color: color, width: 1 },
+            opacity: 0.2,
+            yaxis: yaxis
+          });
+        }
+      });
+      console.log(`✅ Created ${traces.length} traces for ${variable_name}`);
+      return traces;
+    }
 
 
     // ------------------------------
@@ -266,7 +288,7 @@
 
       // Weather icons mapping
       const weatherIconMap = {
-        "0": "☀️", "1": "🌤️", "2": "⛅", "3": "☁️", 
+        "0": "☀️", "1": "🌤️", "2": "⛅", "3": "☁️",
         "45": "🌫️", "48": "🌫️", "51": "🌦️", "53": "🌦️",
         "55": "🌦️", "56": "🌧️", "57": "🌧️", "61": "🌧️",
         "63": "🌧️", "65": "🌧️", "66": "🌧️", "67": "🌧️",
@@ -278,8 +300,8 @@
 
       // Make Date Objects for all sunrises and sunsets
       const sunrises = (data.daily && data.daily.sunrise || []).map(sunrise => new Date(sunrise));
-      const sunsets = (data.daily && data.daily.sunset || []).map(sunset => new Date(sunset)); 
-      
+      const sunsets = (data.daily && data.daily.sunset || []).map(sunset => new Date(sunset));
+
       // Build traces for 3 rows:
       // Row 1: Temperature, Dew Point, Humidity, and Weather Icons
       const traceTemp = { x: timesLocal, y: temperature, mode: 'lines', name: 'Temperature (°C)', line: { color: 'red' }, yaxis: "y1" };
@@ -304,7 +326,7 @@
       const lowCloud = scaleCloud(cloudCoverLow, 25);
       const midCloud = scaleCloud(cloudCoverMid, 50);
       const highCloud = scaleCloud(cloudCoverHigh, 75);
-      
+
       const xMirror = timesLocal.concat([...timesLocal].reverse());
       const traceCloudLow = { x: xMirror, y: lowCloud.up.concat(lowCloud.down.reverse()), fill: 'toself', mode: 'lines', name: 'Cloud Cover Low', line: { color: 'lightblue', width: 1 }, opacity: 0.6, yaxis: "y5" };
       const traceCloudMid = { x: xMirror, y: midCloud.up.concat(midCloud.down.reverse()), fill: 'toself', mode: 'lines', name: 'Cloud Cover Mid', line: { color: 'gray', width: 1 }, opacity: 0.6, yaxis: "y5" };
@@ -322,18 +344,18 @@
       // Night shading: create rectangles for each night period
       const nightShading = [];
       for (let i = 0; i < sunrises.length - 1; i++) {
-          // Define the night period as the time between sunset[i] and sunrise[i+1]
-          nightShading.push({
-              type: "rect",
-              xref: "x",
-              yref: "paper",
-              x0: sunsets[i],   // Start of the night (sunset)
-              x1: sunrises[i + 1], // End of the night (next sunrise)
-              y0: 0, y1: 1,  // Full height (paper coordinates from 0 to 1)
-              fillcolor: "rgba(0, 0, 0, 0.08)", // Semi-transparent black for night shading
-              layer: "below",
-              line: { width: 0 }
-          });
+        // Define the night period as the time between sunset[i] and sunrise[i+1]
+        nightShading.push({
+          type: "rect",
+          xref: "x",
+          yref: "paper",
+          x0: sunsets[i],   // Start of the night (sunset)
+          x1: sunrises[i + 1], // End of the night (next sunrise)
+          y0: 0, y1: 1,  // Full height (paper coordinates from 0 to 1)
+          fillcolor: "rgba(0, 0, 0, 0.08)", // Semi-transparent black for night shading
+          layer: "below",
+          line: { width: 0 }
+        });
       }
 
       // "Now" vertical line (using current local time)
@@ -352,11 +374,11 @@
       // Build all traces
       let allTraces;
       if (model.type === "ensemble") {
-          allTraces = [
-              ...traceTempEnsemble, ...traceHumEnsemble, ...tracePrecipEnsemble, ...traceCloudEnsemble,
-          ];
-        } else {
-          allTraces = [
+        allTraces = [
+          ...traceTempEnsemble, ...traceHumEnsemble, ...tracePrecipEnsemble, ...traceCloudEnsemble,
+        ];
+      } else {
+        allTraces = [
           traceTemp, traceDew, traceHum, traceIcons,
           tracePrecip, tracePrecipProb, traceSunshine,
           traceCloudLow, traceCloudMid, traceCloudHigh, traceCloudTotal,
@@ -365,36 +387,36 @@
       }
 
       // Build layout: using grid for 3 rows and a lower separate x-axis for date labels (if desired)
-     // Step 1: Find the unique days in the dataset
-    const uniqueDays = [...new Set(timesLocal.map(t => t.split("T")[0]))];
+      // Step 1: Find the unique days in the dataset
+      const uniqueDays = [...new Set(timesLocal.map(t => t.split("T")[0]))];
 
-    // Step 2: Create annotations at noon for each day
-    const weekdayAnnotations = uniqueDays.map(day => {
+      // Step 2: Create annotations at noon for each day
+      const weekdayAnnotations = uniqueDays.map(day => {
         const noonTime = new Date(`${day}T12:00:00`);  // Set noon time
         return {
-            x: noonTime.toISOString(),   // X position at noon
-            y: 1.05,                     // Y position (above first row)
-            xref: "x",
-            yref: "paper",
-            text: noonTime.toLocaleDateString("en-US", { weekday: "long" }), // "Monday", "Tuesday", etc.
-            showarrow: false,
-            font: { size: 14, color: "black", weight: "bold" },
-            align: "center"
+          x: noonTime.toISOString(),   // X position at noon
+          y: 1.05,                     // Y position (above first row)
+          xref: "x",
+          yref: "paper",
+          text: noonTime.toLocaleDateString("en-US", { weekday: "long" }), // "Monday", "Tuesday", etc.
+          showarrow: false,
+          font: { size: 14, color: "black", weight: "bold" },
+          align: "center"
         };
-    });
+      });
 
-    // Step 3: Add the annotations to the layout
-    const layout = {
-      title: {
-        text: `${model.label} – ${selectedLoc.name} 📍 ${selectedLoc.lat.toFixed(2)}°N, ${selectedLoc.lon.toFixed(2)}°E, ⛰️ ${data.elevation || "N/A"}m | ☀️ ${sunrises[0] ? sunrises[0].toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : "N/A"} – 🌙 ${sunsets[0] ? sunsets[0].toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : "N/A"}`,
-        x: 0.05, // Align title to the left
-        y: -0.05, // Move title up slightly
-        xanchor: "left",
-        font: { size: 12 }, // Small font for compactness
-        showlegend: false,
-        margin: { l: 40, r: 20, t: 20, b: 10 },
-      },
-        showtitle:true,
+      // Step 3: Add the annotations to the layout
+      const layout = {
+        title: {
+          text: `${model.label} – ${selectedLoc.name} 📍 ${selectedLoc.lat.toFixed(2)}°N, ${selectedLoc.lon.toFixed(2)}°E, ⛰️ ${data.elevation || "N/A"}m | ☀️ ${sunrises[0] ? sunrises[0].toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : "N/A"} – 🌙 ${sunsets[0] ? sunsets[0].toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : "N/A"}`,
+          x: 0.05, // Align title to the left
+          y: -0.05, // Move title up slightly
+          xanchor: "left",
+          font: { size: 12 }, // Small font for compactness
+          showlegend: false,
+          margin: { l: 40, r: 20, t: 20, b: 10 },
+        },
+        showtitle: true,
         width: window.innerWidth,
         height: window.innerHeight * 0.98,
         grid: { rows: 3, columns: 1, pattern: "independent" },
@@ -402,10 +424,10 @@
         // X-axis settings
         xaxis: { title: "Time (CET/CEST)", tickformat: "%b %d %H:%M", tickmode: "auto", autorange: true, showgrid: true, tickangle: -30, rangeslider: { visible: false }, anchor: "y5" },
 
-        yaxis1:  { title: "Temp (°C)", domain: [0.70, 1], color: "red" },  // 🔼 Slightly larger top row
+        yaxis1: { title: "Temp (°C)", domain: [0.70, 1], color: "red" },  // 🔼 Slightly larger top row
         yaxis2: { title: "Humidity (%)", overlaying: "y", side: "right", color: "blue" },
 
-        yaxis3: { title: "🌧️ (mm)", domain: [0.45, 0.70], color: "skyblue"  },  // 🔽 Smaller middle row
+        yaxis3: { title: "🌧️ (mm)", domain: [0.45, 0.70], color: "skyblue" },  // 🔽 Smaller middle row
         yaxis4: { title: "🌧️ Prob % | ☀️ %", overlaying: "y3", side: "right", color: "black" },
 
         yaxis5: { title: "Cloud Cover (%)", domain: [0, 0.35] },  // 🔼 More space for bottom row
@@ -415,7 +437,7 @@
         showlegend: false,  // Hide legend
         annotations: weekdayAnnotations  // ✅ Add weekday labels at noon
       }; // End of layout
-      
+
       Plotly.newPlot('plot', allTraces, layout);
     } // End of processWeatherData
     // Initialize the plot with default selections
@@ -424,8 +446,10 @@
     document.getElementById("locationSelect").addEventListener("change", fetchAndPlot);
     document.getElementById("modelSelect").addEventListener("change", fetchAndPlot);
   </script>
-      <p style="text-align: center; font-size: 10px; color: gray; margin-top: -10px;">
-        Weather data provided by <a href="https://open-meteo.com/" target="_blank" style="color: gray; text-decoration: none;">Open-Meteo</a>.
-      </p>
+  <p style="text-align: center; font-size: 10px; color: gray; margin-top: -10px;">
+    Weather data provided by <a href="https://open-meteo.com/" target="_blank"
+      style="color: gray; text-decoration: none;">Open-Meteo</a>.
+  </p>
 </body>
+
 </html>
