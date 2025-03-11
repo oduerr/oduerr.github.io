@@ -85,6 +85,7 @@
       { id: "gfs025", label: "🇺🇸📊 GFS Ensemble", model: "gfs025", type: "ensemble" },
     ];
     const locSelect = document.getElementById("locationSelect");
+    
     locations.forEach(loc => {
       const opt = document.createElement("option");
       // Store lat, lon, and name in the value (as JSON)
@@ -92,6 +93,7 @@
       opt.textContent = loc.name;
       locSelect.appendChild(opt);
     });
+    
     const modSelect = document.getElementById("modelSelect");
     models.forEach(m => {
       const opt = document.createElement("option");
@@ -103,14 +105,18 @@
     locSelect.selectedIndex = 0;
     modSelect.selectedIndex = 0;
 
-    // ------------------------------
-    // 2) Caching Setup (Option 1: localStorage)
-    // ------------------------------
-    const CACHE_KEY = "weatherDataCache";
-    const CACHE_EXPIRATION_MS = 60 * 60 * 1000; // 1 hour
-    //const CACHE_EXPIRATION_MS = 1000; // 1 sec debugging
-
-    // Function to fetch temperature and water temperature for Konstanz
+   // Function to get URL parameters
+   function getUrlParams() {
+        const params = new URLSearchParams(window.location.search);
+        const lat = parseFloat(params.get("lat"));
+        const lon = parseFloat(params.get("lon"));
+        if (!isNaN(lat) && !isNaN(lon)) {
+            const name = params.get("name") || `Custom ${lat.toFixed(4)}, ${lon.toFixed(4)}`;
+            return { lat, lon, name };
+        }
+        return null;
+    }
+    
     function fetchKonstanzWeather(callback) {
       fetch("https://www.uni-konstanz.de/hsp/wetter/data/current.json")
           .then(response => response.json())
@@ -126,26 +132,99 @@
     }
 
     // ------------------------------
+    // 2) Populate Dropdowns (Including URL-Based Location)
+    // ------------------------------
+    //locSelect = document.getElementById("locationSelect");
+
+    // Add predefined locations
+    // locations.forEach(loc => {
+    //   const opt = document.createElement("option");
+    //   opt.value = JSON.stringify({ lat: loc.lat, lon: loc.lon, name: loc.name });
+    //   opt.textContent = loc.name;
+    //   locSelect.appendChild(opt);
+    // });
+
+    // Check for location in URL
+    const urlLocation = getUrlParams();
+    if (urlLocation) {
+      // Check if the location already exists in the dropdown
+      let exists = false;
+      for (let i = 0; i < locSelect.options.length; i++) {
+        const option = locSelect.options[i];
+        const optValue = JSON.parse(option.value);
+        if (
+          optValue.name === urlLocation.name &&
+          optValue.lat === urlLocation.lat &&
+          optValue.lon === urlLocation.lon
+        ) {
+          exists = true;
+          break;
+        }
+      }
+      // If not, add it
+      if (!exists) {
+        const customOpt = document.createElement("option");
+        customOpt.value = JSON.stringify(urlLocation);
+        customOpt.textContent = urlLocation.name;
+        locSelect.appendChild(customOpt);
+      }
+      // Set as selected
+      locSelect.value = JSON.stringify(urlLocation);
+    } else {
+      locSelect.selectedIndex = 0;
+    }
+
+    // Populate Model Dropdown
+    models.forEach(m => {
+      const opt = document.createElement("option");
+      opt.value = m.id;
+      opt.textContent = m.label;
+      modSelect.appendChild(opt);
+    });
+    modSelect.selectedIndex = 0;
+
+    // ------------------------------
     // 3) Fetch & Plot Function
     // ------------------------------
     function fetchAndPlot() {
-      const statusElement = document.getElementById("status");
-      statusElement.textContent = "Checking selection...";
-
-      const selectedLoc = JSON.parse(locSelect.value); // {lat, lon, name}
-
-      const selectedModel = models.find(m => m.id === modSelect.value);
-      // If Konstanz is selected, fetch and display the current temperature
       
-      if(selectedLoc.name === "Konstanz") {
+      
+      // // Declare selectedLoc so it can be reassigned
+      // let selectedLoc = getUrlParams(); 
+      // console.error("Selected Location (from URL)", selectedLoc);
+      //if (selectedLoc === null) {
+        //locSelect = document.getElementById("locationSelect");
+      if (locSelect) {
+          try {
+              selectedLoc = JSON.parse(locSelect.value);
+              console.log("Parsed selectedLoc:", selectedLoc);
+          } catch (e) {
+              console.error("Error parsing locSelect value:", e);
+              selectedLoc = null; // Reset to null if parsing fails
+          }
+      } else {
+          console.error("locSelect element not found");
+      }
+     // }
+      console.error("Selected Location ", selectedLoc);
+
+      const statusElement = document.getElementById("status");
+      if (statusElement) {
+          statusElement.textContent = "Checking selection...";
+      }
+
+      if (selectedLoc && selectedLoc.name === "Konstanz") {
           fetchKonstanzWeather((airTemp, waterTemp) => {
-            document.getElementById("konstanzTemperature").textContent = "Current Temperature: " + airTemp + "°C";
+              document.getElementById("konstanzTemperature").textContent = 
+                  "Current Temperature: " + airTemp + "°C";
           });
-        } else {
+      } else {
           document.getElementById("konstanzTemperature").textContent = "";
       }
-        
-
+      
+      
+      const selectedModel = models.find(m => m.id === modSelect.value);
+      // If Konstanz is selected, fetch and display the current temperature 
       if (!selectedModel) {
         console.error("⚠️ No model found for selected value:", modSelect.value);
       } else {
@@ -153,6 +232,8 @@
       }
 
       // ✅ Unique cache key for each location + model
+      const CACHE_KEY = "weatherDataCache";
+      const CACHE_EXPIRATION_MS = 60 * 60 * 1000; // 1 hour
       const cacheKey = `${selectedLoc.lat},${selectedLoc.lon},${selectedModel.id}`;
       const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY) || "{}");
       if (cachedData[cacheKey]) {
