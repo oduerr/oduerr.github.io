@@ -95,13 +95,13 @@
     });
     
     const modSelect = document.getElementById("modelSelect");
-    models.forEach(m => {
-      const opt = document.createElement("option");
-      opt.value = m.id;  // ✅ Store `id` instead of `model`
-      opt.textContent = m.label;
-      modSelect.appendChild(opt);
-    });
-    // Default selections
+    // models.forEach(m => {
+    //   const opt = document.createElement("option");
+    //   opt.value = m.id;  // ✅ Store `id` instead of `model`
+    //   opt.textContent = m.label;
+    //   modSelect.appendChild(opt);
+    // });
+    // // Default selections
     locSelect.selectedIndex = 0;
     modSelect.selectedIndex = 0;
 
