@@ -3,8 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Forecast</title>
-  <link rel="icon" href="/weather.ico" type="image/x-icon">
+  <title>⛅ Forecast</title>
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
   <style>
     body {
@@ -39,6 +38,21 @@
       height: 100vh;
       /* Uses almost full height */
     }
+
+    /* Style for view buttons */
+    .view-btn {
+      padding: 2px 5px;
+      margin: 0 2px;
+      font-size: 10px;
+      cursor: pointer;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+      background: #f5f5f5;
+    }
+
+    .view-btn:hover {
+      background: #e9e9e9;
+    }
   </style>
 </head>
 
@@ -54,6 +68,12 @@
     <span id="status">✅ Ready</span>
     <button onclick="window.open('https://www.meteoradar.ch/bilder/mch_aktuell.php', '_blank')">🌧️ Radar</button>
     <span id="konstanzTemperature"></span>
+
+    <!-- Add View Range Selection Buttons -->
+    <span style="margin-left: 10px;">View: </span>
+    <button id="view2d" class="view-btn">2d</button>
+    <button id="view5d" class="view-btn">5d</button>
+    <button id="viewAll" class="view-btn">All</button>
   </div>
 
   <!-- 🔹 Fullscreen Plotly Chart -->
@@ -87,7 +107,7 @@
       { id: "gfs025", label: "🇺🇸📊 GFS Ensemble", model: "gfs025", type: "ensemble" },
     ];
     const locSelect = document.getElementById("locationSelect");
-    
+
     locations.forEach(loc => {
       const opt = document.createElement("option");
       // Store lat, lon, and name in the value (as JSON)
@@ -95,7 +115,7 @@
       opt.textContent = loc.name;
       locSelect.appendChild(opt);
     });
-    
+
     const modSelect = document.getElementById("modelSelect");
     // models.forEach(m => {
     //   const opt = document.createElement("option");
@@ -107,18 +127,18 @@
     locSelect.selectedIndex = 0;
     modSelect.selectedIndex = 0;
 
-   // Function to get URL parameters
-   function getUrlParams() {
-        const params = new URLSearchParams(window.location.search);
-        const lat = parseFloat(params.get("lat"));
-        const lon = parseFloat(params.get("lon"));
-        if (!isNaN(lat) && !isNaN(lon)) {
-            const name = params.get("name") || `Custom ${lat.toFixed(4)}, ${lon.toFixed(4)}`;
-            return { lat, lon, name };
-        }
-        return null;
+    // Function to get URL parameters
+    function getUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      const lat = parseFloat(params.get("lat"));
+      const lon = parseFloat(params.get("lon"));
+      if (!isNaN(lat) && !isNaN(lon)) {
+          const name = params.get("name") || `Custom ${lat.toFixed(4)}, ${lon.toFixed(4)}`;
+          return { lat, lon, name };
+      }
+      return null;
     }
-    
+
     function fetchKonstanzWeather(callback) {
       fetch("https://www.uni-konstanz.de/hsp/wetter/data/current.json")
           .then(response => response.json())
@@ -189,10 +209,10 @@
     // 3) Fetch & Plot Function
     // ------------------------------
     function fetchAndPlot() {
-      
-      
+
+
       // // Declare selectedLoc so it can be reassigned
-      // let selectedLoc = getUrlParams(); 
+      // let selectedLoc = getUrlParams();
       // console.error("Selected Location (from URL)", selectedLoc);
       //if (selectedLoc === null) {
         //locSelect = document.getElementById("locationSelect");
@@ -223,8 +243,8 @@
       } else {
           document.getElementById("konstanzTemperature").textContent = "";
       }
-      
-      
+
+
       const selectedModel = models.find(m => m.id === modSelect.value);
       // If Konstanz is selected, fetch and display the current temperature 
       if (!selectedModel) {
@@ -355,6 +375,15 @@
       // Convert hourly times (assumed to be ISO strings in UTC) to German local time
       //const timesUTC = hourly.time.map(t => new Date(t + "Z"));
       const timesLocal = hourly.time; // No need to convert to local time since query is already in local time
+
+      // Simple range - use all data
+      const startTime = timesLocal[0];
+      const endTime = timesLocal[timesLocal.length - 1];
+      console.log(`Data range from ${startTime} to ${endTime}`);
+
+      // Store the data range for use by view buttons
+      document.getElementById('plot').setAttribute('data-start-time', startTime);
+      document.getElementById('plot').setAttribute('data-end-time', endTime);
 
       // Extract arrays (use empty arrays if missing)
       const temperature = hourly.temperature_2m || [];
@@ -505,8 +534,17 @@
         height: window.innerHeight * 0.98,
         grid: { rows: 3, columns: 1, pattern: "independent" },
 
-        // X-axis settings
-        xaxis: { title: "Time (CET/CEST)", tickformat: "%b %d %H:%M", tickmode: "auto", autorange: true, showgrid: true, tickangle: -30, rangeslider: { visible: false }, anchor: "y5" },
+        // X-axis settings - default to showing all data
+        xaxis: { 
+          title: "Time (CET/CEST)", 
+          tickformat: "%b %d %H:%M", 
+          tickmode: "auto", 
+          showgrid: true, 
+          tickangle: -30, 
+          rangeslider: { visible: false }, 
+          anchor: "y5",
+          range: [startTime, endTime]
+        },
 
         yaxis1: { title: "Temp (°C)", domain: [0.70, 1], color: "red" },  // 🔼 Slightly larger top row
         yaxis2: { title: "Humidity (%)", overlaying: "y", side: "right", color: "blue" },
@@ -524,12 +562,66 @@
 
       Plotly.newPlot('plot', allTraces, layout);
     } // End of processWeatherData
+
     // Initialize the plot with default selections
     fetchAndPlot();
+
     // Re-plot when location or model changes
     document.getElementById("locationSelect").addEventListener("change", fetchAndPlot);
     document.getElementById("modelSelect").addEventListener("change", fetchAndPlot);
+
+    // Add View Range Button Event Handlers
+    document.getElementById("view2d").addEventListener("click", function() {
+      adjustViewRange(2);
+    });
+
+    document.getElementById("view5d").addEventListener("click", function() {
+      adjustViewRange(5);
+    });
+
+    document.getElementById("viewAll").addEventListener("click", function() {
+      const plotDiv = document.getElementById('plot');
+      const startTime = plotDiv.getAttribute('data-start-time');
+      const endTime = plotDiv.getAttribute('data-end-time');
+
+      Plotly.relayout('plot', {
+        'xaxis.range': [startTime, endTime]
+      });
+    });
+
+    // Function to adjust view range to show a specific number of days
+    function adjustViewRange(days) {
+      const plotDiv = document.getElementById('plot');
+      const startTime = new Date(plotDiv.getAttribute('data-start-time'));
+      const endTime = new Date(plotDiv.getAttribute('data-end-time'));
+
+      // Current time
+      const now = new Date();
+
+      // Calculate view boundaries
+      const msPerDay = 24 * 60 * 60 * 1000;
+      const viewStart = new Date(Math.max(startTime, now - msPerDay * 0.5)); // half day before now
+      const viewEnd = new Date(Math.min(endTime, new Date(viewStart.getTime() + days * msPerDay)));
+
+      // Format as ISO strings for plotly
+      const viewStartISO = viewStart.toISOString().replace('Z', '');
+      const viewEndISO = viewEnd.toISOString().replace('Z', '');
+
+      Plotly.relayout('plot', {
+        'xaxis.range': [viewStartISO, viewEndISO]
+      });
+    }
+
+    // Set active style for view buttons
+    const viewBtns = document.querySelectorAll('.view-btn');
+    viewBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        viewBtns.forEach(b => b.style.fontWeight = 'normal');
+        this.style.fontWeight = 'bold';
+      });
+    });
   </script>
+
   <p style="text-align: center; font-size: 10px; color: gray; margin-top: -10px;">
     Weather data provided by <a href="https://open-meteo.com/" target="_blank"
       style="color: gray; text-decoration: none;">Open-Meteo</a>.
