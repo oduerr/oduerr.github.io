@@ -105,4 +105,13 @@ Weitere gute Quellen sind
 
 Beispielglieder einer MA (im Prinzip auch für BA): [https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/-/blob/master/thesis.pdf](https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/-/blob/master/thesis.pdf) unter [https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/](https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/) finded  man die LaTeX Quellen
 
+## Allgemeine Hinweise zum Kolloquium 
 
+### Dauer & Ablauf
+* **Bachelorarbeit:** ca. 20 Minuten Vortrag + etwa 15 Minuten Fragen.
+* **Masterarbeit:** ca. 35 Minuten Vortrag + etwa 15 Minuten Fragen.
+
+Die Fragerunde kann bei Interesse auch länger dauern.
+
+### Zielgruppe
+Die Zuhörerschaft verfügt über ein **allgemeines Verständnis von Machine/Deep Learning oder Statistik**. Nutzen Sie diese Basis, um die **spezifischen Besonderheiten Ihrer Arbeit** herauszuarbeiten (z. B. besondere Daten, Modellarchitektur, Evaluationsstrategie, überraschende Erkenntnisse).
