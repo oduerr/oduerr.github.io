@@ -9,7 +9,7 @@ Diese Informationen sind für Bachelor- und Masterarbeiten gedacht, die ich an d
 Es gibt im Prinzip zwei Modi. Entweder machen Sie die Arbeit in einem Betrieb [siehe Arbeiten in einer Firma](#arbeiten-in-einer-firma) oder bei mir am Institut für optische Systeme [siehe Arbeiten am Institut](#arbeiten-am-institut) . 
 
 ## Generelles
-**Neu ab WS 2024:** Ich erwarte, dass auch Bachelorarbeiten in einem Kolloquium (etwa 30 Minuten + Fragen) präsentiert werden
+**Neu ab WS 2024:** Ich erwarte, dass auch Bachelorarbeiten in einem Kolloquium präsentiert werden
 
 Der Software-Engineering-Aspekt spielt bei mir keine Rolle. Ob Sie in der verwendeten Arbeit Design Pattern verwenden oder eine Reihe von Skripten ist mir egal, solange Sie auf Reproduzierbarkeit der Ergebnisse achten. 
 
