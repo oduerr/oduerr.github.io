@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>HTWG Grade Calculator – Interactive</title>
+  <!-- SheetJS: XLSX lesen/schreiben -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.20.2/dist/xlsx.full.min.js"></script>
+  <!-- Chart.js für ECDF & Noten-Histogramm -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root{
+      --accent:#0065bd;
+      --bg:#f7f9fc;
+    }
+    *{box-sizing:border-box;font-family:sans-serif}
+    body{margin:0;min-height:100vh;background:var(--bg);padding:1.2rem;display:flex;flex-direction:column;gap:1.4rem;}
+    h1{font-size:1.6rem;margin:0;color:var(--accent)}
+    .row{display:flex;flex-wrap:wrap;gap:1rem}
+    label{display:flex;align-items:center;font-size:0.95rem;gap:0.4rem}
+    input[type="number"],input[type="file"],input[type="range"],button{
+      font-size:1rem;border-radius:6px;border:1px solid #ccc;padding:0.2rem 0.5rem
+    }
+    input[type="range"]{cursor:pointer;padding:0;width:140px}
+    button{background:var(--accent);color:#fff;cursor:pointer}
+    canvas{background:#fff;border-radius:8px;padding:0.3rem;max-width:100%}
+    #summary{font-weight:600;margin-top:0.5rem}
+    .charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:1rem}
+  </style>
+</head>
+<body>
+  <h1>HTWG Grade Calculator</h1>
+
+  <div class="row">
+    <label>
+      Excel (erste Tabelle):
+      <input type="file" id="file" accept=".xlsx" />
+    </label>
+
+    <label>
+      Punkte für 1,0 (<span id="lbl1">32</span>):
+      <input type="range" id="pts1" min="0" max="60" value="32" step="0.25" />
+    </label>
+
+    <label>
+      Punkte für 4,0 (<span id="lbl4">14.25</span>):
+      <input type="range" id="pts4" min="0" max="60" value="14.25" step="0.25" />
+    </label>
+
+    <button id="download" disabled>Excel herunterladen</button>
+  </div>
+
+  <div id="summary"></div>
+
+  <div class="charts">
+    <canvas id="ecdf"></canvas>
+    <canvas id="hist"></canvas>
+  </div>
+
+  <script>
+    // ------------------------------------------------------------
+    // Konstanten: Bin-Grenzen & Codes (HTWG)
+    // ------------------------------------------------------------
+    const NOTE_BINS  = [1.15,1.5,1.85,2.15,2.5,2.85,3.15,3.5,3.85,4.15,Infinity];
+    const NOTE_CODES = [100,130,170,200,230,270,300,330,370,400,500];
+
+    // Datencontainer
+    let rows = [];        // Array der Raw-Objekte {mtknr, task1, …, pkt, raw_note, note_code}
+    let wbOriginal = null;// Original-Workbook zum späteren Export
+
+    // DOM-Referenzen
+    const fileInput = document.getElementById('file');
+    const slider1  = document.getElementById('pts1');
+    const slider4  = document.getElementById('pts4');
+    const lbl1     = document.getElementById('lbl1');
+    const lbl4     = document.getElementById('lbl4');
+    const summary  = document.getElementById('summary');
+    const dlButton = document.getElementById('download');
+
+    // Chart.js Objekte (werden nach erstem Render gesetzt)
+    let ecdfChart  = null;
+    let histChart  = null;
+
+    //-------------------------------------------------------------
+    // Hilfsfunktionen
+    //-------------------------------------------------------------
+    function rawNote(p, p1, p4){
+      const m = 3 / (p4 - p1);
+      const b = 1 - m * p1;
+      return m * p + b; // 1…6
+    }
+
+    function toCode(note){
+      for(let i=0;i<NOTE_BINS.length;i++) if(note<=NOTE_BINS[i]) return NOTE_CODES[i];
+      return 500;
+    }
+
+    function recompute(){
+      if(rows.length===0) return;
+      const p1 = parseFloat(slider1.value);
+      const p4 = parseFloat(slider4.value);
+      lbl1.textContent = p1;
+      lbl4.textContent = p4;
+
+      // 1) Noten neu berechnen
+      rows.forEach(r=>{
+        r.raw_note  = rawNote(r.pkt, p1, p4);
+        r.note_code = toCode(r.raw_note);
+      });
+
+      // 2) ECDF-Daten erzeugen
+      const ptsSorted = [...rows].sort((a,b)=>a.pkt-b.pkt).map(r=>r.pkt);
+      const n = ptsSorted.length;
+      const ecdfX = [];
+      const ecdfY = [];
+      ptsSorted.forEach((v,i)=>{
+        ecdfX.push(v);
+        ecdfY.push((i+1)/n);
+      });
+
+      // 3) Histogramm (Codes)
+      const counts = Object.fromEntries(NOTE_CODES.map(c=>[c,0]));
+      rows.forEach(r=>counts[r.note_code]++);
+      const histY = NOTE_CODES.map(c=>counts[c]);
+
+      // 4) Summary
+      const passed = rows.filter(r=>r.note_code<405).length;
+      const avg    = rows.reduce((s,r)=>s+r.raw_note,0)/rows.length;
+      summary.textContent = `Ø Note: ${avg.toFixed(2)}   |   Bestanden: ${(100*passed/rows.length).toFixed(1)} %`;
+
+      // 5) Charts updaten / initialisieren
+      if(!ecdfChart){
+        ecdfChart = new Chart(document.getElementById('ecdf'), {
+          type:'line',
+          data:{labels:ecdfX,datasets:[{data:ecdfY,stepped:true,fill:false,borderColor:'#0065bd',pointRadius:2}]},
+          options:{responsive:true,plugins:{legend:{display:false},title:{display:true,text:'ECDF Punkte'}},scales:{x:{title:{text:'Punkte',display:true}},y:{title:{text:'Fₙ(x)',display:true},min:0,max:1}}}
+        });
+      }else{
+        ecdfChart.data.labels = ecdfX;
+        ecdfChart.data.datasets[0].data = ecdfY;
+        ecdfChart.update();
+      }
+
+      if(!histChart){
+        histChart = new Chart(document.getElementById('hist'), {
+          type:'bar',
+          data:{labels:NOTE_CODES.map(String),datasets:[{data:histY,backgroundColor:'#0065bd'}]},
+          options:{responsive:true,plugins:{legend:{display:false},title:{display:true,text:'Note Codes – Häufigkeit'}},scales:{x:{title:{display:true,text:'Note Code'}},y:{title:{display:true,text:'Anzahl'},ticks:{precision:0}}}}
+        });
+      }else{
+        histChart.data.datasets[0].data = histY;
+        histChart.update();
+      }
+
+      // 6) Download-Button aktivieren
+      dlButton.disabled = false;
+    }
+
+    //-------------------------------------------------------------
+    // Datei einlesen
+    //-------------------------------------------------------------
+    fileInput.addEventListener('change', ev=>{
+      if(!ev.target.files.length) return;
+      const reader = new FileReader();
+      reader.onload = e=>{
+        const data = new Uint8Array(e.target.result);
+        wbOriginal  = XLSX.read(data,{type:'array'});
+        const ws    = wbOriginal.Sheets[wbOriginal.SheetNames[0]];
+        rows = XLSX.utils.sheet_to_json(ws,{defval:0});
+
+        // Punkte summieren (alle Spalten außer mtknr)
+        rows.forEach(r=>{
+          let sum=0;
+          Object.entries(r).forEach(([k,v])=>{ if(k!=='mtknr') sum+=Number(v)||0; });
+          r.pkt = sum;
+        });
+        recompute();
+      };
+      reader.readAsArrayBuffer(ev.target.files[0]);
+    });
+
+    //-------------------------------------------------------------
+    // Slider-Events
+    //-------------------------------------------------------------
+    slider1.addEventListener('input', recompute);
+    slider4.addEventListener('input', recompute);
+
+    //-------------------------------------------------------------
+    // Excel herunterladen (neues Sheet "Bewertungen")
+    //-------------------------------------------------------------
+    dlButton.addEventListener('click', ()=>{
+      if(!rows.length) return;
+      const exportRows = rows.map(({mtknr,pkt,raw_note,note_code,...rest})=>({mtknr,pkt,raw_note:raw_note.toFixed(2),note_code,...rest}));
+      const newWs = XLSX.utils.json_to_sheet(exportRows);
+      const newWb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(newWb,newWs,'Bewertungen');
+      XLSX.writeFile(newWb,'Matrikel_Punkte_ausgewertet.xlsx');
+    });
+  </script>
+</body>
+</html>
