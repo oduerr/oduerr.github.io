@@ -113,7 +113,8 @@ Dabei sollen die verwendeten Tools (z. B. ChatGPT, GitHub Copilot, Prism oder ve
 Eine detaillierte Dokumentation einzelner Text- oder Codestellen ist nicht erforderlich.  
 Die Angabe der einzelnenTools dient der Transparenz und ist nicht relevant für die Bewertung der Arbeit.
 
-**Wichtig:** Unabhängig von der Nutzung solcher Werkzeuge übernehmen Sie die **volle Verantwortung (Authorship)** für **alle Inhalte, Ergebnisse und Schlussfolgerungen** der Arbeit. Dies schließt auch Inhalte ein, die mithilfe KI-gestützter Werkzeuge erzeugt wurden und von Ihnen eigenständig geprüft und verantwortet werden müssen.
+**Wichtig:** Unabhängig von der Nutzung solcher Werkzeuge übernehmen Sie die **volle Verantwortung** für **alle Inhalte, Ergebnisse und Schlussfolgerungen** der Arbeit, einschließlich Text, Code und Abbildungen. Dies schließt auch Inhalte ein, die mithilfe KI-gestützter Werkzeuge erzeugt wurden und von Ihnen eigenständig geprüft und verantwortet werden müssen.
+
 
 #### Beispiel 
 
