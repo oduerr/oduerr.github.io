@@ -105,6 +105,27 @@ Weitere gute Quellen sind
 
 Beispielglieder einer MA (im Prinzip auch für BA): [https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/-/blob/master/thesis.pdf](https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/-/blob/master/thesis.pdf) unter [https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/](https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/) finded  man die LaTeX Quellen
 
+## Nutzung von KI-gestützten Werkzeugen
+
+Bitte fügen Sie der Arbeit einen kurzen Abschnitt zur Nutzung KI-gestützter Werkzeuge bei.  
+Dabei sollen die verwendeten Tools (z. B. ChatGPT, GitHub Copilot, Prism oder vergleichbare Anwendungen) sowie deren Einsatzbereiche kurz benannt werden.
+
+Eine detaillierte Dokumentation einzelner Text- oder Codestellen ist nicht erforderlich.  
+Die Angabe der einzelnenTools dient der Transparenz und ist nicht relevant für die Bewertung der Arbeit.
+
+**Wichtig:** Unabhängig von der Nutzung solcher Werkzeuge übernehmen Sie die **volle Verantwortung (Authorship)** für **alle Inhalte, Ergebnisse und Schlussfolgerungen** der Arbeit. Dies schließt auch Inhalte ein, die mithilfe KI-gestützter Werkzeuge erzeugt wurden und von Ihnen eigenständig geprüft und verantwortet werden müssen.
+
+### Beispiel 
+
+```text
+Bei der Erstellung dieser Arbeit wurden KI-gestützte Werkzeuge eingesetzt:
+- ChatGPT zur sprachlichen Überarbeitung und Strukturierung von Text,
+- GitHub Copilot zur Unterstützung bei der Erstellung von Analyse- und Visualisierungscode,
+- Google Colab Notebooks zur Erstellung von Abbildungen und Datenvisualisierungen,
+- Prism zur Erzeugung von LaTeX-Code sowie zur Erstellung grafischer Diagramme.
+
+Alle KI-unterstützten Inhalte wurden vom Verfasserin/Verfasser sorgfältig geprüft und bei Bedarf überarbeitet; die Verantwortung für die endgültige Fassung liegt vollständig bei ihr/ihm.
+```
 ## Allgemeine Hinweise zum Kolloquium 
 
 ### Dauer & Ablauf
