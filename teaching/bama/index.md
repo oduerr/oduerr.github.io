@@ -105,7 +105,7 @@ Weitere gute Quellen sind
 
 Beispielglieder einer MA (im Prinzip auch für BA): [https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/-/blob/master/thesis.pdf](https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/-/blob/master/thesis.pdf) unter [https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/](https://git.ios.htwg-konstanz.de/ios_public/thesis_teamprojekt_templates/) finded  man die LaTeX Quellen
 
-## Nutzung von KI-gestützten Werkzeugen
+### Nutzung von KI-gestützten Werkzeugen
 
 Bitte fügen Sie der Arbeit einen kurzen Abschnitt zur Nutzung KI-gestützter Werkzeuge bei.  
 Dabei sollen die verwendeten Tools (z. B. ChatGPT, GitHub Copilot, Prism oder vergleichbare Anwendungen) sowie deren Einsatzbereiche kurz benannt werden.
@@ -115,7 +115,7 @@ Die Angabe der einzelnenTools dient der Transparenz und ist nicht relevant für 
 
 **Wichtig:** Unabhängig von der Nutzung solcher Werkzeuge übernehmen Sie die **volle Verantwortung (Authorship)** für **alle Inhalte, Ergebnisse und Schlussfolgerungen** der Arbeit. Dies schließt auch Inhalte ein, die mithilfe KI-gestützter Werkzeuge erzeugt wurden und von Ihnen eigenständig geprüft und verantwortet werden müssen.
 
-### Beispiel 
+#### Beispiel 
 
 ```text
 Bei der Erstellung dieser Arbeit wurden KI-gestützte Werkzeuge eingesetzt:
