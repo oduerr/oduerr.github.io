@@ -26,24 +26,43 @@ Es muss Vorwissen in den relevante Bereichen vorhanden sein. Dazu gehören:
 
 * Für Bachelor: Sie sollten gute Statitikkentnisse haben. Idealerweise habe Sie schon einmal etwas von Maschine Learning oder Data Mining gehört.  
 
+### Wissenschaftlicher Anspruch und Engineering 
+
+Informatik ist bei uns ein Bachelor of Science (B.Sc.) bzw. Master of Science (M.Sc.) – entsprechend erwarte ich wissenschaftliches Arbeiten auch im Bachelor (im Master mit höherem Anspruch). Gleichzeitig ist Engineering ein zentraler Teil guter Informatik. Iteratives Entwickeln und Optimieren ist daher ausdrücklich erlaubt und oft notwendig. Entscheidend ist aber, dass daraus eine übertragbare Erkenntnis wird: Sie sollen nicht nur zeigen, dass etwas besser wird, sondern wogegen, wie zuverlässig und idealerweise warum.
+
+Arbeiten, deren Schwerpunkt im iterativen Optimieren/Tuning eines Systems liegt („Parameter drehen, bis es besser wird“), sind nur dann geeignet, wenn ein klarer wissenschaftlicher Evaluationsrahmen vorliegt (begründete Metriken, Vergleich gegen Baselines/Referenzen, getrennte Testdaten, Quantifizierung der Zuverlässigkeit).
+
+
+#### Evaluationsrahmen (Metriken, Zuverlässigkeit, Vergleich)
+
+* **Vergleichsrahmen:** Mindestens Vergleich gegen eine Baseline; idealerweise zusätzlich gegen etablierte Referenzen/Stand der Technik (sofern fair und machbar).
+* **Saubere Evaluation:** Trennung von Entwicklungs-/Tuningdaten und finaler Evaluation auf unabhängigen Testdaten (keine Optimierung auf dem Testset).
+* **Metriken & Zuverlässigkeit:** Geeignete, begründete Metriken und eine Quantifizierung der Zuverlässigkeit (z. B. mehrere Runs/Seeds, Bootstrap/Konfidenzintervalle, Sensitivitätsanalysen).
+<!-- * **Probabilistische Methoden:** Wenn Sie probabilistische Vorhersagen/Unsicherheiten evaluieren, erwarte ich eine Diskussion geeigneter **Proper Scoring Rules** (z. B. Log-Score/NLL, CRPS, Brier Score). -->
+
 
 ## Arbeiten in einer Firma 
 
+Auch bei Arbeiten in einer Firma gilt der Abschnitt **„Wissenschaftlicher Anspruch und Engineering“** inkl. **Evaluationsrahmen** unverändert.
 
-* **Wichtig:** Falls Sie Arbeit in einer Firma machen, muss die Betreuung vollständig im Betrieb erfolgen. Es muss dort eine kompetente Ansprechperson vorhanden sein. In diesem Fall bin ich in der Regel nur beratend (1-2 Termine) und bewertend tätig. Es muss also in der Firma zwingend das benötigte Know-how vorhanden sein. D.h. Sie brauchen dort einen Betreuer, der auf dem Gebiet schon gearbeitet hat und der Sie auch fachlich betreuen kann. 
+* **Wichtig:** Falls Sie Arbeit in einer Firma machen, muss die Betreuung vollständig im Betrieb erfolgen. Es muss dort eine kompetente Ansprechperson vorhanden sein. In diesem Fall bin ich in der Regel nur beratend (1-2 Termine) und bewertend tätig. Es muss also in der Firma zwingend das benötigte Know-how vorhanden sein. D. h. Sie brauchen dort eine Betreuungsperson, die auf dem Gebiet schon gearbeitet hat, Sie fachlich begleiten kann und ein wissenschaftliches Vorgehen (Fragestellung, saubere Evaluation, Dokumentation) sicherstellt.
 
-* Auch wenn die Arbeit in einem Betrieb betreut wird, nehme ich nur **quatitative** Arbeiten an, bei denen ich hinreichend Wissen habe um diese adequat zu bewerten. Ich nehme keine Arbeiten im Stile Evaluation des Softwarepakets / der Technologie XY an, dazu fehlt mir leider die Erfahrung soetwas zu bewerten. 
+* Auch wenn die Arbeit in einem Betrieb betreut wird, nehme ich nur **quantitative** Arbeiten an, bei denen ich über hinreichendes Fachwissen verfüge, um sie adäquat bewerten zu können. Reine Arbeiten im Stil „Evaluation eines Softwarepakets / einer Technologie XY“ nehme ich nicht an, da ich solche Arbeiten fachlich nicht sinnvoll bewerten kann und sie nicht zu meinem Betreuungsprofil passen.
 
 * Formal muss die Betreuungsperson in der Firma mindestens den gleichen Abschluss haben. Ich gehe aber davon aus das diese Person mindestens in jedem Fall einen Master, idealerweise eine Promotion, haben sollte.
 
+* Bei allen Besprechungen mit mir muss die Betreuungsperson aus der Firma in der Regel anwesend sein.  
+
 ### Geheimhaltung: 
 
-* Eine Sperrklausel ist in Ordnung. NDAs kann und darf ich nicht unterzeichen, da ich nicht für die Hochschule zeichnungsberechtig bin.  
+* Grundsätzlich gilt: Wissenschaft gehört veröffentlicht. Ich bevorzuge daher Arbeiten, bei denen Ergebnisse (ggf. anonymisiert/aggregiert) publiziert werden dürfen. Eine Sperrklausel ist zur Not in Ordnung, sollte aber zeitlich befristet und inhaltlich klar abgegrenzt sein.
 
-* Idealerweise arbeiten Sie mit einem öffentlichen Datensatz (evt. zusätzlich zu einem Firmen internen). 
+* **NDAs:** Kommen nicht in Frage. Ich darf sie nicht unterzeichnen (keine Zeichnungsberechtigung der Hochschule) und nehme keine Arbeiten an, bei denen ein NDA vorausgesetzt wird.
+
+* Idealerweise arbeiten Sie mit einem öffentlichen Datensatz (ggf. zusätzlich zu einem firmeninternen).
 
 
-### Erster Kontakt 
+### Erster Kontakt, wenn Sie die Arbeit in einer Firma machen wollen
 Sie bereiten ein paar Folien (3-10) und vor und schicken Sie mir dann. 
 
 * Anwendungsidee (falls vorhanden): Schildern Sie die (Business-)idee ihrer Arbeit.
@@ -60,13 +79,22 @@ Sie bereiten ein paar Folien (3-10) und vor und schicken Sie mir dann.
 	* Wie sehen die Daten aus, wieviel Daten sind Vorhanden?
 	* Sind alle Daten schon vorhanden? Falls nicht, erstellen Sie einen Plan B mit öffentlichen Daten.
 
-* Falls, Sie die Arbeit in einer Firma machen wollen: 
+* In der Firma: 
 	* Ist ein fachlich kompetenter Ansprechpartner in der Firma vorhanden? 
 	* Falls benötigt, ist IT-Infrastruktur vorhanden?
 	* Ist es erlaubt die Daten und die Ergebnisse der Arbeit zu veröffentlichen? 
 
-Falls das Thema passt, machen wir dann einen ersten Termin aus, um unverbindlich darüber zu sprechen. Bei diesem ersten Gespräch muss der Betreuer der Firma mit dabei sein.  
+Falls das Thema passt, machen wir dann einen ersten Termin aus, um unverbindlich darüber zu sprechen. Bei diesem ersten Gespräch muss der Betreuer der Firma mit dabei sein.
 
+### Erster Kontakt, wenn Sie die Arbeit am Institut schreiben wollen
+Wir treffen uns persönlich und ich gebe Ihnen eine Übersicht über mögliche Themen und meine Erwartungen an eine Arbeit. Schicken Sie mir bitte eine kurze E-Mail (ein paar Absätze reichen). Damit ich schnell einschätzen kann, ob und wie das passt, sollte Folgendes drinstehen:
+
+* Studiengang & Abschluss: BA/MA, Studiengang, ggf. Schwerpunkt.
+* Zeitfenster: gewünschter Start, spätester Abgabetermin (oder ob Sie flexibel sind).
+* Interessen (2–4 Stichpunkte): z. B. Computer Vision, NLP, Zeitreihen, Unsicherheit, Bayes, Causality, Generative Models, RL, etc.
+* Vorwissen & Tools: relevante Vorlesungen (z. B. Data Analysis / ML / DL), Programmiererfahrung (Python), ggf. Frameworks (PyTorch/JAX/Keras), Statistikkenntnisse.
+* Motivation: warum das Thema, warum am Institut (1–3 Sätze).
+* Falls vorhanden: Ideen/Skizzen: gern als Stichpunkte (Problem → mögliche Methode → mögliche Daten).
 
 ### Formulierung einer Disposition
 Nach dem ersten Gespräch, formulieren Sie dann eine Disposition aufgrund derer ich dann die Arbeit formal als Betreuer annehme. In dieser Disposition, erweitern Sie die Rohfassung. Das heißt Sie führen Teilfragestellungen ein und erweitern den Methodenteil. Skizzieren Sie auch einen groben Projektplan.
@@ -83,7 +111,10 @@ Aktuelle Ausschreibungen finden Sie unter: http://www.ios.htwg-konstanz.de/jobs-
 * Nach etwa 4 Wochen, werden Sie einen Einführungsvortrag halten, bei dem Sie Ihr Projekt der Gruppe (2-10) Personen vorstellen. Dies dient dazu, dass wir alle das gleiche Verständnis haben und evt. neue Ideen zu kreieren.  
 
 
+
 ## Allgemeine Hinweise zur Arbeit
+
+
 
 Format, Textverarbeitungsprogramm (Word,Google-Docs,LaTeX,...), Zitierweise (IEEE, Harvard,...) und Sprache (Deutsch oder Englisch) ist mir egal. Auf was ich wert lege:
 
@@ -91,6 +122,7 @@ Format, Textverarbeitungsprogramm (Word,Google-Docs,LaTeX,...), Zitierweise (IEE
 * Stil: wissenschaftlich, knapp und prägnant (concise)
 * Die Figuren sind sehr wichtig und fliessen in die Bewertung ein. Sie müssen eine aussagekräftige Unterschrift / Caption haben (in der Regel mehr als ein Satz). Bei Grafen müssen die Achsen beschriftet sein.
 * Alle Variablen in Formel müssen erklärt sein (ich sehe eher Fehler in Formeln als Rechtschreibfehler). Schreiben Sie in LaTex ist https://bochang.me/blog/posts/latex/ eine gute Quelle für den Formelsatz
+* Sprache/Lesbarkeit: Ich bewerte nicht primär Grammatik oder Rechtschreibung. Im Jahr 2026 setze ich aber voraus, dass Sie bei Bedarf geeignete Tools zur sprachlichen Überarbeitung einsetzen (z. B. Duden Mentor, Grammarly oder KI-gestützte Assistenz), sodass der Text gut lesbar und weitgehend fehlerfrei ist. **Wichtig:** Für Inhalt, Faktentreue tragen Sie immer die volle Verantwortung (Nutzung von KI-gestützten Werkzeugen)
 * Alle abgesetzten Formel (also nicht Text) sollten eine Nummer haben (das erleichtert Diskussion)  
 * Fehlerbalken müssen, sofern möglich, angegeben werden. In R gibt schon immer die Möglichkeit Konfidenzintervalls zu berechnen, in python geht es nun auch <https://github.com/jacobgil/confidenceinterval>  
 * In der Regel kein Code im Haupttext (eher Pseudocode)
