@@ -14,5 +14,5 @@ A valuable way to describe a probability distribution is by considering it as a 
    *  For [functional outcome prediction after acute ischemic stroke](https://onlinelibrary.wiley.com/doi/abs/10.1002/bimj.202100379)
 * To model flexible distributions for [variational inference](https://arxiv.org/abs/2202.05650)
 
-* To model the functions of a structural causal model (in preparation)
+* To model the functions of a structural causal model in an interpretable way [TramDAM](https://arxiv.org/abs/2503.16206)
 
